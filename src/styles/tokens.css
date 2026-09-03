@@ -1,0 +1,85 @@
+/* 디자인 토큰 — design_handoff_gym_points/README.md 확정값 */
+
+:root {
+  /* ── 색 (라이트 기본) ── */
+  --page: #e9e7e1;
+  --bg: #f4f3ef;
+  --surface: #ffffff;
+  --surface2: #faf9f6;
+  --line: #e3e0d9;
+  --line2: #eeece7;
+  --ink: #1b1b18;
+  --ink2: #6a6862;
+  --ink3: #6f6c65;
+  --accent: oklch(0.5 0.1 156);
+  --accent-soft: oklch(0.95 0.03 156);
+  --warn: oklch(0.52 0.14 32);
+  --shadow: 0 24px 60px rgba(28, 26, 20, 0.18);
+
+  /* ── 히어로 전용(테마 무관 고정) ── */
+  --hero-bg: #0a0a0a;
+  --hero-green: #32d583;
+  --hero-ink: #f4f6fb;
+  --hero-scramble: #6b7280;
+
+  /* ── 폰트 ── */
+  --font-ui: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+  --font-hero: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, Menlo, monospace;
+
+  /* ── radius ── */
+  --r-card: 18px;
+  --r-card-sm: 16px;
+  --r-field: 14px;
+  --r-btn: 13px;
+  --r-btn-sm: 12px;
+  --r-chip: 6px;
+  --r-sheet: 26px;
+  --r-pill: 99px;
+
+  /* ── 모션 ── */
+  --ease-enter: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-swipe: cubic-bezier(0.32, 0.72, 0, 1);
+  --d-tap: 140ms;
+  --d-expand: 220ms;
+  --d-sheet: 300ms;
+  --d-snack: 240ms;
+  --d-overlay: 180ms;
+}
+
+/* 명시적 다크 */
+[data-theme='dark'] {
+  --page: #0d0e0c;
+  --bg: #131411;
+  --surface: #1b1c19;
+  --surface2: #212220;
+  --line: #2d2f2b;
+  --line2: #252722;
+  --ink: #edebe5;
+  --ink2: #a3a29b;
+  --ink3: #8c8d86;
+  --accent: oklch(0.8 0.13 156);
+  --accent-soft: oklch(0.3 0.05 156);
+  --warn: oklch(0.72 0.14 38);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* auto = 시스템 설정을 따른다 */
+@media (prefers-color-scheme: dark) {
+  [data-theme='auto'] {
+    --page: #0d0e0c;
+    --bg: #131411;
+    --surface: #1b1c19;
+    --surface2: #212220;
+    --line: #2d2f2b;
+    --line2: #252722;
+    --ink: #edebe5;
+    --ink2: #a3a29b;
+    --ink3: #8c8d86;
+    --accent: oklch(0.8 0.13 156);
+    --accent-soft: oklch(0.3 0.05 156);
+    --warn: oklch(0.72 0.14 38);
+    --shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  }
+}

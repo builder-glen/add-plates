@@ -1,0 +1,579 @@
+/* 화면 1 — 홈 */
+
+/* ── 헤더 ── */
+.gp-head {
+  flex: none;
+  padding: 4px 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gp-iconbtn {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink2);
+  border-radius: var(--r-btn);
+  transition: transform var(--d-tap) var(--ease-enter);
+}
+.gp-iconbtn:active {
+  transform: scale(0.94);
+}
+
+.gp-head__date {
+  min-width: 0;
+}
+
+.gp-head__title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-top: 1px;
+  white-space: nowrap;
+}
+
+/* ── 날짜 스트립 ── */
+.gp-strip {
+  flex: none;
+  display: flex;
+  gap: 5px;
+  cursor: grab;
+  padding: 14px 18px 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
+
+.gp-strip__day {
+  flex: none;
+  width: 44px;
+  border: 1px solid transparent;
+  border-radius: var(--r-btn);
+  padding: 7px 0 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--ink);
+  transition: background 160ms ease;
+}
+.gp-strip__day--on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.gp-strip__dow {
+  font-size: 10px;
+  color: var(--ink3);
+}
+.gp-strip__day--on .gp-strip__dow {
+  color: var(--bg);
+}
+
+.gp-strip__num {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.gp-strip__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid transparent;
+  margin-top: 1px;
+}
+/* 세트가 1개 이상 기록된 날 = 채움 */
+.gp-strip__dot--done {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.gp-strip__day--on .gp-strip__dot--done {
+  background: var(--bg);
+  border-color: var(--bg);
+}
+/* 일정만 있는 날 = 외곽선 */
+.gp-strip__dot--plan {
+  border-color: var(--ink3);
+}
+.gp-strip__day--on .gp-strip__dot--plan {
+  border-color: var(--bg);
+}
+
+/* ── 본문 ── */
+.gp-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px 18px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── 일정 ── */
+.gp-plan {
+  flex: none;
+  background: var(--accent-soft);
+  border-radius: var(--r-card-sm);
+  padding: 11px 8px 11px 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gp-plan__body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+
+.gp-plan__row {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.gp-plan__time {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  flex: none;
+}
+
+.gp-plan__title {
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gp-plan__memo {
+  font-size: 12px;
+  color: var(--ink2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gp-plan__act {
+  color: var(--ink2);
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  border-radius: 9px;
+  flex: none;
+}
+.gp-plan__act:active {
+  transform: scale(0.92);
+}
+
+.gp-plan__add {
+  flex: none;
+  width: 100%;
+  text-align: left;
+  border: 1px dashed var(--line);
+  color: var(--ink2);
+  border-radius: var(--r-card-sm);
+  padding: 13px 14px;
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 1;
+}
+
+/* ── 빈 상태 / 안내 줄 ── */
+.gp-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  padding: 30px 20px 50px;
+}
+
+.gp-empty__lines {
+  color: var(--ink2);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.gp-empty__meta {
+  font-size: 12.5px;
+  color: var(--ink3);
+}
+
+.gp-note {
+  flex: none;
+  font-size: 12.5px;
+  color: var(--ink3);
+  line-height: 1.7;
+  padding-top: 2px;
+}
+
+.gp-note--warn {
+  color: var(--warn);
+}
+
+.gp-retry {
+  color: var(--warn);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── 종목 카드 ── */
+.gp-entry {
+  position: relative;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  flex: none;
+}
+
+.gp-entry__del {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 88px;
+  background: var(--warn);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 11.5px;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+.gp-entry__del--on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gp-entry__card {
+  position: relative;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.gp-entry__head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 12px 11px;
+}
+
+.gp-caret {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface2);
+  color: var(--ink2);
+  border-radius: 8px;
+  transform: rotate(-90deg);
+  transition: transform var(--d-expand) var(--ease-enter), background 180ms ease;
+}
+.gp-caret--open {
+  background: var(--ink);
+  color: var(--bg);
+  transform: rotate(0deg);
+}
+
+.gp-entry__title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  text-align: left;
+  min-width: 0;
+}
+
+.gp-entry__name {
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.gp-chips {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+/* 부위별 hue 매핑. --chip-h 는 인라인으로 넣는다 */
+.gp-chip {
+  --chip-c: 0.022;
+  --chip-c-dark: 0.03;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  padding: 3px 7px;
+  border-radius: var(--r-chip);
+  border: 1px solid transparent;
+  background: oklch(0.95 var(--chip-c) var(--chip-h));
+  color: oklch(0.42 0.1 var(--chip-h));
+}
+.gp-chip--strong {
+  --chip-c: 0.045;
+  --chip-c-dark: 0.06;
+}
+[data-theme='dark'] .gp-chip {
+  background: oklch(0.3 var(--chip-c-dark) var(--chip-h));
+  color: oklch(0.86 0.09 var(--chip-h));
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme='auto'] .gp-chip {
+    background: oklch(0.3 var(--chip-c-dark) var(--chip-h));
+    color: oklch(0.86 0.09 var(--chip-h));
+  }
+}
+
+.gp-entry__count {
+  font-size: 11.5px;
+  color: var(--ink3);
+  flex: none;
+}
+
+.gp-entry__summary {
+  padding: 0 14px 14px 47px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.gp-entry__summary b {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--ink2);
+}
+.gp-entry__summary i {
+  font-size: 11.5px;
+  font-style: normal;
+  color: var(--ink3);
+}
+
+.gp-entry__open {
+  padding: 0 14px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gp-entry__last {
+  font-size: 12px;
+  color: var(--ink2);
+  padding: 0 0 9px;
+}
+
+/* ── 세트 행 ── */
+.gp-set {
+  width: 100%;
+  text-align: left;
+  border-top: 1px solid var(--line2);
+  padding: 11px 8px;
+  display: grid;
+  grid-template-columns: 22px 1fr 1fr 62px;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.gp-set--fail {
+  background: var(--surface2);
+  border-radius: 10px;
+}
+
+.gp-set__no {
+  font-size: 11.5px;
+  color: var(--ink3);
+}
+
+.gp-set__val {
+  font-size: 15.5px;
+  font-weight: 550;
+}
+
+.gp-set__state {
+  font-size: 11.5px;
+  text-align: right;
+  color: var(--ink3);
+}
+.gp-set__state--fail {
+  color: var(--warn);
+}
+
+.gp-entry__actions {
+  display: flex;
+  gap: 8px;
+  padding-top: 11px;
+  border-top: 1px solid var(--line2);
+}
+
+.gp-btn-primary {
+  flex: 1;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--r-btn-sm);
+  padding: 11px;
+  font-weight: 600;
+  font-size: 13.5px;
+  line-height: 1;
+  transition: transform var(--d-tap) var(--ease-enter);
+}
+.gp-btn-primary:active {
+  transform: scale(0.975);
+}
+
+.gp-btn-ghost {
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--ink);
+  border-radius: var(--r-btn-sm);
+  padding: 11px 14px;
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 1;
+}
+
+/* ── 푸터 ── */
+.gp-foot {
+  flex: none;
+  padding: 8px 18px calc(22px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  display: flex;
+  gap: 8px;
+}
+
+.gp-foot__btn {
+  flex: 1;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--r-card-sm);
+  padding: 15px;
+  font-weight: 650;
+  font-size: 15.5px;
+  line-height: 1;
+  transition: transform var(--d-tap) var(--ease-enter);
+}
+.gp-foot__btn:active {
+  transform: scale(0.98);
+}
+
+/* ── 세트 편집 시트 ── */
+.gp-editor__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.gp-editor__title {
+  font-size: 16px;
+  font-weight: 650;
+}
+.gp-editor__hint {
+  font-size: 12px;
+  color: var(--ink3);
+}
+
+.gp-step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.gp-step__btn {
+  width: 64px;
+  height: 56px;
+  border-radius: var(--r-card-sm);
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--ink);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1;
+  transition: transform 120ms var(--ease-enter);
+}
+.gp-step__btn:active {
+  transform: scale(0.95);
+}
+
+.gp-step__val {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+}
+.gp-step__num {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.gp-step__unit {
+  color: var(--ink2);
+  font-size: 14px;
+}
+
+.gp-editor__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.gp-editor__save {
+  flex: 1;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 15px;
+  padding: 15px;
+  font-weight: 650;
+  font-size: 15.5px;
+  line-height: 1;
+  transition: transform var(--d-tap) var(--ease-enter);
+}
+.gp-editor__save:active {
+  transform: scale(0.98);
+}
+
+.gp-editor__del {
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--warn);
+  border-radius: 15px;
+  padding: 15px 18px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+}

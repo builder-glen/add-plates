@@ -1,0 +1,3631 @@
+[
+  {
+    "name": "벤치프레스",
+    "chosung": "ㅂㅊㅍㄹㅅ",
+    "aliases": [
+      "벤프",
+      "바벨 벤치프레스",
+      "플랫 벤치프레스",
+      "벤치",
+      "bench press"
+    ],
+    "alias_chosung": [
+      "ㅂㅍ",
+      "ㅂㅂㅂㅊㅍㄹㅅ",
+      "ㅍㄹㅂㅊㅍㄹㅅ",
+      "ㅂㅊ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "bench-press"
+  },
+  {
+    "name": "인클라인 벤치프레스",
+    "chosung": "ㅇㅋㄹㅇㅂㅊㅍㄹㅅ",
+    "aliases": [
+      "인벤",
+      "인클라인 벤치",
+      "인클라인 프레스",
+      "incline bench press"
+    ],
+    "alias_chosung": [
+      "ㅇㅂ",
+      "ㅇㅋㄹㅇㅂㅊ",
+      "ㅇㅋㄹㅇㅍㄹㅅ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "upper_chest",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "incline-bench-press"
+  },
+  {
+    "name": "디클라인 벤치프레스",
+    "chosung": "ㄷㅋㄹㅇㅂㅊㅍㄹㅅ",
+    "aliases": [
+      "디벤",
+      "디클라인 벤치",
+      "decline bench press"
+    ],
+    "alias_chosung": [
+      "ㄷㅂ",
+      "ㄷㅋㄹㅇㅂㅊ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "decline-bench-press"
+  },
+  {
+    "name": "덤벨 벤치프레스",
+    "chosung": "ㄷㅂㅂㅊㅍㄹㅅ",
+    "aliases": [
+      "덤벤",
+      "덤벨 프레스",
+      "플랫 덤벨 프레스",
+      "dumbbell bench press"
+    ],
+    "alias_chosung": [
+      "ㄷㅂ",
+      "ㄷㅂㅍㄹㅅ",
+      "ㅍㄹㄷㅂㅍㄹㅅ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-bench-press"
+  },
+  {
+    "name": "인클라인 덤벨 프레스",
+    "chosung": "ㅇㅋㄹㅇㄷㅂㅍㄹㅅ",
+    "aliases": [
+      "인덤프",
+      "인클라인 덤벨 벤치프레스",
+      "incline dumbbell press"
+    ],
+    "alias_chosung": [
+      "ㅇㄷㅍ",
+      "ㅇㅋㄹㅇㄷㅂㅂㅊㅍㄹㅅ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "upper_chest",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "incline-dumbbell-press"
+  },
+  {
+    "name": "디클라인 덤벨 프레스",
+    "chosung": "ㄷㅋㄹㅇㄷㅂㅍㄹㅅ",
+    "aliases": [
+      "디클라인 덤벨 벤치프레스",
+      "decline dumbbell press"
+    ],
+    "alias_chosung": [
+      "ㄷㅋㄹㅇㄷㅂㅂㅊㅍㄹㅅ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "decline-dumbbell-press"
+  },
+  {
+    "name": "덤벨 플라이",
+    "chosung": "ㄷㅂㅍㄹㅇ",
+    "aliases": [
+      "플라이",
+      "덤벨 플라이스",
+      "dumbbell fly",
+      "dumbbell flye"
+    ],
+    "alias_chosung": [
+      "ㅍㄹㅇ",
+      "ㄷㅂㅍㄹㅇㅅ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-fly"
+  },
+  {
+    "name": "인클라인 덤벨 플라이",
+    "chosung": "ㅇㅋㄹㅇㄷㅂㅍㄹㅇ",
+    "aliases": [
+      "인클라인 플라이",
+      "incline dumbbell fly"
+    ],
+    "alias_chosung": [
+      "ㅇㅋㄹㅇㅍㄹㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "upper_chest",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "케이블 크로스오버",
+    "chosung": "ㅋㅇㅂㅋㄹㅅㅇㅂ",
+    "aliases": [
+      "크로스오버",
+      "케이블 플라이",
+      "스탠딩 케이블 플라이",
+      "cable crossover",
+      "cable fly"
+    ],
+    "alias_chosung": [
+      "ㅋㄹㅅㅇㅂ",
+      "ㅋㅇㅂㅍㄹㅇ",
+      "ㅅㅌㄷㅋㅇㅂㅍㄹㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-fly"
+  },
+  {
+    "name": "인클라인 케이블 플라이",
+    "chosung": "ㅇㅋㄹㅇㅋㅇㅂㅍㄹㅇ",
+    "aliases": [
+      "로우 케이블 플라이",
+      "로우 풀리 케이블 플라이",
+      "incline cable fly"
+    ],
+    "alias_chosung": [
+      "ㄹㅇㅋㅇㅂㅍㄹㅇ",
+      "ㄹㅇㅍㄹㅋㅇㅂㅍㄹㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "upper_chest",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "incline-cable-fly"
+  },
+  {
+    "name": "체스트 프레스",
+    "chosung": "ㅊㅅㅌㅍㄹㅅ",
+    "aliases": [
+      "체프",
+      "머신 체스트 프레스",
+      "체스트 프레스 머신",
+      "chest press"
+    ],
+    "alias_chosung": [
+      "ㅊㅍ",
+      "ㅁㅅㅊㅅㅌㅍㄹㅅ",
+      "ㅊㅅㅌㅍㄹㅅㅁㅅ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "machine-chest-press"
+  },
+  {
+    "name": "펙덱 플라이",
+    "chosung": "ㅍㄷㅍㄹㅇ",
+    "aliases": [
+      "버터플라이",
+      "펙덱",
+      "머신 플라이",
+      "펙덱 플라이 머신",
+      "pec deck"
+    ],
+    "alias_chosung": [
+      "ㅂㅌㅍㄹㅇ",
+      "ㅍㄷ",
+      "ㅁㅅㅍㄹㅇ",
+      "ㅍㄷㅍㄹㅇㅁㅅ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "pec-deck"
+  },
+  {
+    "name": "스미스 머신 벤치프레스",
+    "chosung": "ㅅㅁㅅㅁㅅㅂㅊㅍㄹㅅ",
+    "aliases": [
+      "스미스 벤치",
+      "스미스머신 벤치프레스",
+      "smith machine bench press"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅂㅊ",
+      "ㅅㅁㅅㅁㅅㅂㅊㅍㄹㅅ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "smith-machine-bench-press"
+  },
+  {
+    "name": "스미스 머신 인클라인 벤치프레스",
+    "chosung": "ㅅㅁㅅㅁㅅㅇㅋㄹㅇㅂㅊㅍㄹㅅ",
+    "aliases": [
+      "스미스 인클라인 벤치"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅇㅋㄹㅇㅂㅊ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "upper_chest",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "딥스",
+    "chosung": "ㄷㅅ",
+    "aliases": [
+      "체스트 딥스",
+      "평행봉",
+      "dips",
+      "chest dip"
+    ],
+    "alias_chosung": [
+      "ㅊㅅㅌㄷㅅ",
+      "ㅍㅎㅂ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "chest-dip"
+  },
+  {
+    "name": "중량 딥스",
+    "chosung": "ㅈㄹㄷㅅ",
+    "aliases": [
+      "웨이티드 딥스",
+      "가중 딥스",
+      "딥벨트 딥스",
+      "weighted dip"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㅌㄷㄷㅅ",
+      "ㄱㅈㄷㅅ",
+      "ㄷㅂㅌㄷㅅ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "weight_reps",
+    "asset_slug": "weighted-dip"
+  },
+  {
+    "name": "푸시업",
+    "chosung": "ㅍㅅㅇ",
+    "aliases": [
+      "팔굽혀펴기",
+      "푸쉬업",
+      "push up"
+    ],
+    "alias_chosung": [
+      "ㅍㄱㅎㅍㄱ",
+      "ㅍㅅㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "push-up"
+  },
+  {
+    "name": "중량 푸시업",
+    "chosung": "ㅈㄹㅍㅅㅇ",
+    "aliases": [
+      "중량 푸쉬업",
+      "웨이티드 푸시업",
+      "weighted push up"
+    ],
+    "alias_chosung": [
+      "ㅈㄹㅍㅅㅇ",
+      "ㅇㅇㅌㄷㅍㅅㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "weight_reps",
+    "asset_slug": "weighted-push-up"
+  },
+  {
+    "name": "와이드 푸시업",
+    "chosung": "ㅇㅇㄷㅍㅅㅇ",
+    "aliases": [
+      "와이드 푸쉬업",
+      "와이드그립 푸시업",
+      "wide push up"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㄷㅍㅅㅇ",
+      "ㅇㅇㄷㄱㄹㅍㅅㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "wide-push-up"
+  },
+  {
+    "name": "인클라인 푸시업",
+    "chosung": "ㅇㅋㄹㅇㅍㅅㅇ",
+    "aliases": [
+      "인클라인 푸쉬업",
+      "상체 올린 푸시업",
+      "incline push up"
+    ],
+    "alias_chosung": [
+      "ㅇㅋㄹㅇㅍㅅㅇ",
+      "ㅅㅊㅇㄹㅍㅅㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "incline-push-up"
+  },
+  {
+    "name": "디클라인 푸시업",
+    "chosung": "ㄷㅋㄹㅇㅍㅅㅇ",
+    "aliases": [
+      "디클라인 푸쉬업",
+      "발 올린 푸시업",
+      "decline push up"
+    ],
+    "alias_chosung": [
+      "ㄷㅋㄹㅇㅍㅅㅇ",
+      "ㅂㅇㄹㅍㅅㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "decline-push-up"
+  },
+  {
+    "name": "무릎 푸시업",
+    "chosung": "ㅁㄹㅍㅅㅇ",
+    "aliases": [
+      "니 푸쉬업",
+      "니 푸시업",
+      "무릎대고 푸시업",
+      "knee push up"
+    ],
+    "alias_chosung": [
+      "ㄴㅍㅅㅇ",
+      "ㄴㅍㅅㅇ",
+      "ㅁㄹㄷㄱㅍㅅㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "knee-push-up"
+  },
+  {
+    "name": "아처 푸시업",
+    "chosung": "ㅇㅊㅍㅅㅇ",
+    "aliases": [
+      "아처 푸쉬업",
+      "archer push up"
+    ],
+    "alias_chosung": [
+      "ㅇㅊㅍㅅㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "archer-push-up"
+  },
+  {
+    "name": "힌두 푸시업",
+    "chosung": "ㅎㄷㅍㅅㅇ",
+    "aliases": [
+      "힌두 푸쉬업",
+      "hindu push up"
+    ],
+    "alias_chosung": [
+      "ㅎㄷㅍㅅㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "hindu-push-up"
+  },
+  {
+    "name": "클랩 푸시업",
+    "chosung": "ㅋㄹㅍㅅㅇ",
+    "aliases": [
+      "박수 푸시업",
+      "익스플로시브 푸시업",
+      "clap push up"
+    ],
+    "alias_chosung": [
+      "ㅂㅅㅍㅅㅇ",
+      "ㅇㅅㅍㄹㅅㅂㅍㅅㅇ"
+    ],
+    "muscle_group": "chest",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "explosive-push-up"
+  },
+  {
+    "name": "데드리프트",
+    "chosung": "ㄷㄷㄹㅍㅌ",
+    "aliases": [
+      "데드",
+      "컨벤셔널 데드리프트",
+      "deadlift"
+    ],
+    "alias_chosung": [
+      "ㄷㄷ",
+      "ㅋㅂㅅㄴㄷㄷㄹㅍㅌ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "erectors",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "deadlift"
+  },
+  {
+    "name": "스모 데드리프트",
+    "chosung": "ㅅㅁㄷㄷㄹㅍㅌ",
+    "aliases": [
+      "스모 데드",
+      "sumo deadlift"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㄷㄷ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "erectors",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "sumo-deadlift"
+  },
+  {
+    "name": "트랩바 데드리프트",
+    "chosung": "ㅌㄹㅂㄷㄷㄹㅍㅌ",
+    "aliases": [
+      "트랩바 데드",
+      "헥스바 데드리프트",
+      "trap bar deadlift"
+    ],
+    "alias_chosung": [
+      "ㅌㄹㅂㄷㄷ",
+      "ㅎㅅㅂㄷㄷㄹㅍㅌ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "erectors",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "trap-bar-deadlift"
+  },
+  {
+    "name": "랙풀",
+    "chosung": "ㄹㅍ",
+    "aliases": [
+      "랙 풀",
+      "rack pull"
+    ],
+    "alias_chosung": [
+      "ㄹㅍ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "erectors",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "rack-pull"
+  },
+  {
+    "name": "바벨 로우",
+    "chosung": "ㅂㅂㄹㅇ",
+    "aliases": [
+      "벤트오버 로우",
+      "바벨 벤트오버 로우",
+      "barbell row",
+      "bent over row"
+    ],
+    "alias_chosung": [
+      "ㅂㅌㅇㅂㄹㅇ",
+      "ㅂㅂㅂㅌㅇㅂㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "barbell-row"
+  },
+  {
+    "name": "펜들레이 로우",
+    "chosung": "ㅍㄷㄹㅇㄹㅇ",
+    "aliases": [
+      "펜들레이",
+      "pendlay row"
+    ],
+    "alias_chosung": [
+      "ㅍㄷㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "pendlay-row"
+  },
+  {
+    "name": "메도우즈 로우",
+    "chosung": "ㅁㄷㅇㅈㄹㅇ",
+    "aliases": [
+      "랜드마인 로우",
+      "meadows row"
+    ],
+    "alias_chosung": [
+      "ㄹㄷㅁㅇㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "meadows-row"
+  },
+  {
+    "name": "언더그립 바벨 로우",
+    "chosung": "ㅇㄷㄱㄹㅂㅂㄹㅇ",
+    "aliases": [
+      "언더핸드 바벨 로우",
+      "리버스그립 바벨 로우"
+    ],
+    "alias_chosung": [
+      "ㅇㄷㅎㄷㅂㅂㄹㅇ",
+      "ㄹㅂㅅㄱㄹㅂㅂㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "바벨 풀오버",
+    "chosung": "ㅂㅂㅍㅇㅂ",
+    "aliases": [
+      "풀오버",
+      "barbell pullover"
+    ],
+    "alias_chosung": [
+      "ㅍㅇㅂ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "덤벨 풀오버",
+    "chosung": "ㄷㅂㅍㅇㅂ",
+    "aliases": [
+      "풀오버",
+      "dumbbell pullover"
+    ],
+    "alias_chosung": [
+      "ㅍㅇㅂ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "원암 덤벨 로우",
+    "chosung": "ㅇㅇㄷㅂㄹㅇ",
+    "aliases": [
+      "덤벨 로우",
+      "원암 로우",
+      "one arm dumbbell row"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㄹㅇ",
+      "ㅇㅇㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "one-arm-dumbbell-row"
+  },
+  {
+    "name": "덤벨 벤트오버 로우",
+    "chosung": "ㄷㅂㅂㅌㅇㅂㄹㅇ",
+    "aliases": [
+      "양손 덤벨 로우",
+      "덤벨 로우",
+      "dumbbell bent over row"
+    ],
+    "alias_chosung": [
+      "ㅇㅅㄷㅂㄹㅇ",
+      "ㄷㅂㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-bent-over-row"
+  },
+  {
+    "name": "덤벨 인클라인 로우",
+    "chosung": "ㄷㅂㅇㅋㄹㅇㄹㅇ",
+    "aliases": [
+      "체스트 서포티드 덤벨 로우",
+      "인클라인 벤치 덤벨 로우"
+    ],
+    "alias_chosung": [
+      "ㅊㅅㅌㅅㅍㅌㄷㄷㅂㄹㅇ",
+      "ㅇㅋㄹㅇㅂㅊㄷㅂㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "랫풀다운",
+    "chosung": "ㄹㅍㄷㅇ",
+    "aliases": [
+      "랫풀",
+      "랫 풀 다운",
+      "렛풀다운",
+      "와이드그립 랫풀다운",
+      "lat pulldown"
+    ],
+    "alias_chosung": [
+      "ㄹㅍ",
+      "ㄹㅍㄷㅇ",
+      "ㄹㅍㄷㅇ",
+      "ㅇㅇㄷㄱㄹㄹㅍㄷㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "lat-pulldown"
+  },
+  {
+    "name": "클로즈그립 랫풀다운",
+    "chosung": "ㅋㄹㅈㄱㄹㄹㅍㄷㅇ",
+    "aliases": [
+      "패러럴그립 랫풀다운",
+      "뉴트럴그립 랫풀다운",
+      "V바 랫풀다운",
+      "close grip lat pulldown"
+    ],
+    "alias_chosung": [
+      "ㅍㄹㄹㄱㄹㄹㅍㄷㅇ",
+      "ㄴㅌㄹㄱㄹㄹㅍㄷㅇ",
+      "vㅂㄹㅍㄷㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "close-grip-lat-pulldown"
+  },
+  {
+    "name": "언더그립 랫풀다운",
+    "chosung": "ㅇㄷㄱㄹㄹㅍㄷㅇ",
+    "aliases": [
+      "리버스그립 랫풀다운",
+      "언더핸드 풀다운"
+    ],
+    "alias_chosung": [
+      "ㄹㅂㅅㄱㄹㄹㅍㄷㅇ",
+      "ㅇㄷㅎㄷㅍㄷㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "원암 케이블 랫풀다운",
+    "chosung": "ㅇㅇㅋㅇㅂㄹㅍㄷㅇ",
+    "aliases": [
+      "원암 풀다운",
+      "한팔 랫풀다운"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㅍㄷㅇ",
+      "ㅎㅍㄹㅍㄷㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "시티드 로우",
+    "chosung": "ㅅㅌㄷㄹㅇ",
+    "aliases": [
+      "케이블 로우",
+      "시티드 케이블 로우",
+      "로우",
+      "seated row",
+      "seated cable row"
+    ],
+    "alias_chosung": [
+      "ㅋㅇㅂㄹㅇ",
+      "ㅅㅌㄷㅋㅇㅂㄹㅇ",
+      "ㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "seated-row"
+  },
+  {
+    "name": "원암 케이블 로우",
+    "chosung": "ㅇㅇㅋㅇㅂㄹㅇ",
+    "aliases": [
+      "원암 시티드 케이블 로우",
+      "한팔 케이블 로우",
+      "single arm cable row"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㅅㅌㄷㅋㅇㅂㄹㅇ",
+      "ㅎㅍㅋㅇㅂㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "single-arm-cable-row"
+  },
+  {
+    "name": "스트레이트 암 풀다운",
+    "chosung": "ㅅㅌㄹㅇㅌㅇㅍㄷㅇ",
+    "aliases": [
+      "암풀다운",
+      "케이블 암 풀다운",
+      "케이블 풀오버",
+      "straight arm pulldown"
+    ],
+    "alias_chosung": [
+      "ㅇㅍㄷㅇ",
+      "ㅋㅇㅂㅇㅍㄷㅇ",
+      "ㅋㅇㅂㅍㅇㅂ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "straight-arm-pulldown"
+  },
+  {
+    "name": "티바 로우",
+    "chosung": "ㅌㅂㄹㅇ",
+    "aliases": [
+      "T바 로우",
+      "티바",
+      "티바 로우 머신",
+      "T-bar row"
+    ],
+    "alias_chosung": [
+      "tㅂㄹㅇ",
+      "ㅌㅂ",
+      "ㅌㅂㄹㅇㅁㅅ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "t-bar-row"
+  },
+  {
+    "name": "체스트 서포티드 로우",
+    "chosung": "ㅊㅅㅌㅅㅍㅌㄷㄹㅇ",
+    "aliases": [
+      "체스트 서포티드 티바 로우",
+      "시티드 체스트 로우",
+      "chest supported row"
+    ],
+    "alias_chosung": [
+      "ㅊㅅㅌㅅㅍㅌㄷㅌㅂㄹㅇ",
+      "ㅅㅌㄷㅊㅅㅌㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "chest-supported-row"
+  },
+  {
+    "name": "머신 로우",
+    "chosung": "ㅁㅅㄹㅇ",
+    "aliases": [
+      "시티드 로우 머신",
+      "로우 로우 머신",
+      "미드 로우 머신",
+      "machine row"
+    ],
+    "alias_chosung": [
+      "ㅅㅌㄷㄹㅇㅁㅅ",
+      "ㄹㅇㄹㅇㅁㅅ",
+      "ㅁㄷㄹㅇㅁㅅ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "machine-row"
+  },
+  {
+    "name": "스미스 머신 로우",
+    "chosung": "ㅅㅁㅅㅁㅅㄹㅇ",
+    "aliases": [
+      "스미스 머신 바벨 로우",
+      "스미스 벤트오버 로우"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅁㅅㅂㅂㄹㅇ",
+      "ㅅㅁㅅㅂㅌㅇㅂㄹㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "풀업",
+    "chosung": "ㅍㅇ",
+    "aliases": [
+      "턱걸이",
+      "광배 턱걸이",
+      "풀 업",
+      "pull up"
+    ],
+    "alias_chosung": [
+      "ㅌㄱㅇ",
+      "ㄱㅂㅌㄱㅇ",
+      "ㅍㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "pull-up"
+  },
+  {
+    "name": "중량 풀업",
+    "chosung": "ㅈㄹㅍㅇ",
+    "aliases": [
+      "웨이티드 풀업",
+      "가중 풀업",
+      "딥벨트 풀업",
+      "weighted pull up"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㅌㄷㅍㅇ",
+      "ㄱㅈㅍㅇ",
+      "ㄷㅂㅌㅍㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "bodyweight",
+    "tracking_type": "weight_reps",
+    "asset_slug": "weighted-pull-up"
+  },
+  {
+    "name": "친업",
+    "chosung": "ㅊㅇ",
+    "aliases": [
+      "언더그립 풀업",
+      "친 업",
+      "chin up"
+    ],
+    "alias_chosung": [
+      "ㅇㄷㄱㄹㅍㅇ",
+      "ㅊㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "chin-up"
+  },
+  {
+    "name": "중량 친업",
+    "chosung": "ㅈㄹㅊㅇ",
+    "aliases": [
+      "웨이티드 친업",
+      "weighted chin up"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㅌㄷㅊㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "bodyweight",
+    "tracking_type": "weight_reps",
+    "asset_slug": "weighted-chin-up"
+  },
+  {
+    "name": "패러럴그립 풀업",
+    "chosung": "ㅍㄹㄹㄱㄹㅍㅇ",
+    "aliases": [
+      "뉴트럴그립 풀업",
+      "중립그립 풀업",
+      "neutral grip pull up"
+    ],
+    "alias_chosung": [
+      "ㄴㅌㄹㄱㄹㅍㅇ",
+      "ㅈㄹㄱㄹㅍㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "neutral-grip-pull-up"
+  },
+  {
+    "name": "어시스트 풀업",
+    "chosung": "ㅇㅅㅅㅌㅍㅇ",
+    "aliases": [
+      "어시스트 풀업 머신",
+      "보조 풀업",
+      "assisted pull up"
+    ],
+    "alias_chosung": [
+      "ㅇㅅㅅㅌㅍㅇㅁㅅ",
+      "ㅂㅈㅍㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "machine",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "assisted-pull-up"
+  },
+  {
+    "name": "어시스트 친업",
+    "chosung": "ㅇㅅㅅㅌㅊㅇ",
+    "aliases": [
+      "어시스트 친업 머신",
+      "assisted chin up"
+    ],
+    "alias_chosung": [
+      "ㅇㅅㅅㅌㅊㅇㅁㅅ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "lats",
+    "equipment": "machine",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "assisted-chin-up"
+  },
+  {
+    "name": "인버티드 로우",
+    "chosung": "ㅇㅂㅌㄷㄹㅇ",
+    "aliases": [
+      "호리즌탈 로우",
+      "수평 턱걸이",
+      "inverted row"
+    ],
+    "alias_chosung": [
+      "ㅎㄹㅈㅌㄹㅇ",
+      "ㅅㅍㅌㄱㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "inverted-row"
+  },
+  {
+    "name": "바벨 슈러그",
+    "chosung": "ㅂㅂㅅㄹㄱ",
+    "aliases": [
+      "슈러그",
+      "승모근",
+      "barbell shrug"
+    ],
+    "alias_chosung": [
+      "ㅅㄹㄱ",
+      "ㅅㅁㄱ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "traps",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "shrug"
+  },
+  {
+    "name": "덤벨 슈러그",
+    "chosung": "ㄷㅂㅅㄹㄱ",
+    "aliases": [
+      "슈러그",
+      "dumbbell shrug"
+    ],
+    "alias_chosung": [
+      "ㅅㄹㄱ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "traps",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-shrug"
+  },
+  {
+    "name": "백 익스텐션",
+    "chosung": "ㅂㅇㅅㅌㅅ",
+    "aliases": [
+      "하이퍼익스텐션",
+      "백익스",
+      "로만체어",
+      "back extension"
+    ],
+    "alias_chosung": [
+      "ㅎㅇㅍㅇㅅㅌㅅ",
+      "ㅂㅇㅅ",
+      "ㄹㅁㅊㅇ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "erectors",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "back-extension"
+  },
+  {
+    "name": "백 익스텐션 머신",
+    "chosung": "ㅂㅇㅅㅌㅅㅁㅅ",
+    "aliases": [
+      "백익스 머신",
+      "시티드 백 익스텐션"
+    ],
+    "alias_chosung": [
+      "ㅂㅇㅅㅁㅅ",
+      "ㅅㅌㄷㅂㅇㅅㅌㅅ"
+    ],
+    "muscle_group": "back",
+    "sub_region": "erectors",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "오버헤드 프레스",
+    "chosung": "ㅇㅂㅎㄷㅍㄹㅅ",
+    "aliases": [
+      "밀리터리 프레스",
+      "밀프",
+      "OHP",
+      "바벨 숄더프레스",
+      "overhead press",
+      "military press"
+    ],
+    "alias_chosung": [
+      "ㅁㄹㅌㄹㅍㄹㅅ",
+      "ㅁㅍ",
+      "ㅂㅂㅅㄷㅍㄹㅅ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "overhead-press"
+  },
+  {
+    "name": "푸시 프레스",
+    "chosung": "ㅍㅅㅍㄹㅅ",
+    "aliases": [
+      "푸쉬 프레스",
+      "push press"
+    ],
+    "alias_chosung": [
+      "ㅍㅅㅍㄹㅅ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "push-press"
+  },
+  {
+    "name": "랜드마인 프레스",
+    "chosung": "ㄹㄷㅁㅇㅍㄹㅅ",
+    "aliases": [
+      "원암 랜드마인 프레스",
+      "landmine press"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㄹㄷㅁㅇㅍㄹㅅ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "landmine-press"
+  },
+  {
+    "name": "비하인드 넥 프레스",
+    "chosung": "ㅂㅎㅇㄷㄴㅍㄹㅅ",
+    "aliases": [
+      "비하인드 넥 숄더프레스",
+      "behind the neck press"
+    ],
+    "alias_chosung": [
+      "ㅂㅎㅇㄷㄴㅅㄷㅍㄹㅅ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "업라이트 로우",
+    "chosung": "ㅇㄹㅇㅌㄹㅇ",
+    "aliases": [
+      "업로우",
+      "바벨 업라이트 로우",
+      "upright row"
+    ],
+    "alias_chosung": [
+      "ㅇㄹㅇ",
+      "ㅂㅂㅇㄹㅇㅌㄹㅇ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "side_delt",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "upright-row"
+  },
+  {
+    "name": "바벨 프론트 레이즈",
+    "chosung": "ㅂㅂㅍㄹㅌㄹㅇㅈ",
+    "aliases": [
+      "이지바 프론트 레이즈",
+      "바벨 전면 레이즈"
+    ],
+    "alias_chosung": [
+      "ㅇㅈㅂㅍㄹㅌㄹㅇㅈ",
+      "ㅂㅂㅈㅁㄹㅇㅈ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "덤벨 숄더프레스",
+    "chosung": "ㄷㅂㅅㄷㅍㄹㅅ",
+    "aliases": [
+      "숄프",
+      "숄더프레스",
+      "시티드 덤벨 숄더 프레스",
+      "dumbbell shoulder press"
+    ],
+    "alias_chosung": [
+      "ㅅㅍ",
+      "ㅅㄷㅍㄹㅅ",
+      "ㅅㅌㄷㄷㅂㅅㄷㅍㄹㅅ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "seated-dumbbell-press"
+  },
+  {
+    "name": "스탠딩 덤벨 프레스",
+    "chosung": "ㅅㅌㄷㄷㅂㅍㄹㅅ",
+    "aliases": [
+      "스탠딩 덤벨 숄더프레스",
+      "standing dumbbell press"
+    ],
+    "alias_chosung": [
+      "ㅅㅌㄷㄷㅂㅅㄷㅍㄹㅅ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "standing-dumbbell-press"
+  },
+  {
+    "name": "아놀드 프레스",
+    "chosung": "ㅇㄴㄷㅍㄹㅅ",
+    "aliases": [
+      "아놀드 덤벨 프레스",
+      "arnold press"
+    ],
+    "alias_chosung": [
+      "ㅇㄴㄷㄷㅂㅍㄹㅅ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "arnold-press"
+  },
+  {
+    "name": "사이드 레터럴 레이즈",
+    "chosung": "ㅅㅇㄷㄹㅌㄹㄹㅇㅈ",
+    "aliases": [
+      "사레레",
+      "레터럴 레이즈",
+      "래터럴 레이즈",
+      "덤벨 레터럴 레이즈",
+      "옆으로 들기",
+      "lateral raise"
+    ],
+    "alias_chosung": [
+      "ㅅㄹㄹ",
+      "ㄹㅌㄹㄹㅇㅈ",
+      "ㄹㅌㄹㄹㅇㅈ",
+      "ㄷㅂㄹㅌㄹㄹㅇㅈ",
+      "ㅇㅇㄹㄷㄱ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "side_delt",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "lateral-raise"
+  },
+  {
+    "name": "프론트 레이즈",
+    "chosung": "ㅍㄹㅌㄹㅇㅈ",
+    "aliases": [
+      "전면 레이즈",
+      "덤벨 프론트 레이즈",
+      "front raise"
+    ],
+    "alias_chosung": [
+      "ㅈㅁㄹㅇㅈ",
+      "ㄷㅂㅍㄹㅌㄹㅇㅈ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "front-raise"
+  },
+  {
+    "name": "리어 델트 레이즈",
+    "chosung": "ㄹㅇㄷㅌㄹㅇㅈ",
+    "aliases": [
+      "리어 레터럴 레이즈",
+      "후면 레이즈",
+      "리어 델트 플라이",
+      "rear delt raise",
+      "rear delt fly"
+    ],
+    "alias_chosung": [
+      "ㄹㅇㄹㅌㄹㄹㅇㅈ",
+      "ㅎㅁㄹㅇㅈ",
+      "ㄹㅇㄷㅌㅍㄹㅇ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "rear_delt",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "rear-delt-fly"
+  },
+  {
+    "name": "벤트오버 리어 델트 레이즈",
+    "chosung": "ㅂㅌㅇㅂㄹㅇㄷㅌㄹㅇㅈ",
+    "aliases": [
+      "벤오레",
+      "벤트오버 레터럴 레이즈",
+      "벤트오버 덤벨 레터럴 레이즈",
+      "bent over rear delt raise"
+    ],
+    "alias_chosung": [
+      "ㅂㅇㄹ",
+      "ㅂㅌㅇㅂㄹㅌㄹㄹㅇㅈ",
+      "ㅂㅌㅇㅂㄷㅂㄹㅌㄹㄹㅇㅈ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "rear_delt",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "bent-over-rear-delt-raise"
+  },
+  {
+    "name": "머신 숄더프레스",
+    "chosung": "ㅁㅅㅅㄷㅍㄹㅅ",
+    "aliases": [
+      "숄더 프레스 머신",
+      "숄더프레스 머신",
+      "shoulder press machine"
+    ],
+    "alias_chosung": [
+      "ㅅㄷㅍㄹㅅㅁㅅ",
+      "ㅅㄷㅍㄹㅅㅁㅅ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "machine-shoulder-press"
+  },
+  {
+    "name": "스미스 머신 오버헤드 프레스",
+    "chosung": "ㅅㅁㅅㅁㅅㅇㅂㅎㄷㅍㄹㅅ",
+    "aliases": [
+      "스미스 숄더프레스",
+      "스미스머신 오버헤드 프레스"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅅㄷㅍㄹㅅ",
+      "ㅅㅁㅅㅁㅅㅇㅂㅎㄷㅍㄹㅅ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "머신 레터럴 레이즈",
+    "chosung": "ㅁㅅㄹㅌㄹㄹㅇㅈ",
+    "aliases": [
+      "레터럴 레이즈 머신",
+      "machine lateral raise"
+    ],
+    "alias_chosung": [
+      "ㄹㅌㄹㄹㅇㅈㅁㅅ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "side_delt",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "machine-lateral-raise"
+  },
+  {
+    "name": "리어 델트 플라이",
+    "chosung": "ㄹㅇㄷㅌㅍㄹㅇ",
+    "aliases": [
+      "리버스 펙덱",
+      "리어 델토이드 플라이 머신",
+      "머신 리어 델트",
+      "reverse pec deck"
+    ],
+    "alias_chosung": [
+      "ㄹㅂㅅㅍㄷ",
+      "ㄹㅇㄷㅌㅇㄷㅍㄹㅇㅁㅅ",
+      "ㅁㅅㄹㅇㄷㅌ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "rear_delt",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "reverse-pec-deck"
+  },
+  {
+    "name": "케이블 레터럴 레이즈",
+    "chosung": "ㅋㅇㅂㄹㅌㄹㄹㅇㅈ",
+    "aliases": [
+      "원암 케이블 레터럴 레이즈",
+      "cable lateral raise"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㅋㅇㅂㄹㅌㄹㄹㅇㅈ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "side_delt",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-lateral-raise"
+  },
+  {
+    "name": "케이블 프론트 레이즈",
+    "chosung": "ㅋㅇㅂㅍㄹㅌㄹㅇㅈ",
+    "aliases": [
+      "케이블 전면 레이즈",
+      "cable front raise"
+    ],
+    "alias_chosung": [
+      "ㅋㅇㅂㅈㅁㄹㅇㅈ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-front-raise"
+  },
+  {
+    "name": "케이블 리어 델트 플라이",
+    "chosung": "ㅋㅇㅂㄹㅇㄷㅌㅍㄹㅇ",
+    "aliases": [
+      "케이블 리버스 플라이",
+      "cable rear delt fly"
+    ],
+    "alias_chosung": [
+      "ㅋㅇㅂㄹㅂㅅㅍㄹㅇ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "rear_delt",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-rear-delt-fly"
+  },
+  {
+    "name": "페이스풀",
+    "chosung": "ㅍㅇㅅㅍ",
+    "aliases": [
+      "페이스 풀",
+      "face pull"
+    ],
+    "alias_chosung": [
+      "ㅍㅇㅅㅍ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "rear_delt",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "face-pull"
+  },
+  {
+    "name": "플레이트 프론트 레이즈",
+    "chosung": "ㅍㄹㅇㅌㅍㄹㅌㄹㅇㅈ",
+    "aliases": [
+      "원판 프론트 레이즈",
+      "plate front raise"
+    ],
+    "alias_chosung": [
+      "ㅇㅍㅍㄹㅌㄹㅇㅈ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "other",
+    "tracking_type": "weight_reps",
+    "asset_slug": "plate-front-raise"
+  },
+  {
+    "name": "밴드 풀 어파트",
+    "chosung": "ㅂㄷㅍㅇㅍㅌ",
+    "aliases": [
+      "밴드 풀어파트",
+      "band pull apart"
+    ],
+    "alias_chosung": [
+      "ㅂㄷㅍㅇㅍㅌ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "rear_delt",
+    "equipment": "band",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "band-pull-apart"
+  },
+  {
+    "name": "파이크 푸시업",
+    "chosung": "ㅍㅇㅋㅍㅅㅇ",
+    "aliases": [
+      "파이크 푸쉬업",
+      "pike push up"
+    ],
+    "alias_chosung": [
+      "ㅍㅇㅋㅍㅅㅇ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "pike-push-up"
+  },
+  {
+    "name": "핸드스탠드 푸시업",
+    "chosung": "ㅎㄷㅅㅌㄷㅍㅅㅇ",
+    "aliases": [
+      "물구나무 푸쉬업",
+      "핸드스탠드",
+      "handstand push up"
+    ],
+    "alias_chosung": [
+      "ㅁㄱㄴㅁㅍㅅㅇ",
+      "ㅎㄷㅅㅌㄷ"
+    ],
+    "muscle_group": "shoulder",
+    "sub_region": "front_delt",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "handstand-push-up"
+  },
+  {
+    "name": "스쿼트",
+    "chosung": "ㅅㅋㅌ",
+    "aliases": [
+      "바벨 스쿼트",
+      "백스쿼트",
+      "하이바 스쿼트",
+      "squat",
+      "back squat"
+    ],
+    "alias_chosung": [
+      "ㅂㅂㅅㅋㅌ",
+      "ㅂㅅㅋㅌ",
+      "ㅎㅇㅂㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "squat"
+  },
+  {
+    "name": "프론트 스쿼트",
+    "chosung": "ㅍㄹㅌㅅㅋㅌ",
+    "aliases": [
+      "프론트",
+      "front squat"
+    ],
+    "alias_chosung": [
+      "ㅍㄹㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "front-squat"
+  },
+  {
+    "name": "랜드마인 스쿼트",
+    "chosung": "ㄹㄷㅁㅇㅅㅋㅌ",
+    "aliases": [
+      "landmine squat"
+    ],
+    "alias_chosung": [],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "landmine-squat"
+  },
+  {
+    "name": "바벨 런지",
+    "chosung": "ㅂㅂㄹㅈ",
+    "aliases": [
+      "바벨 워킹 런지",
+      "바벨 프론트 랙 런지",
+      "바벨 백워드 런지"
+    ],
+    "alias_chosung": [
+      "ㅂㅂㅇㅋㄹㅈ",
+      "ㅂㅂㅍㄹㅌㄹㄹㅈ",
+      "ㅂㅂㅂㅇㄷㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "루마니안 데드리프트",
+    "chosung": "ㄹㅁㄴㅇㄷㄷㄹㅍㅌ",
+    "aliases": [
+      "RDL",
+      "루마니안",
+      "스티프 레그 데드리프트",
+      "romanian deadlift"
+    ],
+    "alias_chosung": [
+      "ㄹㅁㄴㅇ",
+      "ㅅㅌㅍㄹㄱㄷㄷㄹㅍㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "hamstrings",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "romanian-deadlift"
+  },
+  {
+    "name": "랜드마인 루마니안 데드리프트",
+    "chosung": "ㄹㄷㅁㅇㄹㅁㄴㅇㄷㄷㄹㅍㅌ",
+    "aliases": [
+      "랜드마인 RDL"
+    ],
+    "alias_chosung": [
+      "ㄹㄷㅁㅇrdl"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "hamstrings",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "landmine-romanian-deadlift"
+  },
+  {
+    "name": "굿모닝",
+    "chosung": "ㄱㅁㄴ",
+    "aliases": [
+      "굿모닝 엑서사이즈",
+      "good morning"
+    ],
+    "alias_chosung": [
+      "ㄱㅁㄴㅇㅅㅅㅇㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "hamstrings",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "good-morning"
+  },
+  {
+    "name": "힙 쓰러스트",
+    "chosung": "ㅎㅆㄹㅅㅌ",
+    "aliases": [
+      "힙쓰러스트",
+      "힙스러스트",
+      "바벨 힙 쓰러스트",
+      "hip thrust"
+    ],
+    "alias_chosung": [
+      "ㅎㅆㄹㅅㅌ",
+      "ㅎㅅㄹㅅㅌ",
+      "ㅂㅂㅎㅆㄹㅅㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "hip-thrust"
+  },
+  {
+    "name": "바벨 글루트 브릿지",
+    "chosung": "ㅂㅂㄱㄹㅌㅂㄹㅈ",
+    "aliases": [
+      "바벨 힙 브릿지",
+      "barbell glute bridge"
+    ],
+    "alias_chosung": [
+      "ㅂㅂㅎㅂㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "barbell-glute-bridge"
+  },
+  {
+    "name": "고블릿 스쿼트",
+    "chosung": "ㄱㅂㄹㅅㅋㅌ",
+    "aliases": [
+      "덤벨 고블릿 스쿼트",
+      "케틀벨 고블릿 스쿼트",
+      "고블렛 스쿼트",
+      "goblet squat"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㄱㅂㄹㅅㅋㅌ",
+      "ㅋㅌㅂㄱㅂㄹㅅㅋㅌ",
+      "ㄱㅂㄹㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "goblet-squat"
+  },
+  {
+    "name": "힐 엘리베이티드 고블릿 스쿼트",
+    "chosung": "ㅎㅇㄹㅂㅇㅌㄷㄱㅂㄹㅅㅋㅌ",
+    "aliases": [
+      "발뒤꿈치 올린 고블릿 스쿼트"
+    ],
+    "alias_chosung": [
+      "ㅂㄷㄲㅊㅇㄹㄱㅂㄹㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "heel-elevated-goblet-squat"
+  },
+  {
+    "name": "불가리안 스플릿 스쿼트",
+    "chosung": "ㅂㄱㄹㅇㅅㅍㄹㅅㅋㅌ",
+    "aliases": [
+      "불스",
+      "불가리안",
+      "bulgarian split squat"
+    ],
+    "alias_chosung": [
+      "ㅂㅅ",
+      "ㅂㄱㄹㅇ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "bulgarian-split-squat"
+  },
+  {
+    "name": "스플릿 스쿼트",
+    "chosung": "ㅅㅍㄹㅅㅋㅌ",
+    "aliases": [
+      "덤벨 스플릿 스쿼트",
+      "split squat"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㅅㅍㄹㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "split-squat"
+  },
+  {
+    "name": "프론트 풋 엘리베이티드 스플릿 스쿼트",
+    "chosung": "ㅍㄹㅌㅍㅇㄹㅂㅇㅌㄷㅅㅍㄹㅅㅋㅌ",
+    "aliases": [
+      "앞발 올린 스플릿 스쿼트",
+      "FFE 스플릿 스쿼트"
+    ],
+    "alias_chosung": [
+      "ㅇㅂㅇㄹㅅㅍㄹㅅㅋㅌ",
+      "ffeㅅㅍㄹㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "front-foot-elevated-split-squat"
+  },
+  {
+    "name": "워킹 런지",
+    "chosung": "ㅇㅋㄹㅈ",
+    "aliases": [
+      "덤벨 런지",
+      "덤벨 워킹 런지",
+      "walking lunge"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㄹㅈ",
+      "ㄷㅂㅇㅋㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "walking-lunge"
+  },
+  {
+    "name": "런지",
+    "chosung": "ㄹㅈ",
+    "aliases": [
+      "포워드 런지",
+      "프론트 런지",
+      "맨몸 런지",
+      "forward lunge"
+    ],
+    "alias_chosung": [
+      "ㅍㅇㄷㄹㅈ",
+      "ㅍㄹㅌㄹㅈ",
+      "ㅁㅁㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "forward-lunge"
+  },
+  {
+    "name": "리버스 런지",
+    "chosung": "ㄹㅂㅅㄹㅈ",
+    "aliases": [
+      "백 런지",
+      "백워드 런지",
+      "덤벨 백 런지",
+      "reverse lunge"
+    ],
+    "alias_chosung": [
+      "ㅂㄹㅈ",
+      "ㅂㅇㄷㄹㅈ",
+      "ㄷㅂㅂㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "reverse-lunge"
+  },
+  {
+    "name": "데피싯 리버스 런지",
+    "chosung": "ㄷㅍㅅㄹㅂㅅㄹㅈ",
+    "aliases": [
+      "데피싯 런지",
+      "deficit reverse lunge"
+    ],
+    "alias_chosung": [
+      "ㄷㅍㅅㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "deficit-reverse-lunge"
+  },
+  {
+    "name": "레터럴 런지",
+    "chosung": "ㄹㅌㄹㄹㅈ",
+    "aliases": [
+      "사이드 런지",
+      "덤벨 사이드 런지",
+      "덤벨 레터럴 런지",
+      "lateral lunge"
+    ],
+    "alias_chosung": [
+      "ㅅㅇㄷㄹㅈ",
+      "ㄷㅂㅅㅇㄷㄹㅈ",
+      "ㄷㅂㄹㅌㄹㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-lateral-lunge"
+  },
+  {
+    "name": "커시 런지",
+    "chosung": "ㅋㅅㄹㅈ",
+    "aliases": [
+      "크로스 런지",
+      "덤벨 크로스 런지",
+      "커스티 런지",
+      "curtsy lunge"
+    ],
+    "alias_chosung": [
+      "ㅋㄹㅅㄹㅈ",
+      "ㄷㅂㅋㄹㅅㄹㅈ",
+      "ㅋㅅㅌㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-curtsy-lunge"
+  },
+  {
+    "name": "스텝업",
+    "chosung": "ㅅㅌㅇ",
+    "aliases": [
+      "덤벨 스텝업",
+      "중량 스텝업",
+      "스텝 업",
+      "step up"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㅅㅌㅇ",
+      "ㅈㄹㅅㅌㅇ",
+      "ㅅㅌㅇ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "step-up"
+  },
+  {
+    "name": "덤벨 스모 스쿼트",
+    "chosung": "ㄷㅂㅅㅁㅅㅋㅌ",
+    "aliases": [
+      "스모 스쿼트",
+      "와이드 스쿼트",
+      "sumo squat"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅋㅌ",
+      "ㅇㅇㄷㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-sumo-squat"
+  },
+  {
+    "name": "덤벨 스모 데드리프트",
+    "chosung": "ㄷㅂㅅㅁㄷㄷㄹㅍㅌ",
+    "aliases": [
+      "와이드 데드리프트",
+      "dumbbell sumo deadlift"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㄷㄷㄷㄹㅍㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-sumo-deadlift"
+  },
+  {
+    "name": "덤벨 루마니안 데드리프트",
+    "chosung": "ㄷㅂㄹㅁㄴㅇㄷㄷㄹㅍㅌ",
+    "aliases": [
+      "덤벨 RDL",
+      "덤벨 스티프 레그 데드리프트"
+    ],
+    "alias_chosung": [
+      "ㄷㅂrdl",
+      "ㄷㅂㅅㅌㅍㄹㄱㄷㄷㄹㅍㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "hamstrings",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-romanian-deadlift"
+  },
+  {
+    "name": "싱글 레그 루마니안 데드리프트",
+    "chosung": "ㅅㄱㄹㄱㄹㅁㄴㅇㄷㄷㄹㅍㅌ",
+    "aliases": [
+      "원레그 데드리프트",
+      "싱글 레그 데드리프트",
+      "single leg RDL"
+    ],
+    "alias_chosung": [
+      "ㅇㄹㄱㄷㄷㄹㅍㅌ",
+      "ㅅㄱㄹㄱㄷㄷㄹㅍㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "hamstrings",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "single-leg-romanian-deadlift"
+  },
+  {
+    "name": "덤벨 힙 쓰러스트",
+    "chosung": "ㄷㅂㅎㅆㄹㅅㅌ",
+    "aliases": [
+      "dumbbell hip thrust"
+    ],
+    "alias_chosung": [],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-hip-thrust"
+  },
+  {
+    "name": "덤벨 글루트 브릿지",
+    "chosung": "ㄷㅂㄱㄹㅌㅂㄹㅈ",
+    "aliases": [
+      "덤벨 힙 브릿지",
+      "dumbbell glute bridge"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㅎㅂㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-glute-bridge"
+  },
+  {
+    "name": "케틀벨 스윙",
+    "chosung": "ㅋㅌㅂㅅㅇ",
+    "aliases": [
+      "케틀벨스윙",
+      "kettlebell swing"
+    ],
+    "alias_chosung": [
+      "ㅋㅌㅂㅅㅇ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "kettlebell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "kettlebell-swing"
+  },
+  {
+    "name": "레그프레스",
+    "chosung": "ㄹㄱㅍㄹㅅ",
+    "aliases": [
+      "레그 프레스",
+      "렉프",
+      "leg press"
+    ],
+    "alias_chosung": [
+      "ㄹㄱㅍㄹㅅ",
+      "ㄹㅍ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "leg-press"
+  },
+  {
+    "name": "핵 스쿼트",
+    "chosung": "ㅎㅅㅋㅌ",
+    "aliases": [
+      "핵스쿼트",
+      "핵 스쿼트 머신",
+      "hack squat"
+    ],
+    "alias_chosung": [
+      "ㅎㅅㅋㅌ",
+      "ㅎㅅㅋㅌㅁㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "hack-squat"
+  },
+  {
+    "name": "벨트 스쿼트",
+    "chosung": "ㅂㅌㅅㅋㅌ",
+    "aliases": [
+      "벨트 스쿼트 머신",
+      "belt squat"
+    ],
+    "alias_chosung": [
+      "ㅂㅌㅅㅋㅌㅁㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "belt-squat"
+  },
+  {
+    "name": "브이 스쿼트",
+    "chosung": "ㅂㅇㅅㅋㅌ",
+    "aliases": [
+      "V 스쿼트",
+      "브이 스쿼트 머신",
+      "리버스 브이 스쿼트"
+    ],
+    "alias_chosung": [
+      "vㅅㅋㅌ",
+      "ㅂㅇㅅㅋㅌㅁㅅ",
+      "ㄹㅂㅅㅂㅇㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "펜듈럼 스쿼트",
+    "chosung": "ㅍㄷㄹㅅㅋㅌ",
+    "aliases": [
+      "펜들럼 스쿼트",
+      "펜듈럼 스쿼트 머신"
+    ],
+    "alias_chosung": [
+      "ㅍㄷㄹㅅㅋㅌ",
+      "ㅍㄷㄹㅅㅋㅌㅁㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "레그 익스텐션",
+    "chosung": "ㄹㄱㅇㅅㅌㅅ",
+    "aliases": [
+      "레그익스",
+      "익스텐션",
+      "leg extension"
+    ],
+    "alias_chosung": [
+      "ㄹㄱㅇㅅ",
+      "ㅇㅅㅌㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "leg-extension"
+  },
+  {
+    "name": "레그 컬",
+    "chosung": "ㄹㄱㅋ",
+    "aliases": [
+      "라잉 레그컬",
+      "햄스트링 컬",
+      "leg curl"
+    ],
+    "alias_chosung": [
+      "ㄹㅇㄹㄱㅋ",
+      "ㅎㅅㅌㄹㅋ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "hamstrings",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "leg-curl"
+  },
+  {
+    "name": "시티드 레그컬",
+    "chosung": "ㅅㅌㄷㄹㄱㅋ",
+    "aliases": [
+      "시티드 레그 컬",
+      "seated leg curl"
+    ],
+    "alias_chosung": [
+      "ㅅㅌㄷㄹㄱㅋ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "hamstrings",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "seated-leg-curl"
+  },
+  {
+    "name": "스탠딩 햄스트링 컬",
+    "chosung": "ㅅㅌㄷㅎㅅㅌㄹㅋ",
+    "aliases": [
+      "스탠딩 레그컬",
+      "스탠딩 햄스트링 컬 머신"
+    ],
+    "alias_chosung": [
+      "ㅅㅌㄷㄹㄱㅋ",
+      "ㅅㅌㄷㅎㅅㅌㄹㅋㅁㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "hamstrings",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "스미스 머신 스쿼트",
+    "chosung": "ㅅㅁㅅㅁㅅㅅㅋㅌ",
+    "aliases": [
+      "스미스 스쿼트",
+      "스미스머신 스쿼트",
+      "smith machine squat"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅅㅋㅌ",
+      "ㅅㅁㅅㅁㅅㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "smith-machine-squat"
+  },
+  {
+    "name": "스미스 머신 힙 쓰러스트",
+    "chosung": "ㅅㅁㅅㅁㅅㅎㅆㄹㅅㅌ",
+    "aliases": [
+      "스미스 힙쓰러스트"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅎㅆㄹㅅㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "smith-machine-hip-thrust"
+  },
+  {
+    "name": "스미스 머신 루마니안 데드리프트",
+    "chosung": "ㅅㅁㅅㅁㅅㄹㅁㄴㅇㄷㄷㄹㅍㅌ",
+    "aliases": [
+      "스미스 RDL"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅrdl"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "hamstrings",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "smith-machine-romanian-deadlift"
+  },
+  {
+    "name": "스미스 머신 스플릿 스쿼트",
+    "chosung": "ㅅㅁㅅㅁㅅㅅㅍㄹㅅㅋㅌ",
+    "aliases": [
+      "스미스머신 스플릿 스쿼트"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅁㅅㅅㅍㄹㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "smith-machine-split-squat"
+  },
+  {
+    "name": "스미스 머신 불가리안 스플릿 스쿼트",
+    "chosung": "ㅅㅁㅅㅁㅅㅂㄱㄹㅇㅅㅍㄹㅅㅋㅌ",
+    "aliases": [
+      "스미스 불스"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅂㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "smith-machine-bulgarian-split-squat"
+  },
+  {
+    "name": "스미스 머신 리버스 런지",
+    "chosung": "ㅅㅁㅅㅁㅅㄹㅂㅅㄹㅈ",
+    "aliases": [
+      "스미스 백워드 런지"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅂㅇㄷㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "smith-machine-reverse-lunge"
+  },
+  {
+    "name": "힙 쓰러스트 머신",
+    "chosung": "ㅎㅆㄹㅅㅌㅁㅅ",
+    "aliases": [
+      "힙쓰러스트 머신",
+      "몬스터 글루트 머신"
+    ],
+    "alias_chosung": [
+      "ㅎㅆㄹㅅㅌㅁㅅ",
+      "ㅁㅅㅌㄱㄹㅌㅁㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "힙 어브덕션 머신",
+    "chosung": "ㅎㅇㅂㄷㅅㅁㅅ",
+    "aliases": [
+      "아웃싸이",
+      "아웃타이",
+      "힙 어브덕션",
+      "hip abduction"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㅆㅇ",
+      "ㅇㅇㅌㅇ",
+      "ㅎㅇㅂㄷㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "hip-abduction-machine"
+  },
+  {
+    "name": "힙 어덕션 머신",
+    "chosung": "ㅎㅇㄷㅅㅁㅅ",
+    "aliases": [
+      "이너싸이",
+      "이너타이",
+      "힙 애덕션",
+      "hip adduction"
+    ],
+    "alias_chosung": [
+      "ㅇㄴㅆㅇ",
+      "ㅇㄴㅌㅇ",
+      "ㅎㅇㄷㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "adductors",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "hip-adduction-machine"
+  },
+  {
+    "name": "글루트 킥백 머신",
+    "chosung": "ㄱㄹㅌㅋㅂㅁㅅ",
+    "aliases": [
+      "글루트 킥 백 머신",
+      "힙 익스텐션 머신",
+      "리어 킥 머신"
+    ],
+    "alias_chosung": [
+      "ㄱㄹㅌㅋㅂㅁㅅ",
+      "ㅎㅇㅅㅌㅅㅁㅅ",
+      "ㄹㅇㅋㅁㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "machine-glute-kickback"
+  },
+  {
+    "name": "리버스 하이퍼익스텐션",
+    "chosung": "ㄹㅂㅅㅎㅇㅍㅇㅅㅌㅅ",
+    "aliases": [
+      "리버스 하이퍼",
+      "reverse hyperextension"
+    ],
+    "alias_chosung": [
+      "ㄹㅂㅅㅎㅇㅍ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "machine",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "reverse-hyperextension"
+  },
+  {
+    "name": "스탠딩 카프 레이즈",
+    "chosung": "ㅅㅌㄷㅋㅍㄹㅇㅈ",
+    "aliases": [
+      "스탠딩 카프 레이즈 머신",
+      "카프 레이즈",
+      "종아리 운동",
+      "standing calf raise"
+    ],
+    "alias_chosung": [
+      "ㅅㅌㄷㅋㅍㄹㅇㅈㅁㅅ",
+      "ㅋㅍㄹㅇㅈ",
+      "ㅈㅇㄹㅇㄷ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "calves",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "standing-calf-raise"
+  },
+  {
+    "name": "시티드 카프 레이즈",
+    "chosung": "ㅅㅌㄷㅋㅍㄹㅇㅈ",
+    "aliases": [
+      "시티드 카프레이즈 머신",
+      "시티드 카프",
+      "seated calf raise"
+    ],
+    "alias_chosung": [
+      "ㅅㅌㄷㅋㅍㄹㅇㅈㅁㅅ",
+      "ㅅㅌㄷㅋㅍ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "calves",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "seated-calf-raise"
+  },
+  {
+    "name": "동키 카프 레이즈",
+    "chosung": "ㄷㅋㅋㅍㄹㅇㅈ",
+    "aliases": [
+      "덩키 카프 레이즈",
+      "donkey calf raise"
+    ],
+    "alias_chosung": [
+      "ㄷㅋㅋㅍㄹㅇㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "calves",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "donkey-calf-raise"
+  },
+  {
+    "name": "레그프레스 카프 레이즈",
+    "chosung": "ㄹㄱㅍㄹㅅㅋㅍㄹㅇㅈ",
+    "aliases": [
+      "시티드 레그 프레스 카프 레이즈",
+      "레그프레스 카프",
+      "leg press calf raise"
+    ],
+    "alias_chosung": [
+      "ㅅㅌㄷㄹㄱㅍㄹㅅㅋㅍㄹㅇㅈ",
+      "ㄹㄱㅍㄹㅅㅋㅍ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "calves",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "leg-press-calf-raise"
+  },
+  {
+    "name": "스미스 머신 카프 레이즈",
+    "chosung": "ㅅㅁㅅㅁㅅㅋㅍㄹㅇㅈ",
+    "aliases": [
+      "스미스 카프 레이즈"
+    ],
+    "alias_chosung": [
+      "ㅅㅁㅅㅋㅍㄹㅇㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "calves",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "케이블 킥백",
+    "chosung": "ㅋㅇㅂㅋㅂ",
+    "aliases": [
+      "케이블 글루트 킥백",
+      "cable kickback"
+    ],
+    "alias_chosung": [
+      "ㅋㅇㅂㄱㄹㅌㅋㅂ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-kickback"
+  },
+  {
+    "name": "케이블 풀 스루",
+    "chosung": "ㅋㅇㅂㅍㅅㄹ",
+    "aliases": [
+      "풀스루",
+      "케이블 풀스루",
+      "cable pull through"
+    ],
+    "alias_chosung": [
+      "ㅍㅅㄹ",
+      "ㅋㅇㅂㅍㅅㄹ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-pull-through"
+  },
+  {
+    "name": "케이블 힙 어브덕션",
+    "chosung": "ㅋㅇㅂㅎㅇㅂㄷㅅ",
+    "aliases": [
+      "스탠딩 힙 어브덕션",
+      "cable hip abduction"
+    ],
+    "alias_chosung": [
+      "ㅅㅌㄷㅎㅇㅂㄷㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-standing-hip-abduction"
+  },
+  {
+    "name": "케이블 힙 어덕션",
+    "chosung": "ㅋㅇㅂㅎㅇㄷㅅ",
+    "aliases": [
+      "스탠딩 힙 어덕션",
+      "cable hip adduction"
+    ],
+    "alias_chosung": [
+      "ㅅㅌㄷㅎㅇㄷㅅ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "adductors",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-standing-hip-adduction"
+  },
+  {
+    "name": "글루트 브릿지",
+    "chosung": "ㄱㄹㅌㅂㄹㅈ",
+    "aliases": [
+      "힙 브릿지",
+      "glute bridge"
+    ],
+    "alias_chosung": [
+      "ㅎㅂㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "glute-bridge"
+  },
+  {
+    "name": "싱글 레그 글루트 브릿지",
+    "chosung": "ㅅㄱㄹㄱㄱㄹㅌㅂㄹㅈ",
+    "aliases": [
+      "원레그 글루트 브릿지",
+      "single leg glute bridge"
+    ],
+    "alias_chosung": [
+      "ㅇㄹㄱㄱㄹㅌㅂㄹㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "single-leg-glute-bridge"
+  },
+  {
+    "name": "덩키 킥",
+    "chosung": "ㄷㅋㅋ",
+    "aliases": [
+      "동키 킥",
+      "케이블 덩키 킥",
+      "donkey kick"
+    ],
+    "alias_chosung": [
+      "ㄷㅋㅋ",
+      "ㅋㅇㅂㄷㅋㅋ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "glutes",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "donkey-kick"
+  },
+  {
+    "name": "노르딕 햄스트링 컬",
+    "chosung": "ㄴㄹㄷㅎㅅㅌㄹㅋ",
+    "aliases": [
+      "노르딕 컬",
+      "nordic curl"
+    ],
+    "alias_chosung": [
+      "ㄴㄹㄷㅋ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "hamstrings",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "nordic-hamstring-curl"
+  },
+  {
+    "name": "맨몸 스쿼트",
+    "chosung": "ㅁㅁㅅㅋㅌ",
+    "aliases": [
+      "에어 스쿼트",
+      "자중 스쿼트",
+      "bodyweight squat"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㅅㅋㅌ",
+      "ㅈㅈㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "bodyweight-squat"
+  },
+  {
+    "name": "점프 스쿼트",
+    "chosung": "ㅈㅍㅅㅋㅌ",
+    "aliases": [
+      "jump squat"
+    ],
+    "alias_chosung": [],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "jump-squat"
+  },
+  {
+    "name": "피스톨 스쿼트",
+    "chosung": "ㅍㅅㅌㅅㅋㅌ",
+    "aliases": [
+      "원레그 스쿼트",
+      "pistol squat"
+    ],
+    "alias_chosung": [
+      "ㅇㄹㄱㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "pistol-squat"
+  },
+  {
+    "name": "시시 스쿼트",
+    "chosung": "ㅅㅅㅅㅋㅌ",
+    "aliases": [
+      "씨시 스쿼트",
+      "시시스쿼트",
+      "sissy squat"
+    ],
+    "alias_chosung": [
+      "ㅆㅅㅅㅋㅌ",
+      "ㅅㅅㅅㅋㅌ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "quads",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "sissy-squat"
+  },
+  {
+    "name": "맨몸 카프 레이즈",
+    "chosung": "ㅁㅁㅋㅍㄹㅇㅈ",
+    "aliases": [
+      "카프 레이즈",
+      "calf raise"
+    ],
+    "alias_chosung": [
+      "ㅋㅍㄹㅇㅈ"
+    ],
+    "muscle_group": "leg",
+    "sub_region": "calves",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "calf-raise"
+  },
+  {
+    "name": "바벨 컬",
+    "chosung": "ㅂㅂㅋ",
+    "aliases": [
+      "컬",
+      "이두컬",
+      "바벨 바이셉 컬",
+      "EZ바 컬",
+      "이지바 바이셉 컬",
+      "barbell curl"
+    ],
+    "alias_chosung": [
+      "ㅋ",
+      "ㅇㄷㅋ",
+      "ㅂㅂㅂㅇㅅㅋ",
+      "ezㅂㅋ",
+      "ㅇㅈㅂㅂㅇㅅㅋ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "ez-bar-curl"
+  },
+  {
+    "name": "리버스 컬",
+    "chosung": "ㄹㅂㅅㅋ",
+    "aliases": [
+      "바벨 리버스 컬",
+      "덤벨 리버스 컬",
+      "이지바 리버스 컬",
+      "reverse curl"
+    ],
+    "alias_chosung": [
+      "ㅂㅂㄹㅂㅅㅋ",
+      "ㄷㅂㄹㅂㅅㅋ",
+      "ㅇㅈㅂㄹㅂㅅㅋ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "reverse-curl"
+  },
+  {
+    "name": "드래그 컬",
+    "chosung": "ㄷㄹㄱㅋ",
+    "aliases": [
+      "drag curl"
+    ],
+    "alias_chosung": [],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "drag-curl"
+  },
+  {
+    "name": "덤벨 컬",
+    "chosung": "ㄷㅂㅋ",
+    "aliases": [
+      "덤벨 바이셉 컬",
+      "덤벨 이두컬",
+      "얼터네이트 덤벨 컬",
+      "dumbbell curl"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㅂㅇㅅㅋ",
+      "ㄷㅂㅇㄷㅋ",
+      "ㅇㅌㄴㅇㅌㄷㅂㅋ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "bicep-curl"
+  },
+  {
+    "name": "해머 컬",
+    "chosung": "ㅎㅁㅋ",
+    "aliases": [
+      "해머",
+      "덤벨 해머 컬",
+      "hammer curl"
+    ],
+    "alias_chosung": [
+      "ㅎㅁ",
+      "ㄷㅂㅎㅁㅋ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "hammer-curl"
+  },
+  {
+    "name": "인클라인 덤벨 컬",
+    "chosung": "ㅇㅋㄹㅇㄷㅂㅋ",
+    "aliases": [
+      "인클라인 컬",
+      "incline dumbbell curl"
+    ],
+    "alias_chosung": [
+      "ㅇㅋㄹㅇㅋ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "incline-dumbbell-curl"
+  },
+  {
+    "name": "컨센트레이션 컬",
+    "chosung": "ㅋㅅㅌㄹㅇㅅㅋ",
+    "aliases": [
+      "컨센트레이션",
+      "concentration curl"
+    ],
+    "alias_chosung": [
+      "ㅋㅅㅌㄹㅇㅅ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "concentration-curl"
+  },
+  {
+    "name": "스파이더 컬",
+    "chosung": "ㅅㅍㅇㄷㅋ",
+    "aliases": [
+      "덤벨 스파이더 컬",
+      "이지바 스파이더 컬",
+      "spider curl"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㅅㅍㅇㄷㅋ",
+      "ㅇㅈㅂㅅㅍㅇㄷㅋ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "spider-curl"
+  },
+  {
+    "name": "프리처 컬",
+    "chosung": "ㅍㄹㅊㅋ",
+    "aliases": [
+      "프리쳐 컬",
+      "스캇 컬",
+      "프리쳐 컬 머신",
+      "이지바 프리쳐 컬",
+      "preacher curl"
+    ],
+    "alias_chosung": [
+      "ㅍㄹㅊㅋ",
+      "ㅅㅋㅋ",
+      "ㅍㄹㅊㅋㅁㅅ",
+      "ㅇㅈㅂㅍㄹㅊㅋ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": "preacher-curl"
+  },
+  {
+    "name": "바이셉 컬 머신",
+    "chosung": "ㅂㅇㅅㅋㅁㅅ",
+    "aliases": [
+      "암 컬 머신",
+      "이두 컬 머신",
+      "바이셉스 컬 머신"
+    ],
+    "alias_chosung": [
+      "ㅇㅋㅁㅅ",
+      "ㅇㄷㅋㅁㅅ",
+      "ㅂㅇㅅㅅㅋㅁㅅ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "케이블 컬",
+    "chosung": "ㅋㅇㅂㅋ",
+    "aliases": [
+      "케이블 바이셉 컬",
+      "케이블 바이셉스 컬",
+      "cable curl"
+    ],
+    "alias_chosung": [
+      "ㅋㅇㅂㅂㅇㅅㅋ",
+      "ㅋㅇㅂㅂㅇㅅㅅㅋ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-curl"
+  },
+  {
+    "name": "로프 해머 컬",
+    "chosung": "ㄹㅍㅎㅁㅋ",
+    "aliases": [
+      "케이블 해머컬",
+      "케이블 로프 해머 컬",
+      "rope hammer curl"
+    ],
+    "alias_chosung": [
+      "ㅋㅇㅂㅎㅁㅋ",
+      "ㅋㅇㅂㄹㅍㅎㅁㅋ"
+    ],
+    "muscle_group": "biceps",
+    "sub_region": null,
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "rope-hammer-curl"
+  },
+  {
+    "name": "라잉 트라이셉스 익스텐션",
+    "chosung": "ㄹㅇㅌㄹㅇㅅㅅㅇㅅㅌㅅ",
+    "aliases": [
+      "스컬크러셔",
+      "라잉 바벨 트라이셉 익스텐션",
+      "프렌치프레스",
+      "skull crusher"
+    ],
+    "alias_chosung": [
+      "ㅅㅋㅋㄹㅅ",
+      "ㄹㅇㅂㅂㅌㄹㅇㅅㅇㅅㅌㅅ",
+      "ㅍㄹㅊㅍㄹㅅ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "skull-crusher"
+  },
+  {
+    "name": "클로즈그립 벤치프레스",
+    "chosung": "ㅋㄹㅈㄱㄹㅂㅊㅍㄹㅅ",
+    "aliases": [
+      "클그벤",
+      "내로우 그립 벤치",
+      "클로즈 그립 벤치",
+      "close grip bench press"
+    ],
+    "alias_chosung": [
+      "ㅋㄱㅂ",
+      "ㄴㄹㅇㄱㄹㅂㅊ",
+      "ㅋㄹㅈㄱㄹㅂㅊ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "barbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "close-grip-bench-press"
+  },
+  {
+    "name": "덤벨 스컬크러셔",
+    "chosung": "ㄷㅂㅅㅋㅋㄹㅅ",
+    "aliases": [
+      "덤벨 라잉 트라이셉스 익스텐션",
+      "덤벨 스컬 크러셔",
+      "dumbbell skull crusher"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㄹㅇㅌㄹㅇㅅㅅㅇㅅㅌㅅ",
+      "ㄷㅂㅅㅋㅋㄹㅅ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-skull-crusher"
+  },
+  {
+    "name": "원암 덤벨 스컬크러셔",
+    "chosung": "ㅇㅇㄷㅂㅅㅋㅋㄹㅅ",
+    "aliases": [
+      "싱글 덤벨 스컬크러셔"
+    ],
+    "alias_chosung": [
+      "ㅅㄱㄷㅂㅅㅋㅋㄹㅅ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "single-dumbbell-skullcrusher"
+  },
+  {
+    "name": "오버헤드 트라이셉스 익스텐션",
+    "chosung": "ㅇㅂㅎㄷㅌㄹㅇㅅㅅㅇㅅㅌㅅ",
+    "aliases": [
+      "오버헤드 덤벨 트라이셉스 익스텐션",
+      "덤벨 트라이셉 익스텐션",
+      "프렌치 프레스",
+      "overhead triceps extension"
+    ],
+    "alias_chosung": [
+      "ㅇㅂㅎㄷㄷㅂㅌㄹㅇㅅㅅㅇㅅㅌㅅ",
+      "ㄷㅂㅌㄹㅇㅅㅇㅅㅌㅅ",
+      "ㅍㄹㅊㅍㄹㅅ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "long_head",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-overhead-tricep-extension"
+  },
+  {
+    "name": "원암 오버헤드 트라이셉스 익스텐션",
+    "chosung": "ㅇㅇㅇㅂㅎㄷㅌㄹㅇㅅㅅㅇㅅㅌㅅ",
+    "aliases": [
+      "원암 덤벨 트라이셉 익스텐션",
+      "싱글 암 오버헤드 익스텐션"
+    ],
+    "alias_chosung": [
+      "ㅇㅇㄷㅂㅌㄹㅇㅅㅇㅅㅌㅅ",
+      "ㅅㄱㅇㅇㅂㅎㄷㅇㅅㅌㅅ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "long_head",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "single-arm-dumbbell-tricep-extension"
+  },
+  {
+    "name": "킥백",
+    "chosung": "ㅋㅂ",
+    "aliases": [
+      "덤벨 킥백",
+      "원 암 덤벨 킥백",
+      "트라이셉스 킥백",
+      "triceps kickback"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㅋㅂ",
+      "ㅇㅇㄷㅂㅋㅂ",
+      "ㅌㄹㅇㅅㅅㅋㅂ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "tricep-kickback"
+  },
+  {
+    "name": "케이블 푸시다운",
+    "chosung": "ㅋㅇㅂㅍㅅㄷㅇ",
+    "aliases": [
+      "푸시다운",
+      "프레스다운",
+      "케이블 푸시 다운",
+      "트라이셉스 푸시다운",
+      "pushdown"
+    ],
+    "alias_chosung": [
+      "ㅍㅅㄷㅇ",
+      "ㅍㄹㅅㄷㅇ",
+      "ㅋㅇㅂㅍㅅㄷㅇ",
+      "ㅌㄹㅇㅅㅅㅍㅅㄷㅇ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "tricep-pushdown"
+  },
+  {
+    "name": "로프 푸시다운",
+    "chosung": "ㄹㅍㅍㅅㄷㅇ",
+    "aliases": [
+      "케이블 로프 푸시 다운",
+      "rope pushdown"
+    ],
+    "alias_chosung": [
+      "ㅋㅇㅂㄹㅍㅍㅅㄷㅇ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "rope-tricep-pushdown"
+  },
+  {
+    "name": "케이블 오버헤드 트라이셉스 익스텐션",
+    "chosung": "ㅋㅇㅂㅇㅂㅎㄷㅌㄹㅇㅅㅅㅇㅅㅌㅅ",
+    "aliases": [
+      "오버헤드 케이블 트라이셉 익스텐션",
+      "케이블 오버헤드 익스텐션"
+    ],
+    "alias_chosung": [
+      "ㅇㅂㅎㄷㅋㅇㅂㅌㄹㅇㅅㅇㅅㅌㅅ",
+      "ㅋㅇㅂㅇㅂㅎㄷㅇㅅㅌㅅ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "long_head",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "overhead-tricep-extension"
+  },
+  {
+    "name": "트라이셉스 익스텐션 머신",
+    "chosung": "ㅌㄹㅇㅅㅅㅇㅅㅌㅅㅁㅅ",
+    "aliases": [
+      "트라이셉 익스텐션 머신",
+      "오버헤드 트라이셉 익스텐션 머신",
+      "삼두 머신"
+    ],
+    "alias_chosung": [
+      "ㅌㄹㅇㅅㅇㅅㅌㅅㅁㅅ",
+      "ㅇㅂㅎㄷㅌㄹㅇㅅㅇㅅㅌㅅㅁㅅ",
+      "ㅅㄷㅁㅅ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "트라이셉스 딥스",
+    "chosung": "ㅌㄹㅇㅅㅅㄷㅅ",
+    "aliases": [
+      "삼두 딥스",
+      "평행봉 딥스",
+      "triceps dip"
+    ],
+    "alias_chosung": [
+      "ㅅㄷㄷㅅ",
+      "ㅍㅎㅂㄷㅅ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "dip"
+  },
+  {
+    "name": "벤치 딥스",
+    "chosung": "ㅂㅊㄷㅅ",
+    "aliases": [
+      "벤치딥",
+      "bench dip"
+    ],
+    "alias_chosung": [
+      "ㅂㅊㄷ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "bench-dip"
+  },
+  {
+    "name": "어시스트 딥스",
+    "chosung": "ㅇㅅㅅㅌㄷㅅ",
+    "aliases": [
+      "어시스트 딥스 머신",
+      "보조 딥스",
+      "assisted dip"
+    ],
+    "alias_chosung": [
+      "ㅇㅅㅅㅌㄷㅅㅁㅅ",
+      "ㅂㅈㄷㅅ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "machine",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "assisted-dip"
+  },
+  {
+    "name": "시티드 딥스 머신",
+    "chosung": "ㅅㅌㄷㄷㅅㅁㅅ",
+    "aliases": [
+      "딥스 머신",
+      "트라이셉 딥 머신"
+    ],
+    "alias_chosung": [
+      "ㄷㅅㅁㅅ",
+      "ㅌㄹㅇㅅㄷㅁㅅ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "다이아몬드 푸시업",
+    "chosung": "ㄷㅇㅇㅁㄷㅍㅅㅇ",
+    "aliases": [
+      "다이아몬드 푸쉬업",
+      "클로즈그립 푸시업",
+      "diamond push up"
+    ],
+    "alias_chosung": [
+      "ㄷㅇㅇㅁㄷㅍㅅㅇ",
+      "ㅋㄹㅈㄱㄹㅍㅅㅇ"
+    ],
+    "muscle_group": "triceps",
+    "sub_region": "general",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "diamond-push-up"
+  },
+  {
+    "name": "크런치",
+    "chosung": "ㅋㄹㅊ",
+    "aliases": [
+      "복근 크런치",
+      "crunch"
+    ],
+    "alias_chosung": [
+      "ㅂㄱㅋㄹㅊ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "crunch"
+  },
+  {
+    "name": "리버스 크런치",
+    "chosung": "ㄹㅂㅅㅋㄹㅊ",
+    "aliases": [
+      "역크런치",
+      "reverse crunch"
+    ],
+    "alias_chosung": [
+      "ㅇㅋㄹㅊ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "reverse-crunch"
+  },
+  {
+    "name": "싯업",
+    "chosung": "ㅅㅇ",
+    "aliases": [
+      "윗몸일으키기",
+      "씻업",
+      "sit up"
+    ],
+    "alias_chosung": [
+      "ㅇㅁㅇㅇㅋㄱ",
+      "ㅆㅇ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "디클라인 싯업",
+    "chosung": "ㄷㅋㄹㅇㅅㅇ",
+    "aliases": [
+      "디클라인 윗몸일으키기",
+      "decline sit up"
+    ],
+    "alias_chosung": [
+      "ㄷㅋㄹㅇㅇㅁㅇㅇㅋㄱ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "decline-sit-up"
+  },
+  {
+    "name": "웨이티드 크런치",
+    "chosung": "ㅇㅇㅌㄷㅋㄹㅊ",
+    "aliases": [
+      "중량 크런치",
+      "원판 크런치",
+      "weighted crunch"
+    ],
+    "alias_chosung": [
+      "ㅈㄹㅋㄹㅊ",
+      "ㅇㅍㅋㄹㅊ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "other",
+    "tracking_type": "weight_reps",
+    "asset_slug": "weighted-crunch"
+  },
+  {
+    "name": "케이블 크런치",
+    "chosung": "ㅋㅇㅂㅋㄹㅊ",
+    "aliases": [
+      "니링 케이블 크런치",
+      "케이블 복근",
+      "cable crunch"
+    ],
+    "alias_chosung": [
+      "ㄴㄹㅋㅇㅂㅋㄹㅊ",
+      "ㅋㅇㅂㅂㄱ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-crunch"
+  },
+  {
+    "name": "복근 크런치 머신",
+    "chosung": "ㅂㄱㅋㄹㅊㅁㅅ",
+    "aliases": [
+      "크런치 머신",
+      "앱 크런치 머신",
+      "라잉 크런치 머신",
+      "애브 크런치"
+    ],
+    "alias_chosung": [
+      "ㅋㄹㅊㅁㅅ",
+      "ㅇㅋㄹㅊㅁㅅ",
+      "ㄹㅇㅋㄹㅊㅁㅅ",
+      "ㅇㅂㅋㄹㅊ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  },
+  {
+    "name": "행잉 레그레이즈",
+    "chosung": "ㅎㅇㄹㄱㄹㅇㅈ",
+    "aliases": [
+      "레그레이즈",
+      "다리 들어올리기",
+      "hanging leg raise"
+    ],
+    "alias_chosung": [
+      "ㄹㄱㄹㅇㅈ",
+      "ㄷㄹㄷㅇㅇㄹㄱ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "hanging-leg-raise"
+  },
+  {
+    "name": "행잉 니 레이즈",
+    "chosung": "ㅎㅇㄴㄹㅇㅈ",
+    "aliases": [
+      "니레이즈",
+      "행잉 니업",
+      "hanging knee raise"
+    ],
+    "alias_chosung": [
+      "ㄴㄹㅇㅈ",
+      "ㅎㅇㄴㅇ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "hanging-knee-raise"
+  },
+  {
+    "name": "라잉 레그레이즈",
+    "chosung": "ㄹㅇㄹㄱㄹㅇㅈ",
+    "aliases": [
+      "레그 레이즈",
+      "누워서 레그레이즈",
+      "lying leg raise"
+    ],
+    "alias_chosung": [
+      "ㄹㄱㄹㅇㅈ",
+      "ㄴㅇㅅㄹㄱㄹㅇㅈ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "lying-leg-raise"
+  },
+  {
+    "name": "캡틴체어 니 레이즈",
+    "chosung": "ㅋㅌㅊㅇㄴㄹㅇㅈ",
+    "aliases": [
+      "캡틴스 체어 니 레이즈",
+      "니업 머신",
+      "버티컬 니 레이즈"
+    ],
+    "alias_chosung": [
+      "ㅋㅌㅅㅊㅇㄴㄹㅇㅈ",
+      "ㄴㅇㅁㅅ",
+      "ㅂㅌㅋㄴㄹㅇㅈ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "machine",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "captains-chair-knee-raise"
+  },
+  {
+    "name": "브이업",
+    "chosung": "ㅂㅇㅇ",
+    "aliases": [
+      "브이 업",
+      "V업",
+      "v up"
+    ],
+    "alias_chosung": [
+      "ㅂㅇㅇ",
+      "vㅇ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "v-up"
+  },
+  {
+    "name": "시티드 니업",
+    "chosung": "ㅅㅌㄷㄴㅇ",
+    "aliases": [
+      "시티드 니 턱",
+      "니업",
+      "seated knee tuck"
+    ],
+    "alias_chosung": [
+      "ㅅㅌㄷㄴㅌ",
+      "ㄴㅇ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "seated-knee-tuck"
+  },
+  {
+    "name": "할로우 락",
+    "chosung": "ㅎㄹㅇㄹ",
+    "aliases": [
+      "할로우 바디 락",
+      "hollow rock"
+    ],
+    "alias_chosung": [
+      "ㅎㄹㅇㅂㄷㄹ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "hollow-rock"
+  },
+  {
+    "name": "토터치 크런치",
+    "chosung": "ㅌㅌㅊㅋㄹㅊ",
+    "aliases": [
+      "토 터치",
+      "발끝 터치 크런치",
+      "toe touch"
+    ],
+    "alias_chosung": [
+      "ㅌㅌㅊ",
+      "ㅂㄲㅌㅊㅋㄹㅊ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "toe-touch"
+  },
+  {
+    "name": "앱 롤아웃",
+    "chosung": "ㅇㄹㅇㅇ",
+    "aliases": [
+      "복근 롤아웃",
+      "아브 롤아웃",
+      "롤아웃",
+      "복근롤러",
+      "애브 휠",
+      "ab wheel rollout"
+    ],
+    "alias_chosung": [
+      "ㅂㄱㄹㅇㅇ",
+      "ㅇㅂㄹㅇㅇ",
+      "ㄹㅇㅇ",
+      "ㅂㄱㄹㄹ",
+      "ㅇㅂㅎ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "rectus_abdominis",
+    "equipment": "other",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "ab-wheel"
+  },
+  {
+    "name": "러시안 트위스트",
+    "chosung": "ㄹㅅㅇㅌㅇㅅㅌ",
+    "aliases": [
+      "트위스트",
+      "russian twist"
+    ],
+    "alias_chosung": [
+      "ㅌㅇㅅㅌ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "obliques",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "russian-twist"
+  },
+  {
+    "name": "웨이티드 러시안 트위스트",
+    "chosung": "ㅇㅇㅌㄷㄹㅅㅇㅌㅇㅅㅌ",
+    "aliases": [
+      "덤벨 러시안 트위스트",
+      "중량 러시안 트위스트",
+      "원판 러시안 트위스트"
+    ],
+    "alias_chosung": [
+      "ㄷㅂㄹㅅㅇㅌㅇㅅㅌ",
+      "ㅈㄹㄹㅅㅇㅌㅇㅅㅌ",
+      "ㅇㅍㄹㅅㅇㅌㅇㅅㅌ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "obliques",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "weighted-russian-twist"
+  },
+  {
+    "name": "바이시클 크런치",
+    "chosung": "ㅂㅇㅅㅋㅋㄹㅊ",
+    "aliases": [
+      "자전거 크런치",
+      "복근 에어 바이크",
+      "bicycle crunch"
+    ],
+    "alias_chosung": [
+      "ㅈㅈㄱㅋㄹㅊ",
+      "ㅂㄱㅇㅇㅂㅇㅋ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "obliques",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "bicycle-crunch"
+  },
+  {
+    "name": "힐 터치",
+    "chosung": "ㅎㅌㅊ",
+    "aliases": [
+      "힐 터치 크런치",
+      "힐 탭",
+      "사이드 크런치",
+      "heel tap"
+    ],
+    "alias_chosung": [
+      "ㅎㅌㅊㅋㄹㅊ",
+      "ㅎㅌ",
+      "ㅅㅇㄷㅋㄹㅊ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "obliques",
+    "equipment": "bodyweight",
+    "tracking_type": "bodyweight_reps",
+    "asset_slug": "heel-tap"
+  },
+  {
+    "name": "덤벨 사이드 벤드",
+    "chosung": "ㄷㅂㅅㅇㄷㅂㄷ",
+    "aliases": [
+      "사이드 벤드",
+      "45도 사이드 벤드",
+      "side bend"
+    ],
+    "alias_chosung": [
+      "ㅅㅇㄷㅂㄷ",
+      "45ㄷㅅㅇㄷㅂㄷ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "obliques",
+    "equipment": "dumbbell",
+    "tracking_type": "weight_reps",
+    "asset_slug": "dumbbell-side-bend"
+  },
+  {
+    "name": "케이블 우드찹",
+    "chosung": "ㅋㅇㅂㅇㄷㅊ",
+    "aliases": [
+      "케이블 오블리크 트위스트",
+      "우드찹",
+      "케이블 트위스트",
+      "cable woodchop"
+    ],
+    "alias_chosung": [
+      "ㅋㅇㅂㅇㅂㄹㅋㅌㅇㅅㅌ",
+      "ㅇㄷㅊ",
+      "ㅋㅇㅂㅌㅇㅅㅌ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "obliques",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "cable-woodchop"
+  },
+  {
+    "name": "팔로프 프레스",
+    "chosung": "ㅍㄹㅍㅍㄹㅅ",
+    "aliases": [
+      "케이블 팔로프 프레스",
+      "pallof press"
+    ],
+    "alias_chosung": [
+      "ㅋㅇㅂㅍㄹㅍㅍㄹㅅ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "obliques",
+    "equipment": "cable",
+    "tracking_type": "weight_reps",
+    "asset_slug": "pallof-press"
+  },
+  {
+    "name": "토르소 로테이션 머신",
+    "chosung": "ㅌㄹㅅㄹㅌㅇㅅㅁㅅ",
+    "aliases": [
+      "토르소 트위스트 머신",
+      "로터리 토르소",
+      "복근 트위스트 머신"
+    ],
+    "alias_chosung": [
+      "ㅌㄹㅅㅌㅇㅅㅌㅁㅅ",
+      "ㄹㅌㄹㅌㄹㅅ",
+      "ㅂㄱㅌㅇㅅㅌㅁㅅ"
+    ],
+    "muscle_group": "core",
+    "sub_region": "obliques",
+    "equipment": "machine",
+    "tracking_type": "weight_reps",
+    "asset_slug": null
+  }
+]

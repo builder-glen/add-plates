@@ -1,0 +1,112 @@
+/* 화면 0 — 히어로 · 로그인 */
+
+.gp-login {
+  height: 100%;
+  background: var(--hero-bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: calc(64px + env(safe-area-inset-top)) 26px calc(32px + env(safe-area-inset-bottom));
+}
+
+.gp-login__cipher {
+  margin-top: 30px;
+  font-family: var(--font-hero);
+  font-weight: 700;
+  color: var(--hero-ink);
+  font-size: 52px;
+  line-height: 1.02;
+  letter-spacing: -0.032em;
+}
+
+.gp-login__cipher span {
+  display: inline-block;
+}
+
+.gp-login__cipher span[data-state='scramble'] {
+  color: var(--hero-scramble);
+}
+
+.gp-login__cipher span[data-state='lock'] {
+  animation: gpFlash 420ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.gp-login__term {
+  margin-top: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  flex-wrap: wrap;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(17, 24, 39, 0.6);
+  border-radius: 11px;
+  padding: 11px 13px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.gp-login__prompt {
+  color: var(--hero-green);
+}
+
+.gp-login__cmd {
+  letter-spacing: 0.01em;
+  white-space: pre;
+}
+
+.gp-login__caret {
+  display: inline-block;
+  width: 0.5em;
+  height: 1.05em;
+  background: var(--hero-green);
+  vertical-align: text-bottom;
+  animation: gpCaret 1.1s steps(1) infinite;
+}
+
+.gp-login__foot {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gp-login__desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.74);
+  text-wrap: pretty;
+}
+
+.gp-login__btn {
+  background: #f4f6fb;
+  color: #121310;
+  border-radius: 16px;
+  padding: 17px;
+  font-weight: 650;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  transition: transform var(--d-tap) var(--ease-enter);
+}
+
+.gp-login__btn:active {
+  transform: scale(0.975);
+}
+
+.gp-login__btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.gp-login__note {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* 실패 / 환경변수 미설정 안내 — 보조문구 자리를 그대로 쓴다 */
+.gp-login__note--warn {
+  color: #f0a58a;
+}

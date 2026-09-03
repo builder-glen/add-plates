@@ -1,0 +1,193 @@
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+button,
+input {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+button {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* 스크롤바는 전부 숨긴다 */
+.gp-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.gp-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+/* ── 앱 셸: 프레임 없이 뷰포트를 그대로 채운다 ── */
+.gp-app {
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  padding-top: env(safe-area-inset-top);
+}
+
+/* ── 타이포 유틸 ── */
+.gp-num {
+  font-variant-numeric: tabular-nums;
+}
+
+.gp-micro {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: var(--ink3);
+  text-transform: uppercase;
+}
+
+/* ── 모션 ── */
+@keyframes gpCaret {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes gpFlash {
+  0% {
+    color: var(--hero-green);
+    text-shadow: 0 0 24px rgba(50, 213, 131, 0.6);
+  }
+  100% {
+    text-shadow: 0 0 0 transparent;
+  }
+}
+@keyframes gpSheetUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes gpFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes gpSnackUp {
+  from {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── 오버레이 / 바텀시트 / 스낵바 공통 ── */
+.gp-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 12, 10, 0.28);
+  animation: gpFadeIn var(--d-overlay) ease;
+  z-index: 20;
+}
+
+.gp-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 21;
+  background: var(--surface);
+  border-radius: var(--r-sheet) var(--r-sheet) 0 0;
+  border-top: 1px solid var(--line);
+  padding: 14px 20px calc(26px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: gpSheetUp var(--d-sheet) var(--ease-swipe);
+  box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.14);
+}
+
+.gp-grab {
+  width: 38px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+  align-self: center;
+  flex: none;
+}
+
+.gp-snack {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: calc(96px + env(safe-area-inset-bottom));
+  z-index: 30;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 15px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: gpSnackUp var(--d-snack) var(--ease-enter);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.gp-snack__msg {
+  font-size: 14px;
+}
+
+.gp-snack__undo {
+  margin-left: auto;
+  color: var(--bg);
+  font-weight: 650;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

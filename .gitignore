@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+.env
+.env.*
+!.env.example
+*.local
+.DS_Store
+.vite
+*.tsbuildinfo
+
+# 작업 자료 — 배포에 불필요하고 개인 조사 기록이다
+docs/research/
+design/
