@@ -1,0 +1,12 @@
+{
+  // 정적 SPA를 Cloudflare에 올리기 위한 설정.
+  // 서버 코드는 없다 — dist 폴더를 그대로 서빙할 뿐이다.
+  "name": "gym-points",
+  "compatibility_date": "2026-09-03",
+  "assets": {
+    "directory": "./dist",
+    // 없는 경로로 들어와도 index.html 을 준다.
+    // SPA 라 라우팅을 브라우저가 처리하기 때문이다.
+    "not_found_handling": "single-page-application"
+  }
+}
