@@ -44,10 +44,36 @@ export function fmtDateRel(key: string, base: string): string {
   return n > 0 ? `${n}일 뒤` : `${Math.abs(n)}일 전`;
 }
 
+/** '2026-09-03 (목)' — 일정 폼의 날짜 필드 */
+export function fmtDateField(key: string): string {
+  return `${key} (${DOW[fromKey(key).getDay()]})`;
+}
+
+/** 'YYYY-MM' -> '2026년 9월' */
+export function fmtMonthTitle(monthKey: string): string {
+  const [y, m] = monthKey.split('-').map(Number);
+  return `${y}년 ${m}월`;
+}
+
+/** 캘린더 35칸의 첫 칸 = 그 달 1일이 든 주의 일요일 */
+export function monthGridStart(monthKey: string): string {
+  const [y, m] = monthKey.split('-').map(Number);
+  const d = new Date(y, m - 1, 1);
+  d.setDate(1 - d.getDay());
+  return toKey(d);
+}
+
 /** '9/1' */
 export function fmtShort(key: string): string {
   const d = fromKey(key);
   return `${d.getMonth() + 1}/${d.getDate()}`;
+}
+
+/** 'YYYY-MM-DD' + 시:분 -> timestamptz (로컬 시각 기준) */
+export function toIso(key: string, hour: number, minute: number): string {
+  const d = fromKey(key);
+  d.setHours(hour, minute, 0, 0);
+  return d.toISOString();
 }
 
 /** timestamptz -> 'HH:MM' */

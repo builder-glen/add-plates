@@ -4,11 +4,22 @@ import { useAuth } from '../../auth/AuthProvider';
 import { fetchDay, insertExercise, type NewExercise } from '../../data/queries';
 import { useExercises } from '../../data/exercises';
 import { useDayData } from '../../data/useDayData';
-import { diffDays, fmtDateRel, fmtDateTitle, fmtTime, todayKey as getTodayKey } from '../../lib/date';
+import {
+  diffDays,
+  fmtDateRel,
+  fmtDateTitle,
+  fmtTime,
+  toIso,
+  todayKey as getTodayKey,
+} from '../../lib/date';
+import { googleCalendarUrl } from '../../lib/gcal';
 import { MUSCLE_LABEL } from '../../lib/labels';
-import type { DayEntry, Exercise } from '../../lib/types';
+import type { DayEntry, Exercise, WorkoutPlan } from '../../lib/types';
 import { CustomExerciseSheet } from '../picker/CustomExerciseSheet';
 import { PickerSheet } from '../picker/PickerSheet';
+import { CalendarSheet } from '../plan/CalendarSheet';
+import { NEW_DRAFT, ScheduleSheet, type PlanDraft } from '../plan/ScheduleSheet';
+import { TimeSheet } from '../plan/TimeSheet';
 import { DateStrip } from './DateStrip';
 import { EntryCard } from './EntryCard';
 import { SetEditorSheet, type EditorTarget } from './SetEditorSheet';
@@ -19,19 +30,15 @@ import '../../styles/home.css';
 const WEIGHT_STEP = 2.5;
 
 /**
- * 다음 차수에 붙을 화면·시트. 지금은 자리만 잡아 둔다.
- * 캘린더·일정·설정 시트가 붙으면 이 자리를 라우팅으로 바꾼다.
+ * 열려 있는 시트.
+ * 'custom' 은 검색어를, 'calendar' 는 날짜를 고른 뒤 돌아갈 곳을 들고 간다.
  */
-type NextRoute = 'settings' | 'calendar' | 'schedule' | 'plan-edit';
-const ROUTE_LABEL: Record<NextRoute, string> = {
-  settings: '설정',
-  calendar: '캘린더',
-  schedule: '일정 등록',
-  'plan-edit': '일정 수정',
-};
-
-/** 열려 있는 시트. 'custom' 은 검색어를 들고 간다 */
-type Sheet = { kind: 'picker' } | { kind: 'custom'; name: string };
+type Sheet =
+  | { kind: 'picker' }
+  | { kind: 'custom'; name: string }
+  | { kind: 'calendar'; returnTo: 'schedule' | null }
+  | { kind: 'schedule' }
+  | { kind: 'time' };
 
 export function HomeScreen() {
   const today = useMemo(() => getTodayKey(), []);
@@ -45,9 +52,11 @@ export function HomeScreen() {
   const [swipedId, setSwipedId] = useState<string | null>(null);
   const [editor, setEditor] = useState<EditorTarget | null>(null);
   const [sheet, setSheet] = useState<Sheet | null>(null);
+  // 일정 폼의 입력값. 캘린더 시트를 다녀와도 남아야 해서 시트 밖에 둔다
+  const [planDraft, setPlanDraft] = useState<PlanDraft>(NEW_DRAFT);
 
-  // TODO(다음 차수): 여기서 시트/화면을 연다
-  const onNavigate = (target: NextRoute) => show(`${ROUTE_LABEL[target]}은 다음 차수에 붙어요`);
+  // TODO(다음 차수): 설정·내 정보 화면
+  const openSettings = () => show('설정은 다음 차수에 붙어요');
 
   const isFuture = diffDays(dateKey, today) > 0;
   const isPast = diffDays(dateKey, today) < 0;
@@ -61,7 +70,8 @@ export function HomeScreen() {
     setExpanded(last ? new Set([last.id]) : new Set());
     setSwipedId(null);
     setEditor(null);
-    setSheet(null);
+    // 캘린더에서 날짜를 골라 일정 폼으로 돌아온 경우엔 그 시트를 닫지 않는다
+    setSheet((s) => (s?.kind === 'schedule' || s?.kind === 'time' ? s : null));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateKey, day.status]);
 
@@ -94,6 +104,54 @@ export function HomeScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateKey, day.status, day.entries.length, day.loggedDays]);
 
+  /** 일정 폼 열기. 그 날짜에 일정이 있으면 그 값을 채워 수정으로 연다 */
+  const openSchedule = () => {
+    dismiss();
+    const at = plan?.planned_at ? new Date(plan.planned_at) : null;
+    setPlanDraft(
+      plan
+        ? {
+            id: plan.id,
+            fromDate: plan.planned_on,
+            title: plan.title,
+            memo: plan.memo ?? '',
+            allDay: !at,
+            hour: at ? at.getHours() : NEW_DRAFT.hour,
+            min: at ? at.getMinutes() : NEW_DRAFT.min,
+          }
+        : NEW_DRAFT,
+    );
+    setSheet({ kind: 'schedule' });
+  };
+
+  /** 저장은 낙관적이다 — 구글 캘린더 창은 기다리지 않고 바로 연다 */
+  const savePlan = (openGoogle: boolean) => {
+    const title = planDraft.title.trim();
+    if (!userId || !title) return;
+
+    // 폼 안에서 날짜를 옮겼는데 그 날짜에 이미 일정이 있으면 그 일정을 고친다
+    const id = planDraft.id ?? plan?.id ?? crypto.randomUUID();
+    const row: WorkoutPlan = {
+      id,
+      user_id: userId,
+      planned_on: dateKey,
+      planned_at: planDraft.allDay ? null : toIso(dateKey, planDraft.hour, planDraft.min),
+      title,
+      memo: planDraft.memo.trim() || null,
+    };
+
+    day.savePlan(row, planDraft.fromDate);
+    setSheet(null);
+    if (openGoogle) window.open(googleCalendarUrl(row), '_blank', 'noopener');
+    show(row.planned_at ? '일정을 저장했어요' : '종일 일정으로 저장했어요');
+  };
+
+  /** 캘린더에서 날짜를 고르면 일정 폼으로 돌아가거나 그냥 닫는다 */
+  const pickDate = (key: string, returnTo: 'schedule' | null) => {
+    setDateKey(key);
+    setSheet(returnTo === 'schedule' ? { kind: 'schedule' } : null);
+  };
+
   const openPicker = () => {
     if (isFuture) return; // 미래 날짜엔 기록을 넣을 수 없다
     dismiss(); // 스낵바가 시트 아래에 깔린다
@@ -114,16 +172,22 @@ export function HomeScreen() {
     addExercise(ex);
   };
 
+  /**
+   * 새 세트 스테퍼의 초기값.
+   * 오늘 이미 넣은 세트 > 지난 기록의 1세트 > 기본값(20kg / 8회) 순으로 고른다.
+   * 지난 기록이 화면에 떠 있는데 ± 를 여러 번 눌러야 하면 안 된다 (PRD F-06).
+   */
   const openNewSet = (entry: DayEntry) => {
     dismiss(); // 스낵바가 시트 위를 덮어 스테퍼를 가린다
     const last = entry.sets[entry.sets.length - 1];
+    const prev = entry.last?.first;
     setEditor({
       entryId: entry.id,
       setNo: null,
       setId: null,
       isBody: entry.exercise.tracking_type === 'bodyweight_reps',
-      weight: last?.weight_kg ?? (entry.last ? 60 : 20),
-      reps: last?.reps ?? 8,
+      weight: last?.weight_kg ?? prev?.weightKg ?? 20,
+      reps: last?.reps ?? prev?.reps ?? 8,
     });
   };
 
@@ -233,7 +297,10 @@ export function HomeScreen() {
           type="button"
           className="gp-iconbtn"
           aria-label="달력"
-          onClick={() => onNavigate('calendar')}
+          onClick={() => {
+            dismiss();
+            setSheet({ kind: 'calendar', returnTo: null });
+          }}
         >
           <CalendarIcon />
         </button>
@@ -246,7 +313,7 @@ export function HomeScreen() {
           className="gp-iconbtn"
           aria-label="설정"
           style={{ marginLeft: 'auto' }}
-          onClick={() => onNavigate('settings')}
+          onClick={openSettings}
         >
           <GearIcon />
         </button>
@@ -276,7 +343,7 @@ export function HomeScreen() {
               type="button"
               className="gp-plan__act"
               aria-label="일정 수정"
-              onClick={() => onNavigate('plan-edit')}
+              onClick={openSchedule}
             >
               <PencilIcon />
             </button>
@@ -293,7 +360,7 @@ export function HomeScreen() {
             </button>
           </div>
         ) : (
-          <button type="button" className="gp-plan__add" onClick={() => onNavigate('schedule')}>
+          <button type="button" className="gp-plan__add" onClick={openSchedule}>
             ＋ 일정(시간) 등록하기
           </button>
         )}
@@ -305,7 +372,7 @@ export function HomeScreen() {
         <button
           type="button"
           className="gp-foot__btn"
-          onClick={() => (isFuture ? onNavigate('schedule') : openPicker())}
+          onClick={() => (isFuture ? openSchedule() : openPicker())}
         >
           {isFuture ? '＋ 일정 추가' : '＋ 운동 추가'}
         </button>
@@ -324,6 +391,36 @@ export function HomeScreen() {
           initialName={sheet.name}
           onSave={saveCustomExercise}
           onClose={() => setSheet(null)}
+        />
+      ) : null}
+
+      {sheet?.kind === 'calendar' ? (
+        <CalendarSheet
+          dateKey={dateKey}
+          loggedDays={day.loggedDays}
+          planDays={planDays}
+          onSelect={(key) => pickDate(key, sheet.returnTo)}
+          onClose={() => setSheet(sheet.returnTo === 'schedule' ? { kind: 'schedule' } : null)}
+        />
+      ) : null}
+
+      {sheet?.kind === 'schedule' ? (
+        <ScheduleSheet
+          dateKey={dateKey}
+          draft={planDraft}
+          onChange={setPlanDraft}
+          onPickDate={() => setSheet({ kind: 'calendar', returnTo: 'schedule' })}
+          onPickTime={() => setSheet({ kind: 'time' })}
+          onSave={savePlan}
+          onClose={() => setSheet(null)}
+        />
+      ) : null}
+
+      {sheet?.kind === 'time' ? (
+        <TimeSheet
+          value={planDraft}
+          onChange={(v) => setPlanDraft({ ...planDraft, ...v })}
+          onDone={() => setSheet({ kind: 'schedule' })}
         />
       ) : null}
 

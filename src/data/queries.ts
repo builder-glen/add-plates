@@ -138,6 +138,7 @@ export async function fetchLastRecords(
         date: fmtShort(s.performed_on),
         daysAgo: Math.abs(diffDays(s.performed_on, beforeDate)),
         summary: summarizeSets(sets),
+        first: { weightKg: sets[0].weight_kg, reps: sets[0].reps },
       });
     }
   }
@@ -234,6 +235,12 @@ export async function restoreEntry(entry: DayEntry): Promise<void> {
     );
     if (error) throw error;
   }
+}
+
+/** 일정 저장. 새 일정과 수정이 같은 경로다 (id 가 이미 있으면 갱신된다) */
+export async function upsertPlan(plan: WorkoutPlan): Promise<void> {
+  const { error } = await requireSupabase().from('workout_plans').upsert(plan);
+  if (error) throw error;
 }
 
 export async function deletePlan(planId: string): Promise<void> {

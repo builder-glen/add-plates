@@ -1,0 +1,276 @@
+/* 화면 4·5 — 캘린더 / 일정 등록 / 시간 선택 시트 */
+/* .gp-field, .gp-field__label, .gp-input, .gp-custom__title 은 picker.css 의 폼 스타일을 그대로 쓴다 */
+
+/* ── 캘린더 시트 ── */
+.gp-cal__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.gp-cal__title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.gp-cal__count {
+  font-size: 12.5px;
+  color: var(--ink3);
+}
+
+.gp-cal__dow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+  font-size: 10px;
+  color: var(--ink3);
+}
+
+.gp-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.gp-cal__cell {
+  border: 1px solid transparent;
+  border-radius: 11px;
+  padding: 7px 0 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--ink);
+}
+/* 앞뒤 달에서 넘어온 칸 */
+.gp-cal__cell--out {
+  color: var(--ink3);
+}
+.gp-cal__cell--on {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.gp-cal__day {
+  font-size: 13px;
+  font-weight: 500;
+}
+.gp-cal__cell--on .gp-cal__day {
+  font-weight: 700;
+}
+
+/* 도트 규칙은 날짜 스트립과 같다 */
+.gp-cal__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid transparent;
+  flex: none;
+}
+.gp-cal__dot--done {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.gp-cal__dot--plan {
+  border-color: var(--ink3);
+}
+
+.gp-cal__legend {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 11.5px;
+  color: var(--ink3);
+  border-top: 1px solid var(--line2);
+  padding-top: 12px;
+}
+.gp-cal__legend span {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.gp-cal__legend .gp-cal__dot {
+  width: 5px;
+  height: 5px;
+}
+
+/* ── 일정 등록 시트 ── */
+/* 번들에서 global.css 가 뒤에 실린다 — 클래스를 겹쳐 .gp-sheet 기본값을 확실히 이긴다 */
+.gp-sheet.gp-sheet--schedule {
+  gap: 15px;
+}
+
+.gp-plan__row2 {
+  display: flex;
+  gap: 8px;
+}
+.gp-plan__row2 > .gp-field {
+  flex: 1;
+  min-width: 0;
+}
+
+.gp-field__btn {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--ink);
+  border-radius: 13px;
+  padding: 13px 14px;
+  font-weight: 500;
+  font-size: 14.5px;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.gp-field__btn svg {
+  flex: none;
+  color: var(--ink3);
+}
+.gp-field__btn span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gp-input--memo {
+  min-height: 44px;
+}
+
+.gp-plan__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gp-plan__save {
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 15px;
+  padding: 15px;
+  font-weight: 650;
+  font-size: 15.5px;
+  line-height: 1;
+  transition: transform var(--d-tap) var(--ease-enter);
+}
+.gp-plan__save:active {
+  transform: scale(0.98);
+}
+.gp-plan__save:disabled {
+  border-color: var(--line);
+  background: var(--line);
+  color: var(--ink3);
+  cursor: default;
+  transform: none;
+}
+
+.gp-plan__save2 {
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--ink);
+  border-radius: 15px;
+  padding: 14px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+}
+.gp-plan__save2:disabled {
+  color: var(--ink3);
+  cursor: default;
+}
+
+.gp-plan__caution {
+  font-size: 11.5px;
+  color: var(--ink3);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ── 시간 선택 시트 ── */
+.gp-sheet.gp-sheet--time {
+  background: var(--bg);
+  border-top: none;
+  gap: 12px;
+  padding: 16px 18px calc(22px + env(safe-area-inset-bottom));
+  box-shadow: 0 -14px 40px rgba(0, 0, 0, 0.2);
+}
+
+.gp-time__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gp-time__title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.gp-time__allday {
+  margin-left: auto;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink2);
+  border-radius: var(--r-pill);
+  padding: 8px 14px;
+  font-weight: 600;
+  font-size: 12.5px;
+  line-height: 1;
+}
+.gp-time__allday--on {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.gp-time__wheels {
+  display: flex;
+  gap: 8px;
+}
+/* 종일이면 휠을 죽인다 */
+.gp-time__wheels--off {
+  opacity: 0.38;
+  pointer-events: none;
+}
+
+.gp-time__wheel {
+  flex: 1;
+  height: 198px;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--surface2);
+  padding: 6px;
+}
+
+.gp-time__opt {
+  display: block;
+  width: 100%;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--ink);
+  padding: 12px 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 2px;
+}
+.gp-time__opt--on {
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.gp-time__label {
+  font-size: 12.5px;
+  color: var(--ink3);
+  text-align: center;
+}

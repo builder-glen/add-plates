@@ -4,7 +4,8 @@ interface IconProps {
   size?: number;
 }
 
-export function CalendarIcon({ size = 24 }: IconProps) {
+/** dots=false 는 작게 쓸 때(일정 폼 필드 15px). 점이 뭉개진다 */
+export function CalendarIcon({ size = 24, dots = true }: IconProps & { dots?: boolean }) {
   return (
     <svg
       width={size}
@@ -12,14 +13,36 @@ export function CalendarIcon({ size = 24 }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.7"
+      strokeWidth={dots ? '1.7' : '1.8'}
       strokeLinecap="round"
       aria-hidden="true"
     >
       <rect x="3.4" y="5.2" width="17.2" height="15.4" rx="3.4" />
       <path d="M8.2 3.3v3.6M15.8 3.3v3.6M3.4 10.4h17.2" />
-      <circle cx="8.7" cy="14.4" r="1.15" fill="currentColor" stroke="none" />
-      <circle cx="12" cy="14.4" r="1.15" fill="currentColor" stroke="none" />
+      {dots ? (
+        <>
+          <circle cx="8.7" cy="14.4" r="1.15" fill="currentColor" stroke="none" />
+          <circle cx="12" cy="14.4" r="1.15" fill="currentColor" stroke="none" />
+        </>
+      ) : null}
+    </svg>
+  );
+}
+
+export function ClockIcon({ size = 15 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="8.4" />
+      <path d="M12 7.6V12l3.1 1.9" />
     </svg>
   );
 }

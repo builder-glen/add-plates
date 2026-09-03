@@ -95,6 +95,8 @@ export interface LastRecord {
   date: string; // 'M/D'
   daysAgo: number;
   summary: string; // '70×8 · 70×8 · 65×6'
+  /** 1세트 값. 새 세트 스테퍼의 초기값으로 쓴다 (맨몸이면 weightKg 가 null) */
+  first: { weightKg: number | null; reps: number };
 }
 
 export interface DayEntry {

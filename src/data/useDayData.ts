@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAuth } from '../auth/AuthProvider';
-import { addDays } from '../lib/date';
+import { addDays, monthGridStart } from '../lib/date';
 import type { DayEntry, DaySession, DaySet, Exercise, WorkoutPlan } from '../lib/types';
 import { useExercises } from './exercises';
 import * as q from './queries';
@@ -12,6 +12,9 @@ function autoSessionTitle(now: Date): string {
   if (h < 18) return '오후 운동';
   return '저녁 운동';
 }
+
+const min = (a: string, b: string) => (a < b ? a : b);
+const max = (a: string, b: string) => (a > b ? a : b);
 
 export type LoadStatus = 'loading' | 'ready' | 'error';
 
@@ -78,9 +81,14 @@ export function useDayData(dateKey: string, todayKey: string) {
     }
   }, [dateKey, commit]);
 
+  /** 캘린더 시트가 보는 달. 같은 달 안에서 날짜만 바꾸면 범위를 다시 읽지 않는다 */
+  const monthKey = dateKey.slice(0, 7);
+
   const loadRange = useCallback(async () => {
-    const from = addDays(todayKey, -STRIP_RADIUS);
-    const to = addDays(todayKey, STRIP_RADIUS);
+    // 스트립(오늘 ±35일)과 캘린더 35칸을 모두 덮는 범위. 키가 'YYYY-MM-DD' 라 문자열 비교로 충분하다
+    const gridFrom = monthGridStart(monthKey);
+    const from = min(addDays(todayKey, -STRIP_RADIUS), gridFrom);
+    const to = max(addDays(todayKey, STRIP_RADIUS), addDays(gridFrom, 34));
     try {
       const [logged, plans] = await Promise.all([
         q.fetchLoggedDays(from, to),
@@ -91,7 +99,7 @@ export function useDayData(dateKey: string, todayKey: string) {
       // 도트/일정은 보조 정보라 화면 전체를 실패로 만들지 않는다
       setRange(EMPTY_RANGE);
     }
-  }, [todayKey]);
+  }, [todayKey, monthKey]);
 
   useEffect(() => {
     if (exLoading) return;
@@ -377,6 +385,30 @@ export function useDayData(dateKey: string, todayKey: string) {
     [userId, dateKey, commit, mapEntry],
   );
 
+  /**
+   * 일정 저장(등록·수정 공통). prevDate 는 수정 중 날짜를 옮겼을 때의 원래 날짜.
+   * 하루에 일정 하나 — 지도에서 옛 날짜를 지우고 새 날짜에 넣는다.
+   */
+  const savePlan = useCallback(
+    (plan: WorkoutPlan, prevDate: string | null) => {
+      setRange((r) => {
+        const next = new Map(r.plansByDate);
+        if (prevDate && prevDate !== plan.planned_on) next.delete(prevDate);
+        next.set(plan.planned_on, plan);
+        return { ...r, plansByDate: next };
+      });
+      void (async () => {
+        try {
+          await q.upsertPlan(plan);
+        } catch {
+          setError('일정을 저장하지 못했어요.');
+          void loadRange();
+        }
+      })();
+    },
+    [loadRange],
+  );
+
   const removePlan = useCallback(
     (plan: WorkoutPlan) => {
       setRange((r) => {
@@ -434,6 +466,7 @@ export function useDayData(dateKey: string, todayKey: string) {
     addEntry,
     removeEntry,
     restoreEntry,
+    savePlan,
     removePlan,
     restorePlan,
   };
