@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useExercises } from '../../data/exercises';
 import type { NewExercise } from '../../data/queries';
 import { toChosung } from '../../lib/chosung';
+import { useSheetDrag } from '../../lib/useSheetDrag';
 import { EQUIP_LABEL, MUSCLE_LABEL } from '../../lib/labels';
 import type { Equipment, MuscleGroup, TrackingType } from '../../lib/types';
 import '../../styles/picker.css';
@@ -43,6 +44,7 @@ export function CustomExerciseSheet({
   onClose,
 }: Props) {
   const { all } = useExercises();
+  const sheet = useSheetDrag(onClose);
   const [name, setName] = useState(initialName);
   const [group, setGroup] = useState<MuscleGroup>(initial?.group ?? 'core');
   const [equip, setEquip] = useState<Equipment>(initial?.equip ?? 'other');
@@ -82,8 +84,8 @@ export function CustomExerciseSheet({
   return (
     <>
       <div className="gp-overlay" onClick={onClose} />
-      <div className="gp-sheet" role="dialog" aria-label={title}>
-        <div className="gp-grab" />
+      <div className="gp-sheet" ref={sheet.sheetRef} role="dialog" aria-label={title}>
+        <div className="gp-grab" {...sheet.handle} />
         <span className="gp-custom__title">{title}</span>
 
         <div className="gp-field">

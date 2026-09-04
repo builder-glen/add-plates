@@ -1,3 +1,6 @@
+// 공통 스타일은 화면 모듈보다 먼저 실려야 한다 — 뒤에 실리면 번들에서 .gp-sheet 같은
+// 기본 규칙이 같은 특이도의 시트별 규칙(.gp-sheet--picker)을 이겨 버린다
+import './styles/global.css';
 import { useEffect, useState } from 'react';
 import { AuthProvider, useAuth } from './auth/AuthProvider';
 import { ExercisesProvider, useExercises } from './data/exercises';
@@ -5,7 +8,6 @@ import { HomeScreen } from './features/home/HomeScreen';
 import { LoginScreen } from './features/login/LoginScreen';
 import { SettingsRoot } from './features/settings/SettingsRoot';
 import { applyTheme, loadPrefs, savePrefs, type Prefs } from './lib/prefs';
-import './styles/global.css';
 
 function AuthedApp() {
   const { error, reload } = useExercises();

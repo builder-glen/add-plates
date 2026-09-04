@@ -1,4 +1,5 @@
 import { fmtDateField } from '../../lib/date';
+import { useSheetDrag } from '../../lib/useSheetDrag';
 import { CalendarIcon, ClockIcon } from '../home/icons';
 import '../../styles/plan.css';
 
@@ -46,6 +47,7 @@ export function ScheduleSheet({
   onSave,
   onClose,
 }: Props) {
+  const sheet = useSheetDrag(onClose);
   const timeLabel = draft.allDay
     ? '종일'
     : `${String(draft.hour).padStart(2, '0')}:${String(draft.min).padStart(2, '0')}`;
@@ -54,8 +56,13 @@ export function ScheduleSheet({
   return (
     <>
       <div className="gp-overlay" onClick={onClose} />
-      <div className="gp-sheet gp-sheet--schedule" role="dialog" aria-label="일정 등록">
-        <div className="gp-grab" />
+      <div
+        className="gp-sheet gp-sheet--schedule"
+        ref={sheet.sheetRef}
+        role="dialog"
+        aria-label="일정 등록"
+      >
+        <div className="gp-grab" {...sheet.handle} />
         <span className="gp-custom__title">{draft.id ? '일정 수정' : '일정 등록'}</span>
 
         <div className="gp-plan__row2">

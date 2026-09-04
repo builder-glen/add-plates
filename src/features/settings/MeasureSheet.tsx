@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSheetDrag } from '../../lib/useSheetDrag';
 import '../../styles/picker.css';
 import '../../styles/settings.css';
 
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export function MeasureSheet({ onSave, onClose }: Props) {
+  const sheet = useSheetDrag(onClose);
   const [weight, setWeight] = useState('');
   const [muscle, setMuscle] = useState('');
   const [fat, setFat] = useState('');
@@ -29,8 +31,13 @@ export function MeasureSheet({ onSave, onClose }: Props) {
   return (
     <>
       <div className="gp-overlay gp-overlay--dialog" onClick={onClose} />
-      <div className="gp-sheet gp-sheet--meas" role="dialog" aria-label="측정 기록">
-        <div className="gp-grab" />
+      <div
+        className="gp-sheet gp-sheet--meas"
+        ref={sheet.sheetRef}
+        role="dialog"
+        aria-label="측정 기록"
+      >
+        <div className="gp-grab" {...sheet.handle} />
         <span className="gp-custom__title">측정 기록</span>
 
         <div className="gp-field">

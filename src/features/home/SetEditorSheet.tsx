@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { fmtWeight } from '../../data/queries';
+import { useSheetDrag } from '../../lib/useSheetDrag';
 
 export interface EditorTarget {
   entryId: string;
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export function SetEditorSheet({ target, weightStep, onSave, onDelete, onClose }: Props) {
+  const sheet = useSheetDrag(onClose);
   const [w, setW] = useState(target.weight);
   const [r, setR] = useState(target.reps);
 
@@ -28,8 +30,13 @@ export function SetEditorSheet({ target, weightStep, onSave, onDelete, onClose }
   return (
     <>
       <div className="gp-overlay" onClick={onClose} />
-      <div className="gp-sheet" role="dialog" aria-label={editing ? '세트 고치기' : '새 세트'}>
-        <div className="gp-grab" />
+      <div
+        className="gp-sheet"
+        ref={sheet.sheetRef}
+        role="dialog"
+        aria-label={editing ? '세트 고치기' : '새 세트'}
+      >
+        <div className="gp-grab" {...sheet.handle} />
         <div className="gp-editor__head">
           <span className="gp-editor__title">{editing ? `${target.setNo}세트 고치기` : '새 세트'}</span>
           <span className="gp-editor__hint">

@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { DOW, addDays, fmtMonthTitle, fromKey, monthGridStart } from '../../lib/date';
+import { useSheetDrag } from '../../lib/useSheetDrag';
 import '../../styles/plan.css';
 
 /** 5주 = 35칸 고정 */
@@ -15,6 +16,7 @@ interface Props {
 
 export function CalendarSheet({ dateKey, loggedDays, planDays, onSelect, onClose }: Props) {
   const monthKey = dateKey.slice(0, 7);
+  const sheet = useSheetDrag(onClose);
 
   const cells = useMemo(() => {
     const start = monthGridStart(monthKey);
@@ -33,8 +35,8 @@ export function CalendarSheet({ dateKey, loggedDays, planDays, onSelect, onClose
   return (
     <>
       <div className="gp-overlay" onClick={onClose} />
-      <div className="gp-sheet" role="dialog" aria-label="캘린더">
-        <div className="gp-grab" />
+      <div className="gp-sheet" ref={sheet.sheetRef} role="dialog" aria-label="캘린더">
+        <div className="gp-grab" {...sheet.handle} />
 
         <div className="gp-cal__head">
           <span className="gp-cal__title">{fmtMonthTitle(monthKey)}</span>

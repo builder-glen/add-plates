@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSheetDrag } from '../../lib/useSheetDrag';
 import '../../styles/picker.css';
 import '../../styles/settings.css';
 
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export function HeightSheet({ initial, onSave, onClose }: Props) {
+  const sheet = useSheetDrag(onClose);
   const [value, setValue] = useState(initial != null ? String(initial) : '');
 
   const cm = parseFloat(value);
@@ -18,8 +20,8 @@ export function HeightSheet({ initial, onSave, onClose }: Props) {
   return (
     <>
       <div className="gp-overlay gp-overlay--dialog" onClick={onClose} />
-      <div className="gp-sheet gp-sheet--meas" role="dialog" aria-label="키 입력">
-        <div className="gp-grab" />
+      <div className="gp-sheet gp-sheet--meas" ref={sheet.sheetRef} role="dialog" aria-label="키 입력">
+        <div className="gp-grab" {...sheet.handle} />
         <span className="gp-custom__title">키 입력</span>
 
         <div className="gp-field">

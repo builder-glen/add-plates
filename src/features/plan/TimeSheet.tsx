@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useSheetDrag } from '../../lib/useSheetDrag';
 import '../../styles/plan.css';
 
 const HOURS = Array.from({ length: 24 }, (_, i) => i);
@@ -33,6 +34,7 @@ function useScrollToSelected(index: number) {
 }
 
 export function TimeSheet({ value, onChange, onDone }: Props) {
+  const sheet = useSheetDrag(onDone);
   const hourRef = useScrollToSelected(HOURS.indexOf(value.hour));
   const minRef = useScrollToSelected(Math.max(0, MINUTES.indexOf(value.min)));
 
@@ -43,8 +45,13 @@ export function TimeSheet({ value, onChange, onDone }: Props) {
   return (
     <>
       <div className="gp-overlay" onClick={onDone} />
-      <div className="gp-sheet gp-sheet--time" role="dialog" aria-label="시간 선택">
-        <div className="gp-grab" />
+      <div
+        className="gp-sheet gp-sheet--time"
+        ref={sheet.sheetRef}
+        role="dialog"
+        aria-label="시간 선택"
+      >
+        <div className="gp-grab" {...sheet.handle} />
 
         <div className="gp-time__head">
           <span className="gp-time__title">시간 선택</span>

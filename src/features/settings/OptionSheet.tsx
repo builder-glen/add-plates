@@ -1,3 +1,4 @@
+import { useSheetDrag } from '../../lib/useSheetDrag';
 import '../../styles/picker.css';
 import '../../styles/settings.css';
 
@@ -20,11 +21,13 @@ export function OptionSheet<T extends string | number>({
   onPick,
   onClose,
 }: Props<T>) {
+  const sheet = useSheetDrag(onClose);
+
   return (
     <>
       <div className="gp-overlay gp-overlay--dialog" onClick={onClose} />
-      <div className="gp-sheet gp-sheet--meas" role="dialog" aria-label={title}>
-        <div className="gp-grab" />
+      <div className="gp-sheet gp-sheet--meas" ref={sheet.sheetRef} role="dialog" aria-label={title}>
+        <div className="gp-grab" {...sheet.handle} />
         <span className="gp-custom__title">{title}</span>
         <div className="gp-opts--wide">
           {options.map((o) => (

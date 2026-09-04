@@ -405,12 +405,12 @@
 }
 
 /* ── 측정 / 키 / 선택 시트 ──
-   번들에서 global.css 가 뒤에 실린다 — 클래스를 겹쳐 .gp-sheet 기본값을 확실히 이긴다 */
+   클래스를 겹쳐 .gp-sheet 기본값을 확실히 이긴다 */
 .gp-sheet.gp-sheet--meas {
   background: var(--bg);
   border-top: none;
   gap: 13px;
-  padding: 16px 18px calc(22px + env(safe-area-inset-bottom));
+  padding: 16px 16px calc(22px + env(safe-area-inset-bottom));
   box-shadow: 0 -14px 40px rgba(0, 0, 0, 0.2);
 }
 

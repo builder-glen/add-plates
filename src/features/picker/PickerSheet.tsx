@@ -10,6 +10,7 @@ import {
 } from '../../data/search';
 import { EQUIP_LABEL, MUSCLE_LABEL, SUB_LABEL } from '../../lib/labels';
 import { useDragScroll } from '../../lib/useDragScroll';
+import { useSheetDrag } from '../../lib/useSheetDrag';
 import type { Equipment, Exercise, MuscleGroup, SubRegion } from '../../lib/types';
 import '../../styles/picker.css';
 
@@ -36,6 +37,7 @@ export function PickerSheet({ onPick, onCustom, onClose }: Props) {
   const [reload, setReload] = useState(0);
 
   const drag = useDragScroll();
+  const sheet = useSheetDrag(onClose);
 
   // 최근 사용은 기록에서만 나온다 — 시트를 열 때 한 번만 부른다
   useEffect(() => {
@@ -103,9 +105,14 @@ export function PickerSheet({ onPick, onCustom, onClose }: Props) {
   return (
     <>
       <div className="gp-overlay" onClick={onClose} />
-      <div className="gp-sheet gp-sheet--picker" role="dialog" aria-label="종목 고르기">
+      <div
+        className="gp-sheet gp-sheet--picker"
+        ref={sheet.sheetRef}
+        role="dialog"
+        aria-label="종목 고르기"
+      >
         <div className="gp-picker__head">
-          <div className="gp-grab" />
+          <div className="gp-grab" {...sheet.handle} />
 
           <div className="gp-search">
             <span className="gp-search__label">찾기</span>
