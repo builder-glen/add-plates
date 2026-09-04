@@ -26,9 +26,6 @@ import { SetEditorSheet, type EditorTarget } from './SetEditorSheet';
 import { CalendarIcon, GearIcon, PencilIcon, TrashIcon } from './icons';
 import '../../styles/home.css';
 
-/** 무게 조절 단위. 설정 화면(다음 차수)에서 바꾸게 된다 */
-const WEIGHT_STEP = 2.5;
-
 /**
  * 열려 있는 시트.
  * 'custom' 은 검색어를, 'calendar' 는 날짜를 고른 뒤 돌아갈 곳을 들고 간다.
@@ -40,7 +37,13 @@ type Sheet =
   | { kind: 'schedule' }
   | { kind: 'time' };
 
-export function HomeScreen() {
+interface Props {
+  /** 세트 스테퍼 한 칸. 설정에서 바꾼다 */
+  weightStep: number;
+  onOpenSettings: () => void;
+}
+
+export function HomeScreen({ weightStep, onOpenSettings }: Props) {
   const today = useMemo(() => getTodayKey(), []);
   const [dateKey, setDateKey] = useState(today);
   const { byId, addLocal } = useExercises();
@@ -54,9 +57,6 @@ export function HomeScreen() {
   const [sheet, setSheet] = useState<Sheet | null>(null);
   // 일정 폼의 입력값. 캘린더 시트를 다녀와도 남아야 해서 시트 밖에 둔다
   const [planDraft, setPlanDraft] = useState<PlanDraft>(NEW_DRAFT);
-
-  // TODO(다음 차수): 설정·내 정보 화면
-  const openSettings = () => show('설정은 다음 차수에 붙어요');
 
   const isFuture = diffDays(dateKey, today) > 0;
   const isPast = diffDays(dateKey, today) < 0;
@@ -313,7 +313,10 @@ export function HomeScreen() {
           className="gp-iconbtn"
           aria-label="설정"
           style={{ marginLeft: 'auto' }}
-          onClick={openSettings}
+          onClick={() => {
+            dismiss();
+            onOpenSettings();
+          }}
         >
           <GearIcon />
         </button>
@@ -427,7 +430,7 @@ export function HomeScreen() {
       {editor ? (
         <SetEditorSheet
           target={editor}
-          weightStep={WEIGHT_STEP}
+          weightStep={weightStep}
           onSave={saveEditor}
           onDelete={deleteEditorSet}
           onClose={() => setEditor(null)}

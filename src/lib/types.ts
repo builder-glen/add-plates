@@ -114,3 +114,13 @@ export interface DaySession {
   startedAt: string;
   entries: DayEntry[];
 }
+
+/** 신체 측정 한 건. 체중·골격근량·체지방률은 전부 선택 입력이다 */
+export interface BodyMeasurement {
+  id: string;
+  user_id: string;
+  measured_at: string; // timestamptz — 같은 날 두 번 재면 시간으로 구분한다
+  weight_kg: number | null;
+  skeletal_muscle_kg: number | null;
+  body_fat_pct: number | null; // 체지방'률' %. kg 이 아니다
+}

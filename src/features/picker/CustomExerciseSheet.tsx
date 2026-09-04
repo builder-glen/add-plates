@@ -13,20 +13,40 @@ const TYPES: { key: TrackingType; label: string }[] = [
   { key: 'bodyweight_reps', label: '횟수만' },
 ];
 
+/** 수정으로 열 때 미리 채워 넣을 값 */
+export interface ExerciseDraft {
+  name: string;
+  group: MuscleGroup;
+  equip: Equipment;
+  type: TrackingType;
+}
+
 interface Props {
-  /** 검색어로 미리 채운다 */
+  /** 검색어(추가) 또는 지금 값(수정)으로 미리 채운다 */
   initialName: string;
-  /** 저장 + 오늘 기록에 넣기. 실패하면 throw */
+  /** 수정으로 열 때. 없으면 새 종목 추가다 */
+  initial?: Omit<ExerciseDraft, 'name'>;
+  /** 기본값은 추가 폼 문구 */
+  title?: string;
+  saveLabel?: string;
+  /** 저장. 실패하면 throw */
   onSave: (draft: Omit<NewExercise, 'owner_id'>) => Promise<void>;
   onClose: () => void;
 }
 
-export function CustomExerciseSheet({ initialName, onSave, onClose }: Props) {
+export function CustomExerciseSheet({
+  initialName,
+  initial,
+  title = '종목 직접 추가',
+  saveLabel = '저장하고 오늘 기록에 넣기',
+  onSave,
+  onClose,
+}: Props) {
   const { all } = useExercises();
   const [name, setName] = useState(initialName);
-  const [group, setGroup] = useState<MuscleGroup>('core');
-  const [equip, setEquip] = useState<Equipment>('other');
-  const [type, setType] = useState<TrackingType>('weight_reps');
+  const [group, setGroup] = useState<MuscleGroup>(initial?.group ?? 'core');
+  const [equip, setEquip] = useState<Equipment>(initial?.equip ?? 'other');
+  const [type, setType] = useState<TrackingType>(initial?.type ?? 'weight_reps');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -62,9 +82,9 @@ export function CustomExerciseSheet({ initialName, onSave, onClose }: Props) {
   return (
     <>
       <div className="gp-overlay" onClick={onClose} />
-      <div className="gp-sheet" role="dialog" aria-label="종목 직접 추가">
+      <div className="gp-sheet" role="dialog" aria-label={title}>
         <div className="gp-grab" />
-        <span className="gp-custom__title">종목 직접 추가</span>
+        <span className="gp-custom__title">{title}</span>
 
         <div className="gp-field">
           <span className="gp-field__label">이름</span>
@@ -136,7 +156,7 @@ export function CustomExerciseSheet({ initialName, onSave, onClose }: Props) {
           disabled={!trimmed || saving}
           onClick={() => void save()}
         >
-          {saving ? '저장하는 중…' : '저장하고 오늘 기록에 넣기'}
+          {saving ? '저장하는 중…' : saveLabel}
         </button>
       </div>
     </>

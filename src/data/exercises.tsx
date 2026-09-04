@@ -10,6 +10,10 @@ interface ExercisesValue {
   reload: () => void;
   /** 직접 추가한 종목을 다시 불러오지 않고 목록에 끼워 넣는다 */
   addLocal: (ex: Exercise) => void;
+  /** 내 종목 관리에서 고친 값을 반영한다 (숨김 처리도 이 경로) */
+  updateLocal: (ex: Exercise) => void;
+  /** 내 종목 관리에서 지운 종목을 목록에서 뺀다 */
+  removeLocal: (id: string) => void;
 }
 
 const Ctx = createContext<ExercisesValue | null>(null);
@@ -53,6 +57,14 @@ export function ExercisesProvider({ children }: { children: React.ReactNode }) {
     setAll((prev) => [...prev, ex].sort((a, b) => a.name.localeCompare(b.name, 'ko')));
   }, []);
 
+  const updateLocal = useCallback((ex: Exercise) => {
+    setAll((prev) => prev.map((e) => (e.id === ex.id ? ex : e)));
+  }, []);
+
+  const removeLocal = useCallback((id: string) => {
+    setAll((prev) => prev.filter((e) => e.id !== id));
+  }, []);
+
   const value = useMemo<ExercisesValue>(
     () => ({
       all,
@@ -61,8 +73,10 @@ export function ExercisesProvider({ children }: { children: React.ReactNode }) {
       error,
       reload,
       addLocal,
+      updateLocal,
+      removeLocal,
     }),
-    [all, loading, error, reload, addLocal],
+    [all, loading, error, reload, addLocal, updateLocal, removeLocal],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

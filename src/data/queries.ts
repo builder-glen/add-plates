@@ -1,6 +1,7 @@
 import { requireSupabase } from '../lib/supabase';
 import { diffDays, fmtShort } from '../lib/date';
 import type {
+  BodyMeasurement,
   DayEntry,
   DaySession,
   Equipment,
@@ -310,4 +311,86 @@ export async function insertExercise(row: NewExercise): Promise<Exercise> {
 
   if (error) throw error;
   return data as Exercise;
+}
+
+// ── 프로필 / 신체 측정 ───────────────────────────────────
+
+const MEASUREMENT_COLS = 'id, user_id, measured_at, weight_kg, skeletal_muscle_kg, body_fat_pct';
+
+/** 키. 아직 프로필 행이 없으면 null */
+export async function fetchHeightCm(): Promise<number | null> {
+  const { data, error } = await requireSupabase()
+    .from('profiles')
+    .select('height_cm')
+    .maybeSingle();
+
+  if (error) throw error;
+  return (data as { height_cm: number | null } | null)?.height_cm ?? null;
+}
+
+/** 프로필 행이 없을 수도 있어 upsert 다 (기본키 user_id 로 합쳐진다) */
+export async function upsertHeightCm(userId: string, heightCm: number): Promise<void> {
+  const { error } = await requireSupabase()
+    .from('profiles')
+    .upsert({ user_id: userId, height_cm: heightCm });
+  if (error) throw error;
+}
+
+/** 측정 이력 전체를 최신순으로 */
+export async function fetchMeasurements(): Promise<BodyMeasurement[]> {
+  const { data, error } = await requireSupabase()
+    .from('body_measurements')
+    .select(MEASUREMENT_COLS)
+    .order('measured_at', { ascending: false });
+
+  if (error) throw error;
+  return (data ?? []) as BodyMeasurement[];
+}
+
+export async function insertMeasurement(row: BodyMeasurement): Promise<void> {
+  const { error } = await requireSupabase().from('body_measurements').insert(row);
+  if (error) throw error;
+}
+
+export async function deleteMeasurement(id: string): Promise<void> {
+  const { error } = await requireSupabase().from('body_measurements').delete().eq('id', id);
+  if (error) throw error;
+}
+
+// ── 내 종목 관리 ─────────────────────────────────────────
+
+/** 준 종목 중 기록에 이미 쓰인 것. RLS 가 내 세션의 항목만 돌려준다 */
+export async function fetchUsedExerciseIds(ids: string[]): Promise<Set<string>> {
+  if (!ids.length) return new Set();
+  const { data, error } = await requireSupabase()
+    .from('workout_entries')
+    .select('exercise_id')
+    .in('exercise_id', ids);
+
+  if (error) throw error;
+  return new Set(((data ?? []) as { exercise_id: string }[]).map((r) => r.exercise_id));
+}
+
+export type ExercisePatch = Pick<
+  NewExercise,
+  'name' | 'chosung' | 'muscle_group' | 'equipment' | 'tracking_type'
+>;
+
+export async function updateExercise(id: string, patch: ExercisePatch): Promise<void> {
+  const { error } = await requireSupabase().from('exercises').update(patch).eq('id', id);
+  if (error) throw error;
+}
+
+export async function deleteExercise(id: string): Promise<void> {
+  const { error } = await requireSupabase().from('exercises').delete().eq('id', id);
+  if (error) throw error;
+}
+
+/** 기록에 쓰인 종목은 지우는 대신 숨긴다 — 지난 기록은 그대로 남는다 (PRD F-07) */
+export async function setExerciseHidden(id: string, hidden: boolean): Promise<void> {
+  const { error } = await requireSupabase()
+    .from('exercises')
+    .update({ is_hidden: hidden })
+    .eq('id', id);
+  if (error) throw error;
 }

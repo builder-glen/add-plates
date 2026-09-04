@@ -119,3 +119,39 @@ export function PencilIcon({ size = 19 }: IconProps) {
     </svg>
   );
 }
+
+export function XIcon({ size = 14 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <path d="M6.4 6.4l11.2 11.2M17.6 6.4L6.4 17.6" />
+    </svg>
+  );
+}
+
+/** 자 — 키 입력 행 */
+export function RulerIcon({ size = 17 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 3.4v17.2M8.6 5.6 12 3.4l3.4 2.2M8.6 18.4 12 20.6l3.4-2.2M6 9h12M6 12h12M6 15h12" />
+    </svg>
+  );
+}

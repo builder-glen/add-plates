@@ -1,0 +1,517 @@
+/* 화면 6·7 — 설정 / 내 정보 / 내 종목 */
+/* .gp-field, .gp-input, .gp-custom__title, .gp-custom__save, .gp-opt 은 picker.css 의 폼 스타일을 그대로 쓴다 */
+
+/* ── 화면 셸 ──
+   홈 위에 덮는 층. 홈을 언마운트하지 않아 돌아왔을 때 보던 날짜와 기록이 그대로 남는다.
+   스낵바(z 30)까지 덮어야 해서 z-index 는 그보다 위다. */
+.gp-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.gp-screen__head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 20px 14px;
+}
+
+.gp-screen__back {
+  flex: none;
+  color: var(--ink2);
+  font-size: 20px;
+  line-height: 1;
+  /* 아이콘 글리프가 작아 터치 타깃을 따로 벌린다 */
+  width: 28px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  margin-left: -6px;
+}
+
+.gp-screen__title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.gp-screen__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 설정 ── */
+.gp-cfg {
+  gap: 22px;
+  padding: 0 20px calc(26px + env(safe-area-inset-bottom));
+}
+
+.gp-cfg__profile {
+  flex: none;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: var(--r-card-sm);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform var(--d-tap) var(--ease-enter);
+}
+.gp-cfg__profile:active {
+  transform: scale(0.98);
+}
+
+.gp-cfg__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  flex: none;
+}
+
+.gp-cfg__profileText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.gp-cfg__profileName {
+  font-weight: 650;
+  font-size: 15px;
+}
+
+.gp-cfg__profileSummary {
+  font-size: 12px;
+  color: var(--ink3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gp-cfg__chev {
+  margin-left: auto;
+  color: var(--ink3);
+  flex: none;
+}
+
+.gp-cfg__section {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.gp-cfg__label {
+  padding-bottom: 6px;
+}
+
+.gp-cfg__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  color: var(--ink);
+  padding: 14px 2px;
+  font-size: 15px;
+}
+/* 섹션 안 마지막 행에는 구분선을 두지 않는다 */
+.gp-cfg__row:not(:last-child) {
+  border-bottom: 1px solid var(--line2);
+}
+
+.gp-cfg__value {
+  color: var(--ink3);
+  flex: none;
+}
+
+.gp-cfg__account {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 22px;
+}
+
+.gp-cfg__mail {
+  font-size: 12px;
+  color: var(--ink3);
+  word-break: break-all;
+}
+
+.gp-cfg__logout {
+  text-align: left;
+  border-top: 1px solid var(--line2);
+  padding: 14px 2px;
+  color: var(--warn);
+}
+
+/* ── 내 정보 ── */
+.gp-me {
+  gap: 18px;
+  padding: 0 20px calc(24px + env(safe-area-inset-bottom));
+}
+
+.gp-me__cur {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.gp-me__curW {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.gp-me__curUnit {
+  color: var(--ink2);
+  padding-bottom: 6px;
+}
+
+.gp-me__curDelta {
+  margin-left: auto;
+  font-size: 12.5px;
+  padding-bottom: 7px;
+}
+
+/* 증감 색: 좋아진 쪽만 악센트 */
+.gp-me__delta--good {
+  color: var(--accent);
+}
+.gp-me__delta--flat {
+  color: var(--ink2);
+}
+.gp-me__delta--none {
+  color: var(--ink3);
+}
+
+.gp-me__chart {
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: var(--r-card-sm);
+  background: var(--surface);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gp-me__chartHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.gp-me__chartRange {
+  font-size: 11.5px;
+  color: var(--ink3);
+}
+
+.gp-me__cards {
+  flex: none;
+  display: flex;
+  gap: 10px;
+}
+
+.gp-me__card {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-field);
+  background: var(--surface);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.gp-me__cardLabel {
+  font-size: 11.5px;
+  color: var(--ink3);
+}
+
+.gp-me__cardValue {
+  font-size: 19px;
+  font-weight: 650;
+}
+
+.gp-me__card .gp-me__delta,
+.gp-me__row .gp-me__delta {
+  font-size: 12px;
+}
+
+.gp-me__section {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.gp-me__row {
+  display: grid;
+  grid-template-columns: 42px 1fr auto 26px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 2px;
+  border-bottom: 1px solid var(--line2);
+}
+
+.gp-me__date {
+  font-size: 12px;
+  color: var(--ink3);
+}
+
+.gp-me__body {
+  font-size: 14px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gp-me__row .gp-me__delta {
+  font-size: 12.5px;
+}
+
+.gp-me__del {
+  color: var(--ink3);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.gp-me__del:active {
+  transform: scale(0.9);
+}
+
+.gp-me__height {
+  flex: none;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: var(--r-field);
+  padding: 13px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* 키가 없으면 눈에 띄게 — 한 번만 넣으면 되는 값이다 */
+.gp-me__height--empty {
+  border-color: transparent;
+  background: var(--accent-soft);
+}
+.gp-me__height svg {
+  flex: none;
+  color: var(--ink3);
+}
+
+.gp-me__heightText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.gp-me__heightLabel {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gp-me__heightHint {
+  font-size: 11.5px;
+  color: var(--ink3);
+}
+
+.gp-me__add {
+  flex: none;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 15px;
+  padding: 14px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  transition: transform var(--d-tap) var(--ease-enter);
+}
+.gp-me__add:active {
+  transform: scale(0.98);
+}
+
+/* ── 내 종목 ── */
+.gp-mine {
+  gap: 0;
+  padding: 0 20px calc(24px + env(safe-area-inset-bottom));
+}
+
+.gp-mine__row {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 2px;
+  border-bottom: 1px solid var(--line2);
+}
+
+.gp-mine__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+
+.gp-mine__name {
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gp-mine__meta {
+  font-size: 12px;
+  color: var(--ink3);
+}
+
+.gp-mine__act {
+  color: var(--ink2);
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  border-radius: 9px;
+  flex: none;
+}
+.gp-mine__act:active {
+  transform: scale(0.92);
+}
+
+/* ── 측정 / 키 / 선택 시트 ──
+   번들에서 global.css 가 뒤에 실린다 — 클래스를 겹쳐 .gp-sheet 기본값을 확실히 이긴다 */
+.gp-sheet.gp-sheet--meas {
+  background: var(--bg);
+  border-top: none;
+  gap: 13px;
+  padding: 16px 18px calc(22px + env(safe-area-inset-bottom));
+  box-shadow: 0 -14px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* 체중·키는 크게 — 이 시트에서 제일 중요한 한 칸 */
+.gp-input--big {
+  font-weight: 650;
+  font-size: 20px;
+  line-height: 1.1;
+  padding: 14px;
+}
+
+.gp-meas__row {
+  display: flex;
+  gap: 8px;
+}
+.gp-meas__row > .gp-field {
+  flex: 1;
+  min-width: 0;
+}
+
+.gp-meas__actions {
+  display: flex;
+  gap: 8px;
+}
+.gp-meas__actions > .gp-custom__save {
+  flex: 1;
+}
+
+.gp-meas__cancel {
+  flex: none;
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--ink);
+  border-radius: 15px;
+  padding: 15px 18px;
+  font-weight: 500;
+  font-size: 14.5px;
+  line-height: 1;
+}
+
+/* ── confirm 다이얼로그 ── */
+/* global.css 가 번들 뒤에 실린다 — 클래스를 겹쳐 .gp-overlay 의 기본 농도를 이긴다 */
+.gp-overlay.gp-overlay--dialog {
+  background: rgba(12, 12, 10, 0.34);
+}
+
+.gp-confirm {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 22;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  animation: gpFadeIn 200ms ease;
+}
+
+.gp-confirm__title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.gp-confirm__body {
+  font-size: 13.5px;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+
+.gp-confirm__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.gp-confirm__cancel {
+  flex: 1;
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--ink);
+  border-radius: var(--r-btn);
+  padding: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.gp-confirm__ok {
+  flex: 1;
+  background: var(--warn);
+  color: #fff;
+  border-radius: var(--r-btn);
+  padding: 13px;
+  font-weight: 650;
+  font-size: 14px;
+  line-height: 1;
+}

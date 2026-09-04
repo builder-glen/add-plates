@@ -81,3 +81,8 @@ export function fmtTime(iso: string): string {
   const d = new Date(iso);
   return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
+
+/** timestamptz -> '9/1' */
+export function fmtShortIso(iso: string): string {
+  return fmtShort(toKey(new Date(iso)));
+}
