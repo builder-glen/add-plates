@@ -8,10 +8,11 @@ import {
   searchExercises,
   type PickerFilter,
 } from '../../data/search';
-import { EQUIP_LABEL, MUSCLE_LABEL, SUB_LABEL } from '../../lib/labels';
+import { EQUIP_LABEL, MUSCLE_HUE, MUSCLE_LABEL, SUB_LABEL } from '../../lib/labels';
 import { useDragScroll } from '../../lib/useDragScroll';
 import { useSheetDrag } from '../../lib/useSheetDrag';
 import type { Equipment, Exercise, MuscleGroup, SubRegion } from '../../lib/types';
+import { ExerciseArtModal } from './ExerciseArtModal';
 import '../../styles/picker.css';
 
 const GROUPS = Object.keys(MUSCLE_LABEL) as MuscleGroup[];
@@ -35,6 +36,8 @@ export function PickerSheet({ onPick, onCustom, onClose }: Props) {
   const [filter, setFilter] = useState<PickerFilter>(EMPTY_FILTER);
   const [recent, setRecent] = useState<RecentState>({ status: 'loading', ids: [] });
   const [reload, setReload] = useState(0);
+  /** 썸네일을 눌러 크게 보는 중인 종목 */
+  const [art, setArt] = useState<Exercise | null>(null);
 
   const drag = useDragScroll();
   const sheet = useSheetDrag(onClose);
@@ -210,16 +213,40 @@ export function PickerSheet({ onPick, onCustom, onClose }: Props) {
           {results.map((ex) => {
             const sub = ex.sub_region ? SUB_LABEL[ex.sub_region] : null;
             return (
-              <button key={ex.id} type="button" className="gp-res" onClick={() => onPick(ex)}>
-                <span className="gp-res__thumb" />
-                <span className="gp-res__text">
-                  <span className="gp-res__name">{ex.name}</span>
-                  <span className="gp-res__desc">
-                    {[MUSCLE_LABEL[ex.muscle_group], sub].filter(Boolean).join(' · ')}
+              <div key={ex.id} className="gp-res">
+                {/* 그림이 있는 행만 썸네일을 형제 버튼으로 뺀다 — 여기를 누르면 확대 모달,
+                    나머지 전부를 누르면 기존대로 종목 선택. 버튼 중첩이 아니라 형제라
+                    탭이 행 선택으로 새지 않는다 */}
+                {ex.asset_slug ? (
+                  <button
+                    type="button"
+                    className="gp-res__thumb gp-res__thumb--art"
+                    aria-label={`${ex.name} 동작 그림 크게 보기`}
+                    style={{ ['--thumb-art' as string]: `url("/exercises/${ex.asset_slug}.svg")` }}
+                    onClick={() => setArt(ex)}
+                  />
+                ) : null}
+                <button type="button" className="gp-res__pick" onClick={() => onPick(ex)}>
+                  {/* 그림 없는 25개의 폴백 타일. 보여줄 게 없으니 모달을 열지 않고,
+                      선택 버튼 안에 둬서 눌러도 종목 선택으로 이어지게 한다 */}
+                  {ex.asset_slug ? null : (
+                    <span
+                      className="gp-res__thumb gp-res__thumb--mono"
+                      aria-hidden="true"
+                      style={{ ['--chip-h' as string]: String(MUSCLE_HUE[ex.muscle_group]) }}
+                    >
+                      {MUSCLE_LABEL[ex.muscle_group].slice(0, 1)}
+                    </span>
+                  )}
+                  <span className="gp-res__text">
+                    <span className="gp-res__name">{ex.name}</span>
+                    <span className="gp-res__desc">
+                      {[MUSCLE_LABEL[ex.muscle_group], sub].filter(Boolean).join(' · ')}
+                    </span>
                   </span>
-                </span>
-                <span className="gp-res__meta">{EQUIP_LABEL[ex.equipment]}</span>
-              </button>
+                  <span className="gp-res__meta">{EQUIP_LABEL[ex.equipment]}</span>
+                </button>
+              </div>
             );
           })}
 
@@ -248,6 +275,9 @@ export function PickerSheet({ onPick, onCustom, onClose }: Props) {
           ) : null}
         </div>
       </div>
+
+      {/* 시트의 형제로 둔다 — 시트(z 21) 안에 넣으면 시트 높이에 잘린다 */}
+      {art ? <ExerciseArtModal exercise={art} onClose={() => setArt(null)} /> : null}
     </>
   );
 }

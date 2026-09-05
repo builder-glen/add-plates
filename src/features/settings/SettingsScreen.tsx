@@ -99,6 +99,18 @@ export function SettingsScreen({
           <button type="button" className="gp-cfg__logout" onClick={() => void signOut()}>
             로그아웃
           </button>
+          {/* CC BY-SA 4.0 은 출처 표기가 의무다 */}
+          <p className="gp-cfg__credit">
+            운동 일러스트: Everkinetic · Bryl Lim (
+            <a
+              href="https://creativecommons.org/licenses/by-sa/4.0/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              CC BY-SA 4.0
+            </a>
+            )
+          </p>
         </div>
       </div>
 
