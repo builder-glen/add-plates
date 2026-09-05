@@ -159,6 +159,16 @@
   color: var(--warn);
 }
 
+.gp-cfg__credit {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink3);
+}
+.gp-cfg__credit a {
+  color: inherit;
+}
+
 /* ── 내 정보 ── */
 .gp-me {
   gap: 18px;

@@ -12,3 +12,6 @@ dist-ssr
 # 작업 자료 — 배포에 불필요하고 개인 조사 기록이다
 docs/research/
 design/
+
+# 에셋 원본 클론 자리 (scripts/build_assets.py)
+.cache/
