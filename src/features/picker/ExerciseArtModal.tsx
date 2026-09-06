@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { EQUIP_LABEL, MUSCLE_LABEL, SUB_LABEL } from '../../lib/labels';
 import type { Exercise } from '../../lib/types';
 
@@ -57,7 +58,11 @@ export function ExerciseArtModal({ exercise, onClose }: Props) {
     .filter(Boolean)
     .join(' · ');
 
-  return (
+  // 앱 루트에 붙인다. 카드 안에서 열면 카드가 position:relative + overflow:hidden
+  // 이라 absolute 배치가 카드 기준이 되어 화면이 아니라 카드에 갇힌다.
+  const root = document.querySelector('.gp-app') ?? document.body;
+
+  return createPortal(
     <>
       <div className="gp-overlay gp-overlay--art" onClick={onClose} />
       <div
@@ -95,6 +100,7 @@ export function ExerciseArtModal({ exercise, onClose }: Props) {
           ✕
         </button>
       </div>
-    </>
+    </>,
+    root,
   );
 }
