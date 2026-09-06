@@ -469,10 +469,22 @@
   0% { transform: scale(1.03); }
   100% { transform: scale(1); }
 }
+/* 링은 행 경계에서 시작해 사방으로 같은 픽셀만큼 퍼진다.
+   scale 을 쓰면 배율이라 넓은 행에서 가로만 크게 줄어들어,
+   행과 무관한 고정 크기 상자가 커지는 것처럼 보인다.
+   모서리 반경도 함께 키워야 곡률이 유지된다. */
 @keyframes gpSetRing {
-  0% { opacity: 1; transform: scale(0.88); border-color: var(--accent); }
-  60% { opacity: 0.7; }
-  100% { opacity: 0; transform: scale(1.04); border-color: var(--accent); }
+  0% {
+    opacity: 1;
+    top: 0; right: 0; bottom: 0; left: 0;
+    border-radius: 10px;
+  }
+  55% { opacity: 0.5; }
+  100% {
+    opacity: 0;
+    top: -6px; right: -6px; bottom: -6px; left: -6px;
+    border-radius: 16px;
+  }
 }
 @keyframes gpSetSpark {
   0% { opacity: 1; transform: scale(0.12); }
@@ -483,9 +495,12 @@
 .gp-set--lock::before {
   content: '';
   position: absolute;
-  inset: 1px 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: -1;
-  border: 1.5px solid transparent;
+  border: 1.5px solid var(--accent);
   border-radius: 10px;
   opacity: 0;
 }
