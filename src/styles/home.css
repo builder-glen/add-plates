@@ -420,18 +420,29 @@
    한 박자짜리는 밋밋해서 예비 동작을 앞에 뒀다.
    링과 스파크를 70ms 겹쳐 두 번이 아니라 한 번으로 읽히게 한다. */
 .gp-reel {
+  position: relative;
   display: inline-block;
   height: 1.35em;
   overflow: hidden;
   vertical-align: -0.32em;
 }
+/* 폭만 잡는 유령 글자. 릴 폭이 진짜 값에 고정되므로
+   가짜 숫자가 더 길어도 단위 앞에 빈 공간이 남지 않는다. */
+.gp-reel__w {
+  visibility: hidden;
+}
 .gp-reel__strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
 }
 .gp-reel__cell {
   height: 1.35em;
   line-height: 1.35em;
+  white-space: nowrap;
 }
 
 .gp-set__fx {

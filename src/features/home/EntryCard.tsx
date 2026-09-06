@@ -25,6 +25,10 @@ function reelPool(id: string, final: number, step: number): number[] {
 function Reel({ id, value, step }: { id: string; value: number; step: number }) {
   return (
     <span className="gp-reel">
+      {/* 폭을 진짜 값으로 고정한다. 안 하면 릴 상자가 가장 넓은 가짜 숫자
+          (70 인데 92.5 같은)에 맞춰져, 굴러 멈춘 뒤 남은 폭이 단위 앞
+          공백처럼 보인다. */}
+      <span className="gp-reel__w">{fmtWeight(value)}</span>
       {/* 진짜 값이 맨 앞이다. transform 이 없는 기본 위치가 곧 정답이라
           애니메이션이 끊겨도 틀린 숫자가 남지 않는다. */}
       <span className="gp-reel__strip">
