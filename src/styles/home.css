@@ -411,6 +411,87 @@
   border-radius: 10px;
 }
 
+/* 세트를 담으면 그 행이 한 번 차올랐다 빠진다 — "슬롯에 들어갔다"를 읽게 한다.
+   background/border-radius 만 움직여 행 높이와 아래 행들의 위치는 그대로 둔다.
+   커브는 로그인 글자 락인(gpFlash)과 같은 것을 쓴다.
+   prefers-reduced-motion 은 global.css 가 전역으로 지속시간을 없애 최종 상태만 남긴다 */
+/* ── 세트 확정 연출 ──────────────────────────────────
+   롤(예비) → 락인 + 도장 링(임팩트) → 스파크(마무리) 4단계.
+   한 박자짜리는 밋밋해서 예비 동작을 앞에 뒀다.
+   링과 스파크를 70ms 겹쳐 두 번이 아니라 한 번으로 읽히게 한다. */
+.gp-reel {
+  display: inline-block;
+  height: 1.35em;
+  overflow: hidden;
+  vertical-align: -0.32em;
+}
+.gp-reel__strip {
+  display: flex;
+  flex-direction: column;
+}
+.gp-reel__cell {
+  height: 1.35em;
+  line-height: 1.35em;
+}
+
+.gp-set__fx {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  width: 3px;
+  height: 3px;
+  margin: -1.5px 0 0 -1.5px;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow:
+    -46px -13px 0 0 var(--accent), 46px -13px 0 0 var(--accent),
+    -80px 3px 0 0 var(--accent), 80px 3px 0 0 var(--accent),
+    -26px 15px 0 0 var(--accent), 26px 15px 0 0 var(--accent),
+    -112px -5px 0 0 var(--accent), 112px -5px 0 0 var(--accent),
+    -62px 17px 0 0 var(--accent), 62px 17px 0 0 var(--accent);
+}
+
+@keyframes gpSetRoll {
+  0% { transform: translateY(-75%); }
+  100% { transform: translateY(0); }
+}
+@keyframes gpSetLock {
+  0% { color: var(--accent); }
+  100% { color: var(--ink); }
+}
+@keyframes gpSetPress {
+  0% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+@keyframes gpSetRing {
+  0% { opacity: 1; transform: scale(0.88); border-color: var(--accent); }
+  60% { opacity: 0.7; }
+  100% { opacity: 0; transform: scale(1.04); border-color: var(--accent); }
+}
+@keyframes gpSetSpark {
+  0% { opacity: 1; transform: scale(0.12); }
+  100% { opacity: 0; transform: scale(1.55); }
+}
+
+.gp-set--lock { position: relative; isolation: isolate; }
+.gp-set--lock::before {
+  content: '';
+  position: absolute;
+  inset: 1px 0;
+  z-index: -1;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  opacity: 0;
+}
+.gp-set--lock .gp-reel__strip { animation: gpSetRoll 400ms cubic-bezier(0.16, 0.9, 0.2, 1); }
+.gp-set--lock .gp-set__val:nth-of-type(2) .gp-reel__strip { animation-delay: 80ms; }
+.gp-set--lock .gp-set__val { animation: gpSetLock 420ms ease-out 490ms both; }
+.gp-set--lock { animation: gpSetPress 300ms cubic-bezier(0.2, 0, 0, 1) 490ms both; }
+.gp-set--lock::before { animation: gpSetRing 440ms cubic-bezier(0.2, 0, 0, 1) 490ms both; }
+.gp-set--lock .gp-set__fx { animation: gpSetSpark 460ms cubic-bezier(0.16, 0.9, 0.2, 1) 560ms both; }
+
 .gp-set__no {
   font-size: 11.5px;
   color: var(--ink3);
