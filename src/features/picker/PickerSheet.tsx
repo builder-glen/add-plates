@@ -12,6 +12,7 @@ import { EQUIP_LABEL, MUSCLE_HUE, MUSCLE_LABEL, SUB_LABEL } from '../../lib/labe
 import { useDragScroll } from '../../lib/useDragScroll';
 import { useSheetDrag } from '../../lib/useSheetDrag';
 import type { Equipment, Exercise, MuscleGroup, SubRegion } from '../../lib/types';
+import { XIcon } from '../home/icons';
 import { ExerciseArtModal } from './ExerciseArtModal';
 import '../../styles/picker.css';
 
@@ -118,22 +119,24 @@ export function PickerSheet({ onPick, onCustom, onClose }: Props) {
           <div className="gp-grab" {...sheet.handle} />
 
           <div className="gp-search">
-            <span className="gp-search__label">찾기</span>
             <input
               className="gp-search__input"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="종목 이름이나 초성"
+              placeholder="종목명 또는 초성검색, 없는 운동명 입력 시 수동입력"
               aria-label="종목 검색"
             />
-            <button
-              type="button"
-              className="gp-search__clear"
-              aria-label="검색어 지우기"
-              onClick={() => setQuery('')}
-            >
-              ✕
-            </button>
+            {/* 지울 게 있을 때만 나온다. 빈 입력에 지우기 버튼은 누를 이유가 없다 */}
+            {query ? (
+              <button
+                type="button"
+                className="gp-search__clear"
+                aria-label="검색어 지우기"
+                onClick={() => setQuery('')}
+              >
+                <XIcon size={13} />
+              </button>
+            ) : null}
           </div>
 
           <div className="gp-filters">
@@ -154,7 +157,7 @@ export function PickerSheet({ onPick, onCustom, onClose }: Props) {
                     className={`gp-fchip${filter.group === g ? ' gp-fchip--on' : ''}`}
                     onClick={() => pickGroup(g)}
                   >
-                    {filter.group === g ? `${MUSCLE_LABEL[g]} ✕` : MUSCLE_LABEL[g]}
+                    {MUSCLE_LABEL[g]}
                   </button>
                 ))}
               </div>

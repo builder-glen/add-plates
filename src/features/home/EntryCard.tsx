@@ -167,6 +167,24 @@ export function EntryCard({
             <ChevronIcon />
           </button>
 
+          {/* 종목 썸네일. 시트에서 고를 때 본 그림이 카드에도 그대로 있어야
+              같은 종목이라는 게 바로 읽힌다. 여기서는 장식이라 버튼이 아니다 */}
+          {ex.asset_slug ? (
+            <span
+              className="gp-entry__thumb"
+              aria-hidden="true"
+              style={{ ['--thumb-art' as string]: `url("/exercises/${ex.asset_slug}.svg")` }}
+            />
+          ) : (
+            <span
+              className="gp-entry__thumb gp-entry__thumb--mono"
+              aria-hidden="true"
+              style={{ ['--chip-h' as string]: String(hue) }}
+            >
+              {MUSCLE_LABEL[ex.muscle_group].slice(0, 1)}
+            </span>
+          )}
+
           <button type="button" className="gp-entry__title" onClick={handleToggle}>
             <span className="gp-entry__name">{ex.name}</span>
             <span className="gp-chips">

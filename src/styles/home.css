@@ -303,6 +303,50 @@
   transform: rotate(0deg);
 }
 
+/* 종목 썸네일. 시트 결과 행(44px)보다 작게 잡았다 —
+   카드에서는 종목명이 주인공이고 그림은 식별을 돕는 역할이다. */
+.gp-entry__thumb {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* 원본이 흰 실루엣이라 <img> 로 넣으면 파일 안의 currentColor 가
+   앱 테마를 따라오지 못한다 → 마스크로 깔고 색은 토큰이 정한다 */
+.gp-entry__thumb:not(.gp-entry__thumb--mono)::before {
+  content: '';
+  width: 31px;
+  height: 31px;
+  background: var(--ink2);
+  -webkit-mask: var(--thumb-art) center / contain no-repeat;
+  mask: var(--thumb-art) center / contain no-repeat;
+}
+/* 그림 없는 종목(대부분 머신)의 폴백. 시트와 같은 부위 hue 를 쓴다 */
+.gp-entry__thumb--mono {
+  border-color: transparent;
+  background: oklch(0.95 0.045 var(--chip-h));
+  color: oklch(0.42 0.1 var(--chip-h));
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+[data-theme='dark'] .gp-entry__thumb--mono {
+  background: oklch(0.3 0.06 var(--chip-h));
+  color: oklch(0.86 0.09 var(--chip-h));
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme='auto'] .gp-entry__thumb--mono {
+    background: oklch(0.3 0.06 var(--chip-h));
+    color: oklch(0.86 0.09 var(--chip-h));
+  }
+}
+
 .gp-entry__title {
   flex: 1;
   display: flex;
@@ -364,7 +408,8 @@
 }
 
 .gp-entry__summary {
-  padding: 0 14px 14px 47px;
+  /* 캐럿(28) + gap(9) + 썸네일(36) + gap(9) + 좌패딩(12) = 94 */
+  padding: 0 14px 14px 94px;
   display: flex;
   align-items: baseline;
   gap: 8px;
