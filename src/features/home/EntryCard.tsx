@@ -3,6 +3,7 @@ import type { DayEntry, DaySet } from '../../lib/types';
 import { EQUIP_LABEL, MUSCLE_HUE, MUSCLE_LABEL, SUB_LABEL } from '../../lib/labels';
 import { fmtWeight, summarizeSets } from '../../data/queries';
 import { ChevronIcon, TrashIcon, XIcon } from './icons';
+import { ExerciseArtModal } from '../picker/ExerciseArtModal';
 
 const OPEN_X = -88; // 삭제 패널 폭
 const MAX_X = -104;
@@ -71,6 +72,7 @@ export function EntryCard({
   onDeleteSet,
 }: Props) {
   const [dx, setDx] = useState<number | null>(null);
+  const [artOpen, setArtOpen] = useState(false);
   const start = useRef<{ x: number; y: number; base: number } | null>(null);
 
   const ex = entry.exercise;
@@ -168,12 +170,18 @@ export function EntryCard({
           </button>
 
           {/* 종목 썸네일. 시트에서 고를 때 본 그림이 카드에도 그대로 있어야
-              같은 종목이라는 게 바로 읽힌다. 여기서는 장식이라 버튼이 아니다 */}
+              같은 종목이라는 게 바로 읽힌다. 그림이 있으면 눌러서 크게 본다 */}
           {ex.asset_slug ? (
-            <span
+            <button
+              type="button"
               className="gp-entry__thumb"
-              aria-hidden="true"
+              aria-label={`${ex.name} 동작 그림 크게 보기`}
               style={{ ['--thumb-art' as string]: `url("/exercises/${ex.asset_slug}.svg")` }}
+              onClick={(e) => {
+                // 카드를 누르면 펼침이 토글된다. 그림 보기는 거기까지 번지면 안 된다
+                e.stopPropagation();
+                setArtOpen(true);
+              }}
             />
           ) : (
             <span
@@ -314,6 +322,8 @@ export function EntryCard({
           </div>
         )}
       </div>
+
+      {artOpen ? <ExerciseArtModal exercise={ex} onClose={() => setArtOpen(false)} /> : null}
     </div>
   );
 }

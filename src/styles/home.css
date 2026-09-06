@@ -279,13 +279,16 @@
 
 .gp-entry__head {
   display: flex;
-  align-items: center;
+  /* 썸네일이 제목+칩 높이를 따라가야 해서 stretch 다.
+     높이를 스스로 정해야 하는 캐럿·세트 수는 각자 align-self 로 가운데 맞춘다. */
+  align-items: stretch;
   gap: 9px;
   padding: 12px 12px 11px;
 }
 
 .gp-caret {
   flex: none;
+  align-self: center;
   width: 28px;
   height: 28px;
   display: flex;
@@ -307,9 +310,13 @@
    카드에서는 종목명이 주인공이고 그림은 식별을 돕는 역할이다. */
 .gp-entry__thumb {
   flex: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 9px;
+  /* 높이를 제목+칩 블록에 맞춘다. 고정값이면 종목명이 두 줄이 될 때
+     따라가지 못한다. 정사각형을 유지하려고 폭은 aspect-ratio 로 잡는다. */
+  align-self: stretch;
+  aspect-ratio: 1;
+  width: auto;
+  min-height: 36px;
+  border-radius: 10px;
   border: 1px solid var(--line);
   background: var(--surface2);
   display: flex;
@@ -321,13 +328,21 @@
    앱 테마를 따라오지 못한다 → 마스크로 깔고 색은 토큰이 정한다 */
 .gp-entry__thumb:not(.gp-entry__thumb--mono)::before {
   content: '';
-  width: 31px;
-  height: 31px;
+  width: 86%;
+  height: 86%;
   background: var(--ink2);
   -webkit-mask: var(--thumb-art) center / contain no-repeat;
   mask: var(--thumb-art) center / contain no-repeat;
 }
 /* 그림 없는 종목(대부분 머신)의 폴백. 시트와 같은 부위 hue 를 쓴다 */
+/* 그림이 있는 썸네일만 버튼이다 — 눌러보면 알게 반응을 준다 */
+.gp-entry__thumb:not(.gp-entry__thumb--mono) {
+  transition: transform var(--d-tap) var(--ease-enter);
+}
+.gp-entry__thumb:not(.gp-entry__thumb--mono):active {
+  transform: scale(0.92);
+}
+
 .gp-entry__thumb--mono {
   border-color: transparent;
   background: oklch(0.95 0.045 var(--chip-h));
@@ -405,11 +420,13 @@
   font-size: 11.5px;
   color: var(--ink3);
   flex: none;
+  align-self: center;
 }
 
 .gp-entry__summary {
-  /* 캐럿(28) + gap(9) + 썸네일(36) + gap(9) + 좌패딩(12) = 94 */
-  padding: 0 14px 14px 94px;
+  /* 썸네일 폭이 내용에 따라 변하므로 고정 들여쓰기를 쓰지 않는다.
+     캐럿(28) + gap(9) + 좌패딩(12) 만큼만 밀어 제목 블록 시작선에 가깝게 둔다 */
+  padding: 0 14px 14px 49px;
   display: flex;
   align-items: baseline;
   gap: 8px;
