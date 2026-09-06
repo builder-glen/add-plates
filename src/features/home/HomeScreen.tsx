@@ -283,6 +283,13 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
               setNo === null ? openNewSet(entry) : openEditSet(entry, setNo)
             }
             onRetrySet={day.retrySet}
+            onDeleteSet={(setId, setNo) => {
+              const res = day.removeSet(entry.id, setId);
+              if (res)
+                show(`${setNo}세트 삭제됨`, () =>
+                  day.restoreSets(entry.id, res.snapshot, res.removed),
+                );
+            }}
           />
         ))}
         <div style={{ height: 4, flex: 'none' }} />

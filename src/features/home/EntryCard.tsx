@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import type { DayEntry, DaySet } from '../../lib/types';
 import { EQUIP_LABEL, MUSCLE_HUE, MUSCLE_LABEL, SUB_LABEL } from '../../lib/labels';
 import { fmtWeight, summarizeSets } from '../../data/queries';
-import { ChevronIcon, TrashIcon } from './icons';
+import { ChevronIcon, TrashIcon, XIcon } from './icons';
 
 const OPEN_X = -88; // 삭제 패널 폭
 const MAX_X = -104;
@@ -50,6 +50,7 @@ interface Props {
   onRepeat: () => void;
   onOpenEditor: (setNo: number | null) => void;
   onRetrySet: (setId: string) => void;
+  onDeleteSet: (setId: string, setNo: number) => void;
 }
 
 export function EntryCard({
@@ -63,6 +64,7 @@ export function EntryCard({
   onRepeat,
   onOpenEditor,
   onRetrySet,
+  onDeleteSet,
 }: Props) {
   const [dx, setDx] = useState<number | null>(null);
   const start = useRef<{ x: number; y: number; base: number } | null>(null);
@@ -251,8 +253,21 @@ export function EntryCard({
                     >
                       재시도
                     </button>
-                  ) : (
-                    <span className="gp-set__state">{s.sync === 'pending' ? '저장 중' : '✓'}</span>
+                  ) : s.sync === 'pending' ? (
+                    <span className="gp-set__state">저장 중</span>
+                  ) : readOnly ? null : (
+                    <button
+                      type="button"
+                      className="gp-set__del"
+                      aria-label={`${s.set_no}세트 삭제`}
+                      onClick={(e) => {
+                        // 행을 누르면 수정이 열린다. 삭제는 거기까지 번지면 안 된다
+                        e.stopPropagation();
+                        onDeleteSet(s.id, s.set_no);
+                      }}
+                    >
+                      <XIcon size={13} />
+                    </button>
                   )}
                   {/* 스파크 입자. box-shadow 로 여러 점을 찍으므로 요소는 이 하나면 된다 */}
                   {lock ? <span className="gp-set__fx" aria-hidden="true" /> : null}
