@@ -8,6 +8,35 @@ const OPEN_X = -88; // 삭제 패널 폭
 const MAX_X = -104;
 const THRESHOLD = -44;
 
+/**
+ * 슬롯 릴에 쓸 가짜 숫자 3개.
+ * 세트 id 로 결정하므로 리렌더가 나도 굴러가는 숫자가 바뀌지 않는다.
+ * 실제 값과 그럴듯하게 붙어 있어야 "굴러서 멈췄다"로 읽힌다.
+ */
+function reelPool(id: string, final: number, step: number): number[] {
+  let h = 0;
+  for (let i = 0; i < id.length; i += 1) h = (h * 31 + id.charCodeAt(i)) >>> 0;
+  return [0, 1, 2].map((i) => {
+    const off = ((h >> (i * 5)) % 7) - 3 || 4; // 0 이면 4 로 밀어 실제 값과 겹치지 않게
+    return Math.max(step, final + off * step);
+  });
+}
+
+function Reel({ id, value, step }: { id: string; value: number; step: number }) {
+  return (
+    <span className="gp-reel">
+      <span className="gp-reel__strip">
+        {reelPool(id, value, step).map((v, i) => (
+          <span className="gp-reel__cell" key={i}>
+            {fmtWeight(v)}
+          </span>
+        ))}
+        <span className="gp-reel__cell">{fmtWeight(value)}</span>
+      </span>
+    </span>
+  );
+}
+
 interface Props {
   entry: DayEntry;
   expanded: boolean;
@@ -55,6 +84,15 @@ export function EntryCard({
 
   const shift = dx !== null ? dx : swiped ? OPEN_X : 0;
   const panelVisible = swiped || (dx !== null && dx < -2);
+
+  /**
+   * 슬롯 연출 대상: "지금 담은" 세트만이다.
+   * 최초 렌더에 이미 있던 세트(불러온 기록)는 담아 둔 것으로 치고 연출하지 않는다.
+   * 연출이 끝난 세트는 onAnimationEnd 에서 목록에 넣어, 접었다 펴도 다시 번쩍이지 않게 한다.
+   */
+  const seenRef = useRef<Set<string> | null>(null);
+  if (seenRef.current === null) seenRef.current = new Set(entry.sets.map((s) => s.id));
+  const seen = seenRef.current;
 
   const onPointerDown = (ev: React.PointerEvent) => {
     if (readOnly) return;
@@ -158,10 +196,17 @@ export function EntryCard({
 
             {entry.sets.map((s) => {
               const failed = s.sync === 'fail';
+              // 실패한 행에는 연출을 걸지 않는다 — 연출 중에 실패가 오면 그 자리에서 멈춘다
+              const lock = !failed && !seen.has(s.id);
               return (
                 <div
                   key={s.id}
-                  className={`gp-set${failed ? ' gp-set--fail' : ''}`}
+                  className={`gp-set${failed ? ' gp-set--fail' : ''}${lock ? ' gp-set--lock' : ''}`}
+                  // 연출이 4단계라 중간 단계가 끝날 때마다 여기가 불린다.
+                  // 마지막 스파크가 끝났을 때만 기록해야 도중에 클래스가 떨어지지 않는다.
+                  onAnimationEnd={(e) => {
+                    if (e.animationName === 'gpSetSpark') seen.add(s.id);
+                  }}
                   role="button"
                   tabIndex={0}
                   onClick={() => !readOnly && onOpenEditor(s.set_no)}
@@ -174,9 +219,25 @@ export function EntryCard({
                 >
                   <span className="gp-set__no gp-num">{s.set_no}</span>
                   <span className="gp-set__val gp-num">
-                    {isBody || s.weight_kg == null ? '맨몸' : `${fmtWeight(s.weight_kg)} kg`}
+                    {isBody || s.weight_kg == null ? (
+                      '맨몸'
+                    ) : lock ? (
+                      <>
+                        <Reel id={`${s.id}w`} value={s.weight_kg} step={2.5} /> kg
+                      </>
+                    ) : (
+                      `${fmtWeight(s.weight_kg)} kg`
+                    )}
                   </span>
-                  <span className="gp-set__val gp-num">{s.reps} 회</span>
+                  <span className="gp-set__val gp-num">
+                    {lock ? (
+                      <>
+                        <Reel id={`${s.id}r`} value={s.reps} step={1} /> 회
+                      </>
+                    ) : (
+                      `${s.reps} 회`
+                    )}
+                  </span>
                   {failed ? (
                     <button
                       type="button"
@@ -191,6 +252,8 @@ export function EntryCard({
                   ) : (
                     <span className="gp-set__state">{s.sync === 'pending' ? '저장 중' : '✓'}</span>
                   )}
+                  {/* 스파크 입자. box-shadow 로 여러 점을 찍으므로 요소는 이 하나면 된다 */}
+                  {lock ? <span className="gp-set__fx" aria-hidden="true" /> : null}
                 </div>
               );
             })}
