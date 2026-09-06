@@ -25,13 +25,15 @@ function reelPool(id: string, final: number, step: number): number[] {
 function Reel({ id, value, step }: { id: string; value: number; step: number }) {
   return (
     <span className="gp-reel">
+      {/* 진짜 값이 맨 앞이다. transform 이 없는 기본 위치가 곧 정답이라
+          애니메이션이 끊겨도 틀린 숫자가 남지 않는다. */}
       <span className="gp-reel__strip">
+        <span className="gp-reel__cell">{fmtWeight(value)}</span>
         {reelPool(id, value, step).map((v, i) => (
           <span className="gp-reel__cell" key={i}>
             {fmtWeight(v)}
           </span>
         ))}
-        <span className="gp-reel__cell">{fmtWeight(value)}</span>
       </span>
     </span>
   );

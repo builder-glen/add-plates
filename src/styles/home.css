@@ -453,6 +453,10 @@
     -62px 17px 0 0 var(--accent), 62px 17px 0 0 var(--accent);
 }
 
+/* 릴은 [진짜, 가짜, 가짜, 가짜] 순서다.
+   진짜 값을 맨 앞에 둬서 transform 이 없는 기본 위치가 곧 정답이 되게 했다.
+   애니메이션이 중간에 끊기거나 CSS 가 안 먹어도 틀린 숫자가 남지 않는다.
+   굴러오는 동안에는 뒤쪽 가짜 칸들이 지나간다. */
 @keyframes gpSetRoll {
   0% { transform: translateY(-75%); }
   100% { transform: translateY(0); }
