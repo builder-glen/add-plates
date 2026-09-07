@@ -1,0 +1,6 @@
+# 모든 크롤러 허용. 공유 링크(/s#...)의 기록은 프래그먼트에 있어
+# 서버로 전송되지 않으므로 색인 대상이 아니다.
+User-agent: *
+Allow: /
+
+Sitemap: https://add-plates.dev/sitemap.xml

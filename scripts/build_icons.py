@@ -39,13 +39,13 @@ def render(size: int, r_out: float, r_in: float) -> bytes:
         rows.append(bytes(row))
     return rows
 
-def write_png(path: pathlib.Path, rows: list[bytes], size: int) -> None:
+def write_png(path: pathlib.Path, rows: list[bytes], size: int, height: int | None = None) -> None:
     raw = b''.join(b'\x00' + r for r in rows)          # 필터 타입 0
     def chunk(tag: bytes, data: bytes) -> bytes:
         return (struct.pack('>I', len(data)) + tag + data
                 + struct.pack('>I', zlib.crc32(tag + data) & 0xFFFFFFFF))
     png = (b'\x89PNG\r\n\x1a\n'
-           + chunk(b'IHDR', struct.pack('>IIBBBBB', size, size, 8, 2, 0, 0, 0))
+           + chunk(b'IHDR', struct.pack('>IIBBBBB', size, height or size, 8, 2, 0, 0, 0))
            + chunk(b'IDAT', zlib.compress(raw, 9))
            + chunk(b'IEND', b''))
     path.write_bytes(png)
@@ -74,3 +74,31 @@ for name, size, geo in [
     '  <circle cx="256" cy="256" r="117.5" fill="none" stroke="#32d583" stroke-width="95"/>\n'
     '</svg>\n', encoding='utf-8')
 print('  icon-maskable.svg')
+
+# ── 링크 미리보기 이미지 ─────────────────────────────
+# 카톡·슬랙 등이 링크를 펼칠 때 쓰는 1200×630 카드.
+# 텍스트는 og:title 이 전달하므로 여기서는 원판만 크게 둔다 —
+# 순수 파이썬으로 한글을 그리려면 폰트 래스터라이저가 필요하고,
+# 그 복잡도를 감수할 만큼 얻는 것이 없다.
+def render_og(w: int, h: int, r_out: float, r_in: float) -> list[bytes]:
+    cx, cy = w / 2, h / 2
+    ro2, ri2 = r_out * r_out, r_in * r_in
+    rows = []
+    for y in range(h):
+        row = bytearray()
+        for x in range(w):
+            hit = 0
+            for sy in range(SS):
+                fy = y + (sy + 0.5) / SS - cy
+                for sx in range(SS):
+                    fx = x + (sx + 0.5) / SS - cx
+                    d2 = fx * fx + fy * fy
+                    if ri2 <= d2 <= ro2:
+                        hit += 1
+            a = hit / (SS * SS)
+            row += bytes(round(BG[i] + (FG[i] - BG[i]) * a) for i in range(3))
+        rows.append(bytes(row))
+    return rows
+
+write_png(PUB / 'og.png', render_og(1200, 630, 168, 72), 1200, 630)
+print('  og.png                     1200x630')
