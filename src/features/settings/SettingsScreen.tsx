@@ -99,6 +99,13 @@ export function SettingsScreen({
           <button type="button" className="gp-cfg__logout" onClick={() => void signOut()}>
             로그아웃
           </button>
+          <div className="gp-cfg__contact">
+            <span className="gp-cfg__contactLabel">기능 추가 및 문의</span>
+            <a className="gp-cfg__mailto" href="mailto:hchwi@kakao.com">
+              hchwi@kakao.com
+            </a>
+            <span className="gp-cfg__ver">ADD PLATES v0.1</span>
+          </div>
           {/* CC BY-SA 4.0 은 출처 표기가 의무다 */}
           <p className="gp-cfg__credit">
             운동 일러스트: Everkinetic · Bryl Lim (

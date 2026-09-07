@@ -24,7 +24,7 @@ import { BrandMark } from './BrandMark';
 import { DateStrip } from './DateStrip';
 import { EntryCard } from './EntryCard';
 import { SetEditorSheet, type EditorTarget } from './SetEditorSheet';
-import { CalendarIcon, GearIcon, PencilIcon, TrashIcon } from './icons';
+import { ChevronIcon, MenuIcon, PencilIcon, TrashIcon } from './icons';
 import '../../styles/home.css';
 
 /**
@@ -53,6 +53,8 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
   const { snack, show, dismiss } = useSnack();
 
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  // 날짜 스트립 접힘. 본문 스크롤 방향이 정한다
+  const [stripOff, setStripOff] = useState(false);
   const [swipedId, setSwipedId] = useState<string | null>(null);
   const [editor, setEditor] = useState<EditorTarget | null>(null);
   const [sheet, setSheet] = useState<Sheet | null>(null);
@@ -69,6 +71,8 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
     if (day.status !== 'ready') return;
     const last = day.entries[day.entries.length - 1];
     setExpanded(last ? new Set([last.id]) : new Set());
+    // 날짜를 바꾸면 목록이 통째로 갈린다 — 접힌 채로 남으면 다시 펼 방법이 없다
+    setStripOff(false);
     setSwipedId(null);
     setEditor(null);
     // 캘린더에서 날짜를 골라 일정 폼으로 돌아온 경우엔 그 시트를 닫지 않는다
@@ -104,6 +108,59 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
       .catch(() => undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateKey, day.status, day.entries.length, day.loggedDays]);
+
+  /**
+   * 헤더 우측 당일 요약. 하드코딩하지 않고 그날 기록에서 센다.
+   * 세트가 하나도 없는 종목은 세지 않고, 맨몸 종목은 무게가 없으니 볼륨에서 빠진다.
+   */
+  const dayStat = useMemo(() => {
+    let ex = 0;
+    let sets = 0;
+    let kg = 0;
+    for (const e of day.entries) {
+      if (!e.sets.length) continue;
+      ex += 1;
+      sets += e.sets.length;
+      if (e.exercise.tracking_type !== 'bodyweight_reps')
+        kg += e.sets.reduce((a, s) => a + (s.weight_kg ?? 0) * s.reps, 0);
+    }
+    return { ex, sets, kg };
+  }, [day.entries]);
+
+  /**
+   * 본문을 내리면 날짜 스트립을 접고, 조금이라도 올리면 되돌린다.
+   * 맨 위(8px 이내)에서는 항상 펼쳐 둔다 — 목록이 짧을 때 접힌 채로 남지 않게.
+   *
+   * 전환 직후 420ms 는 판단을 멈춘다. 스트립이 접히면 목록이 위로 밀려
+   * scrollTop 이 저절로 역방향으로 튀는데, 그 반동을 방향 전환으로 읽으면
+   * 접힘↔펼침이 무한히 깜빡인다 (디자인 프로토타입에서 실제로 났던 버그).
+   */
+  const lastY = useRef(0);
+  const lockUntil = useRef(0);
+  const onBodyScroll = (ev: React.UIEvent<HTMLDivElement>) => {
+    const y = ev.currentTarget.scrollTop;
+    const prev = lastY.current;
+    lastY.current = y;
+    if (Date.now() < lockUntil.current) return;
+    const d = y - prev;
+    const lock = () => {
+      lockUntil.current = Date.now() + 420;
+    };
+    if (y < 8) {
+      if (stripOff) {
+        lock();
+        setStripOff(false);
+      }
+      return;
+    }
+    if (!stripOff && y > 64 && d > 10) {
+      lock();
+      setStripOff(true);
+    } else if (stripOff && d < -10) {
+      lock();
+      setStripOff(false);
+    }
+  };
 
   /** 일정 폼 열기. 그 날짜에 일정이 있으면 그 값을 채워 수정으로 연다 */
   const openSchedule = () => {
@@ -302,43 +359,58 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
     <>
       <div className="gp-head">
         <BrandMark />
-        <div className="gp-head__date">
-          <div className="gp-micro">{fmtDateRel(dateKey, today)}</div>
-          <div className="gp-head__title">{fmtDateTitle(dateKey)}</div>
-        </div>
         <button
           type="button"
-          className="gp-iconbtn"
-          aria-label="달력"
-          onClick={() => {
-            dismiss();
-            setSheet({ kind: 'calendar', returnTo: null });
-          }}
-        >
-          <CalendarIcon />
-        </button>
-        <button
-          type="button"
-          className="gp-iconbtn"
+          className="gp-head__menu"
           aria-label="설정"
           onClick={() => {
             dismiss();
             onOpenSettings();
           }}
         >
-          <GearIcon />
+          <MenuIcon />
         </button>
       </div>
 
-      <DateStrip
-        dateKey={dateKey}
-        todayKey={today}
-        loggedDays={day.loggedDays}
-        planDays={planDays}
-        onSelect={setDateKey}
-      />
+      <div className="gp-head__rule" />
 
-      <div className="gp-body gp-scroll">
+      <div className="gp-head__row">
+        {/* 날짜 블록 전체가 캘린더 버튼이다 */}
+        <button
+          type="button"
+          className="gp-head__date"
+          onClick={() => {
+            dismiss();
+            setSheet({ kind: 'calendar', returnTo: null });
+          }}
+        >
+          <span className="gp-micro">{fmtDateRel(dateKey, today)}</span>
+          <span className="gp-head__title">
+            {fmtDateTitle(dateKey)}
+            <span className="gp-head__chev">
+              <ChevronIcon size={15} />
+            </span>
+          </span>
+        </button>
+        {dayStat.sets > 0 ? (
+          <div className="gp-head__stat">
+            <b className="gp-num">{dayStat.ex}</b>종목 <b className="gp-num">{dayStat.sets}</b>세트,
+            <br />총 <b className="gp-num">{dayStat.kg.toLocaleString()}</b>kg를 이겨냈어요!
+          </div>
+        ) : null}
+      </div>
+
+      <div className={`gp-strip__wrap${stripOff ? ' gp-strip__wrap--off' : ''}`}>
+        <DateStrip
+          dateKey={dateKey}
+          todayKey={today}
+          loggedDays={day.loggedDays}
+          planDays={planDays}
+          onSelect={setDateKey}
+        />
+      </div>
+
+      <div className="gp-body gp-scroll" onScroll={onBodyScroll}>
         {plan ? (
           <div className="gp-plan">
             <div className="gp-plan__body">
@@ -348,7 +420,8 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
                 </span>
                 <span className="gp-plan__title">{plan.title}</span>
               </div>
-              <span className="gp-plan__memo">{plan.memo || '메모 없음'}</span>
+              {/* 메모가 없으면 그 줄을 아예 렌더하지 않는다 (카드 높이가 준다) */}
+              {plan.memo ? <span className="gp-plan__memo">{plan.memo}</span> : null}
             </div>
             <button
               type="button"

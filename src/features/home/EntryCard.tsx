@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import type { DayEntry, DaySet } from '../../lib/types';
 import { EQUIP_LABEL, MUSCLE_HUE, MUSCLE_LABEL, SUB_LABEL } from '../../lib/labels';
-import { fmtWeight, summarizeSets } from '../../data/queries';
+import { fmtWeight } from '../../data/queries';
 import { ChevronIcon, TrashIcon, XIcon } from './icons';
 import { ExerciseArtModal } from '../picker/ExerciseArtModal';
 
@@ -87,10 +87,12 @@ export function EntryCard({
   ];
 
   const lastSet: DaySet | undefined = entry.sets[entry.sets.length - 1];
-  const volume =
-    !isBody && entry.sets.length
-      ? `총 ${entry.sets.reduce((a, s) => a + (s.weight_kg ?? 0) * s.reps, 0).toLocaleString()}kg`
-      : '';
+  // 헤더 우측 총 볼륨. 맨몸 종목은 무게가 없으니 횟수를 더한다
+  const total = entry.sets.length
+    ? entry.sets
+        .reduce((a, s) => a + (isBody ? s.reps : (s.weight_kg ?? 0) * s.reps), 0)
+        .toLocaleString()
+    : '';
 
   const shift = dx !== null ? dx : swiped ? OPEN_X : 0;
   const panelVisible = swiped || (dx !== null && dx < -2);
@@ -166,7 +168,7 @@ export function EntryCard({
             aria-expanded={expanded}
             onClick={handleToggle}
           >
-            <ChevronIcon />
+            <ChevronIcon size={14} />
           </button>
 
           {/* 종목 썸네일. 시트에서 고를 때 본 그림이 카드에도 그대로 있어야
@@ -208,19 +210,24 @@ export function EntryCard({
             </span>
           </button>
 
-          <span className="gp-entry__count gp-num">
-            {entry.sets.length ? `${entry.sets.length}세트` : ''}
+          {/* 세트 수 위, 총 볼륨 아래. 세트가 없으면 같은 자리에 '기록 없음' */}
+          <span className="gp-entry__stat">
+            {entry.sets.length ? (
+              <>
+                <span className="gp-entry__count gp-num">{entry.sets.length}세트</span>
+                <span className="gp-entry__vol">
+                  <span>총</span>
+                  <span className="gp-entry__volNum gp-num">{total}</span>
+                  <span className="gp-entry__volUnit">{isBody ? '회' : 'kg'}</span>
+                </span>
+              </>
+            ) : (
+              <span className="gp-entry__none">기록 없음</span>
+            )}
           </span>
         </div>
 
-        {!expanded ? (
-          <div className="gp-entry__summary">
-            <b className="gp-num">
-              {entry.sets.length ? summarizeSets(entry.sets) : '아직 세트가 없어요'}
-            </b>
-            {volume ? <i>{volume}</i> : null}
-          </div>
-        ) : (
+        {expanded ? (
           <div className="gp-entry__open">
             <div className="gp-entry__last">
               {entry.last
@@ -320,7 +327,7 @@ export function EntryCard({
               </div>
             ) : null}
           </div>
-        )}
+        ) : null}
       </div>
 
       {artOpen ? <ExerciseArtModal exercise={ex} onClose={() => setArtOpen(false)} /> : null}

@@ -49,8 +49,14 @@ button {
   background: transparent;
 }
 
-/* ── 앱 셸: 프레임 없이 뷰포트를 그대로 채운다 ── */
+/* ── 앱 셸 ──────────────────────────────────────────
+   폭은 480px 고정이다(반응형으로 늘리지 않는다). PC 로 열어도 모바일 감각을
+   유지하려는 결정이라 max-width 가 아니라 고정 폭이고, 480px 미만에서만 줄어든다.
+   기기 프레임(라운드·그림자)은 프로토타입 표현용이라 옮기지 않는다. */
 .gp-app {
+  width: 480px;
+  max-width: 100%;
+  margin: 0 auto;
   height: 100%;
   background: var(--bg);
   color: var(--ink);

@@ -159,6 +159,40 @@
   color: var(--warn);
 }
 
+/* ── 문의 푸터. 로그아웃 아래 divider 로 갈라 둔다 ── */
+.gp-cfg__contact {
+  border-top: 1px solid var(--line2);
+  padding: 13px 2px 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.gp-cfg__contactLabel {
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--ink3);
+}
+
+.gp-cfg__mailto {
+  font-size: 12.5px;
+  color: var(--ink2);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  transition: color 140ms ease;
+}
+.gp-cfg__mailto:hover {
+  color: var(--accent);
+}
+
+.gp-cfg__ver {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  color: var(--ink3);
+}
+
 .gp-cfg__credit {
   margin: 0;
   font-size: 11px;
