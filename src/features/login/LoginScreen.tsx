@@ -12,9 +12,11 @@ export function LoginScreen() {
 
       <div className="gp-login__foot">
         <div className="gp-login__desc">
-          종목만 고르면 지난주에 몇 kg 들었는지 같이 떠요.
+          내가 성장하는지 확인하는 손쉬운 방법
           <br />
-          장갑 낀 손으로 세 탭이면 한 세트 끝.
+          &lsquo;아 지난주에 몇분할 했더라&rsquo;, &lsquo;오늘 어디 할 차례지&rsquo; 찾지 말아요.
+          <br />
+          가볍게 체크하는 운동 기록 서비스 <b className="gp-login__mark">ADD PLATES</b> 에서 시작해요
         </div>
 
         <button

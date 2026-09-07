@@ -78,6 +78,12 @@
   text-wrap: pretty;
 }
 
+/* 서비스 이름만 브랜드 색으로. 문장 안에서 이름이 눈에 걸리게 한다 */
+.gp-login__mark {
+  color: var(--hero-green);
+  font-weight: 700;
+}
+
 .gp-login__btn {
   background: #f4f6fb;
   color: #121310;
