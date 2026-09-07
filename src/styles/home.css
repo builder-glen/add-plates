@@ -854,6 +854,40 @@
   justify-content: center;
   gap: 4px;
 }
+
+/* 숫자를 누르면 키패드가 올라온다는 걸 눌러보기 전에 알 수 있어야 한다.
+   테두리를 두르면 스테퍼 사이에 상자가 하나 더 생겨 시끄러우므로,
+   밑줄과 누를 때의 반응으로만 알린다. */
+.gp-step__val--tap {
+  align-self: stretch;
+  border-radius: var(--r-card-sm);
+  border-bottom: 1px dashed var(--line);
+  transition: transform var(--d-tap) var(--ease-enter), background 140ms ease;
+}
+.gp-step__val--tap:active {
+  transform: scale(0.96);
+  background: var(--surface2);
+}
+
+.gp-step__input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  text-align: center;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  border-bottom: 1px solid var(--accent);
+  border-radius: 0;
+}
+.gp-step__input:focus {
+  outline: none;
+}
 .gp-step__num {
   font-size: 32px;
   font-weight: 700;

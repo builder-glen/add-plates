@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { fmtWeight } from '../../data/queries';
 import { useSheetDrag } from '../../lib/useSheetDrag';
+import { StepField } from './StepField';
+
+/** 스테퍼와 직접 입력이 같은 범위를 쓰게 한 곳에 둔다 */
+const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
 export interface EditorTarget {
   entryId: string;
@@ -45,52 +48,30 @@ export function SetEditorSheet({ target, weightStep, onSave, onDelete, onClose }
         </div>
 
         {!target.isBody ? (
-          <div className="gp-step">
-            <button
-              type="button"
-              className="gp-step__btn"
-              aria-label="무게 줄이기"
-              onClick={() => setW((v) => Math.max(0, Math.round((v - weightStep) * 10) / 10))}
-            >
-              −
-            </button>
-            <div className="gp-step__val">
-              <span className="gp-step__num gp-num">{fmtWeight(w)}</span>
-              <span className="gp-step__unit">kg</span>
-            </div>
-            <button
-              type="button"
-              className="gp-step__btn"
-              aria-label="무게 늘리기"
-              onClick={() => setW((v) => Math.round((v + weightStep) * 10) / 10)}
-            >
-              ＋
-            </button>
-          </div>
+          <StepField
+            value={w}
+            unit="kg"
+            decimal
+            min={0}
+            max={999}
+            label="무게"
+            onChange={setW}
+            onStep={(d) =>
+              setW((v) => clamp(Math.round((v + d * weightStep) * 10) / 10, 0, 999))
+            }
+          />
         ) : null}
 
-        <div className="gp-step">
-          <button
-            type="button"
-            className="gp-step__btn"
-            aria-label="횟수 줄이기"
-            onClick={() => setR((v) => Math.max(1, v - 1))}
-          >
-            −
-          </button>
-          <div className="gp-step__val">
-            <span className="gp-step__num gp-num">{r}</span>
-            <span className="gp-step__unit">회</span>
-          </div>
-          <button
-            type="button"
-            className="gp-step__btn"
-            aria-label="횟수 늘리기"
-            onClick={() => setR((v) => v + 1)}
-          >
-            ＋
-          </button>
-        </div>
+        <StepField
+          value={r}
+          unit="회"
+          decimal={false}
+          min={1}
+          max={999}
+          label="횟수"
+          onChange={setR}
+          onStep={(d) => setR((v) => clamp(v + d, 1, 999))}
+        />
 
         <div className="gp-editor__actions">
           <button type="button" className="gp-editor__save" onClick={() => onSave(w, r)}>
