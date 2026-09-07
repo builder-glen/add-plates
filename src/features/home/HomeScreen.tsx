@@ -154,7 +154,9 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
   const shareDay = () => {
     const url = shareLink.current;
     if (!url) return; // 아직 만들어지는 중 — 한 틱이면 끝난다
-    const text = `${fmtDateTitle(dateKey)} · ${dayStat.ex}종목 ${dayStat.sets}세트, 총 ${dayStat.kg.toLocaleString()}kg`;
+    // 오늘이 아닌 날을 공유할 수도 있어 첫 줄을 날짜에 맞춰 바꾼다
+    const when = dateKey === today ? '오늘' : fmtDateTitle(dateKey);
+    const text = `[오운완💪] LIGHT WEIGHT BABY!!\n${when} 운동 내역을 공유해요😊`;
     // 보낸 링크가 어떻게 보이는지 스낵바에서 바로 열어 볼 수 있게 한다
     const preview = () => window.open(url, '_blank', 'noopener');
 
