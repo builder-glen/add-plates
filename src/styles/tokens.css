@@ -27,6 +27,7 @@
     sans-serif;
   --font-hero: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, Menlo, monospace;
+  --font-brand: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 
   /* ── radius ── */
   --r-card: 18px;

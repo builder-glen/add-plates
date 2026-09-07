@@ -20,6 +20,7 @@ import { PickerSheet } from '../picker/PickerSheet';
 import { CalendarSheet } from '../plan/CalendarSheet';
 import { NEW_DRAFT, ScheduleSheet, type PlanDraft } from '../plan/ScheduleSheet';
 import { TimeSheet } from '../plan/TimeSheet';
+import { BrandMark } from './BrandMark';
 import { DateStrip } from './DateStrip';
 import { EntryCard } from './EntryCard';
 import { SetEditorSheet, type EditorTarget } from './SetEditorSheet';
@@ -300,6 +301,11 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
   return (
     <>
       <div className="gp-head">
+        <BrandMark />
+        <div className="gp-head__date">
+          <div className="gp-micro">{fmtDateRel(dateKey, today)}</div>
+          <div className="gp-head__title">{fmtDateTitle(dateKey)}</div>
+        </div>
         <button
           type="button"
           className="gp-iconbtn"
@@ -311,15 +317,10 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
         >
           <CalendarIcon />
         </button>
-        <div className="gp-head__date">
-          <div className="gp-micro">{fmtDateRel(dateKey, today)}</div>
-          <div className="gp-head__title">{fmtDateTitle(dateKey)}</div>
-        </div>
         <button
           type="button"
           className="gp-iconbtn"
           aria-label="설정"
-          style={{ marginLeft: 'auto' }}
           onClick={() => {
             dismiss();
             onOpenSettings();

@@ -3,10 +3,42 @@
 /* ── 헤더 ── */
 .gp-head {
   flex: none;
-  padding: 4px 20px 0;
+  padding: 12px 20px 0;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+/* ── 브랜드 마크 ──────────────────────────────────────
+   로그인 헤드라인과 같은 스크램블이다. 흐르는 동안 accent 를 띠고
+   확정되는 순간 플래시가 지나간 뒤 ink 로 굳는다.
+   글자 폭이 고정이라 기호가 바뀌어도 줄 길이가 흔들리지 않는다. */
+.gp-brand {
+  flex: none;
+  font-family: var(--font-brand);
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  font-variant-ligatures: none;
+}
+
+.gp-brand__c {
+  display: inline-block;
+  color: var(--accent);
+}
+.gp-brand__c--on {
+  color: var(--ink);
+  animation: gpBrandLock 420ms cubic-bezier(0.2, 0, 0, 1);
+}
+@keyframes gpBrandLock {
+  0% {
+    color: var(--accent);
+    text-shadow: 0 0 14px oklch(0.62 0.15 156 / 0.55);
+  }
+  100% {
+    text-shadow: 0 0 0 transparent;
+  }
 }
 
 .gp-iconbtn {
@@ -27,11 +59,13 @@
 }
 
 .gp-head__date {
+  flex: 1;
   min-width: 0;
+  text-align: right;
 }
 
 .gp-head__title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.03em;
   margin-top: 1px;
