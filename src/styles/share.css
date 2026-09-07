@@ -1,0 +1,106 @@
+/* 화면 8 — 공유 보기 (/s#...)
+
+   카드·칩·세트 행은 홈과 같은 것을 쓰고, 디자인이 다르게 잡은 값만 여기서 덮는다.
+   덮는 규칙은 전부 .gp-shared 를 겹쳐 특이도를 올린다 — 로드 순서에 기대지 않게. */
+
+/* ── 헤더 ── */
+.gp-shared__tag {
+  margin-left: auto;
+  padding-top: 3px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  color: var(--ink3);
+}
+
+.gp-shared__meta {
+  flex: none;
+  padding: 14px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.gp-shared__date {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.gp-shared__stat {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink3);
+}
+.gp-shared__stat b {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── 본문 ── */
+/* 홈보다 위 여백이 넓고 카드 사이가 좁다 */
+.gp-shared .gp-body {
+  padding-top: 14px;
+  gap: 8px;
+}
+
+/* 카드는 홈보다 한 단계 작다 — 18px → 16px, 썸네일 51px → 44px, 이름 17px → 16px */
+.gp-shared .gp-entry,
+.gp-shared .gp-entry__card {
+  border-radius: var(--r-card-sm);
+}
+/* 헤더 전체가 펼침 버튼 하나다. 홈은 셰브론·제목·썸네일이 각각 버튼이라
+   두 줄로 늘어나는 제목 블록에 맞춰 stretch 였지만, 여기는 그럴 일이 없다 */
+.gp-shared .gp-entry__head {
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  text-align: left;
+  color: var(--ink);
+}
+.gp-shared .gp-entry__thumb {
+  width: 44px;
+  height: 44px;
+}
+.gp-shared .gp-entry__name {
+  font-size: 16px;
+}
+
+/* 세트 행은 읽기만 한다 — 상태·삭제 칸이 없어 세 칸이다 */
+.gp-shared .gp-set {
+  grid-template-columns: 18px 1fr 1fr;
+  cursor: default;
+}
+
+.gp-shared__note {
+  flex: none;
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: var(--ink3);
+  padding: 4px 2px 0;
+}
+
+/* ── 푸터 ── */
+/* CTA 아래에 캡션이 한 줄 더 붙어 세로로 쌓인다 */
+.gp-shared .gp-foot {
+  flex-direction: column;
+  gap: 9px;
+}
+
+.gp-shared__cap {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--ink3);
+  text-align: center;
+}
+
+/* 링크가 손상됐을 때. 이 화면에는 이 문구 말고 아무것도 없다 */
+.gp-shared__bad {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--ink3);
+}

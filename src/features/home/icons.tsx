@@ -137,6 +137,26 @@ export function XIcon({ size = 14 }: IconProps) {
   );
 }
 
+/** 공유 — 홈 푸터 우측 */
+export function ShareIcon({ size = 21 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 3.6v10.2M12 3.6 8.2 7.4M12 3.6l3.8 3.8" />
+      <path d="M6.2 11.4H5.1A1.6 1.6 0 0 0 3.5 13v6.3a1.6 1.6 0 0 0 1.6 1.6h13.8a1.6 1.6 0 0 0 1.6-1.6V13a1.6 1.6 0 0 0-1.6-1.6h-1.1" />
+    </svg>
+  );
+}
+
 /** 자 — 키 입력 행 */
 export function RulerIcon({ size = 17 }: IconProps) {
   return (

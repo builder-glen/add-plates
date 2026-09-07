@@ -790,6 +790,24 @@
   transform: scale(0.98);
 }
 
+/* 공유 — 54px 정사각. 터치 타겟 최소치(44px)를 넉넉히 넘긴다 */
+.gp-foot__share {
+  flex: none;
+  width: 54px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: var(--r-card-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--d-tap) var(--ease-enter), background 160ms ease;
+}
+.gp-foot__share:active {
+  transform: scale(0.94);
+  background: var(--surface2);
+}
+
 /* ── 세트 편집 시트 ── */
 .gp-editor__head {
   display: flex;

@@ -14,6 +14,7 @@ import {
 } from '../../lib/date';
 import { googleCalendarUrl } from '../../lib/gcal';
 import { MUSCLE_LABEL } from '../../lib/labels';
+import { buildShareJson, encodeShare, shareUrl } from '../../lib/shareLink';
 import type { DayEntry, Exercise, WorkoutPlan } from '../../lib/types';
 import { CustomExerciseSheet } from '../picker/CustomExerciseSheet';
 import { PickerSheet } from '../picker/PickerSheet';
@@ -24,7 +25,7 @@ import { BrandMark } from './BrandMark';
 import { DateStrip } from './DateStrip';
 import { EntryCard } from './EntryCard';
 import { SetEditorSheet, type EditorTarget } from './SetEditorSheet';
-import { ChevronIcon, MenuIcon, PencilIcon, TrashIcon } from './icons';
+import { ChevronIcon, MenuIcon, PencilIcon, ShareIcon, TrashIcon } from './icons';
 import '../../styles/home.css';
 
 /**
@@ -126,6 +127,54 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
     }
     return { ex, sets, kg };
   }, [day.entries]);
+
+  /**
+   * 공유 링크는 누르기 전에 미리 만들어 둔다.
+   *
+   * navigator.share 는 탭 직후에만 열린다. 압축을 await 하고 나서 부르면
+   * 사파리는 그 자격이 풀린 것으로 보고 시트를 열지 않는다.
+   * 만드는 데 서버가 필요 없어 비행기 모드에서도 준비된다.
+   */
+  const canShare = !isFuture && dayStat.sets > 0;
+  // 기록 배열은 렌더마다 새 배열이라 참조로는 비교가 안 된다 — 내용을 값으로 굳혀 비교한다
+  const shareJson = canShare ? buildShareJson(dateKey, day.entries) : null;
+  const shareLink = useRef<string | null>(null);
+  useEffect(() => {
+    shareLink.current = null;
+    if (!shareJson) return;
+    let alive = true;
+    void encodeShare(shareJson).then((code) => {
+      if (alive) shareLink.current = shareUrl(code);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [shareJson]);
+
+  const shareDay = () => {
+    const url = shareLink.current;
+    if (!url) return; // 아직 만들어지는 중 — 한 틱이면 끝난다
+    const text = `${fmtDateTitle(dateKey)} · ${dayStat.ex}종목 ${dayStat.sets}세트, 총 ${dayStat.kg.toLocaleString()}kg`;
+    // 보낸 링크가 어떻게 보이는지 스낵바에서 바로 열어 볼 수 있게 한다
+    const preview = () => window.open(url, '_blank', 'noopener');
+
+    if (typeof navigator.share === 'function') {
+      navigator
+        .share({ title: 'ADD-PLATES', text, url })
+        .then(() => show('공유 링크를 보냈어요', preview, '미리보기'))
+        // 시트를 그냥 닫은 것이다. 아무 일도 없었으니 알리지 않는다
+        .catch(() => undefined);
+      return;
+    }
+    if (navigator.clipboard) {
+      void navigator.clipboard.writeText(`${text}\n${url}`).then(
+        () => show('링크를 복사했어요', preview, '미리보기'),
+        () => show('링크를 복사하지 못했어요', preview, '미리보기'),
+      );
+      return;
+    }
+    show('링크를 복사하지 못했어요', preview, '미리보기');
+  };
 
   /**
    * 본문을 내리면 날짜 스트립을 접고, 조금이라도 올리면 되돌린다.
@@ -460,6 +509,17 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
         >
           {isFuture ? '＋ 일정 추가' : '＋ 운동 추가'}
         </button>
+        {/* 보여줄 세트가 있는 오늘·과거에만 뜬다. 미래 날짜엔 아직 기록이 없다 */}
+        {canShare ? (
+          <button
+            type="button"
+            className="gp-foot__share"
+            aria-label="이 날 기록 공유하기"
+            onClick={shareDay}
+          >
+            <ShareIcon />
+          </button>
+        ) : null}
       </div>
 
       {sheet?.kind === 'picker' ? (
