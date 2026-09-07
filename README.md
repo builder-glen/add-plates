@@ -1,8 +1,8 @@
-# gym-points
+# add-plates
 
 헬스장에서 **지난번 기록을 보면서** 오늘 운동을 기록하는 모바일 웹앱.
 
-**→ [gym-points.immortal-employee-2021.workers.dev](https://gym-points.immortal-employee-2021.workers.dev)**
+**→ [add-plates.dev](https://add-plates.dev)**
 
 ---
 

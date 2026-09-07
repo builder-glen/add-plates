@@ -1,7 +1,7 @@
 {
   // 정적 SPA를 Cloudflare에 올리기 위한 설정.
   // 서버 코드는 없다 — dist 폴더를 그대로 서빙할 뿐이다.
-  "name": "gym-points",
+  "name": "add-plates",
   "compatibility_date": "2026-09-03",
   "assets": {
     "directory": "./dist",

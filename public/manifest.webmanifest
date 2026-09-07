@@ -1,6 +1,6 @@
 {
-  "name": "GYM POINTS",
-  "short_name": "GYM POINTS",
+  "name": "ADD PLATES",
+  "short_name": "ADD PLATES",
   "description": "지난번 기록을 보면서 오늘 운동을 기록한다",
   "lang": "ko",
   "start_url": "/",

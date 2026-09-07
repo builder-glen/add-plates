@@ -1,4 +1,4 @@
-# gym-points PRD
+# add-plates PRD
 
 > 2026-09-03 · 작성 중 (기능 단위로 계속 붙여나감)
 
