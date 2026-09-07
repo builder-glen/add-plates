@@ -1,8 +1,17 @@
 /* 화면 0 — 히어로 · 로그인 */
 
+/* 홈과 같은 480px 컬럼. 다만 배경은 좌우 끝까지 검게 채운다 —
+   이 화면의 의도가 "화면 전체가 검정"이라, 480px 밖으로 밝은 바탕이
+   비치면 몰입이 깨진다. box-shadow 를 폭 없이 퍼뜨려 채우고
+   clip-path 로 가로 스크롤이 생기지 않게 막는다. */
 .gp-login {
+  width: 480px;
+  max-width: 100%;
+  margin: 0 auto;
   height: 100%;
   background: var(--hero-bg);
+  box-shadow: 0 0 0 100vmax var(--hero-bg);
+  clip-path: inset(0 -100vmax);
   overflow: hidden;
   display: flex;
   flex-direction: column;
