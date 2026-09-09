@@ -1,4 +1,4 @@
-import type { Equipment, MuscleGroup, SubRegion } from './types';
+import type { Equipment, MuscleGroup, SubRegion, TrackingType } from './types';
 
 export const MUSCLE_LABEL: Record<MuscleGroup, string> = {
   chest: '가슴',
@@ -50,4 +50,18 @@ export const MUSCLE_HUE: Record<MuscleGroup, number> = {
   biceps: 78,
   triceps: 196,
   core: 100,
+};
+
+/** 기록 방식 라벨. 어시스트 머신은 무게가 아니라 '보조'다 */
+export const TRACK_LABEL: Record<TrackingType, string> = {
+  weight_reps: '무게+횟수',
+  bodyweight_reps: '횟수만',
+  assist_reps: '보조중량+횟수',
+};
+
+/** 세트 입력 시트와 세트 목록에서 쓰는 무게 칸 이름 */
+export const WEIGHT_LABEL: Record<TrackingType, string> = {
+  weight_reps: '무게',
+  bodyweight_reps: '무게',
+  assist_reps: '보조',
 };

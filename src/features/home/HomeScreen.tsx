@@ -15,7 +15,7 @@ import {
 import { googleCalendarUrl } from '../../lib/gcal';
 import { MUSCLE_LABEL } from '../../lib/labels';
 import { buildShareJson, encodeShare, shareUrl } from '../../lib/shareLink';
-import type { DayEntry, Exercise, WorkoutPlan } from '../../lib/types';
+import { countsVolume, hasWeight, type DayEntry, type Exercise, type WorkoutPlan } from '../../lib/types';
 import { CustomExerciseSheet } from '../picker/CustomExerciseSheet';
 import { PickerSheet } from '../picker/PickerSheet';
 import { CalendarSheet } from '../plan/CalendarSheet';
@@ -122,7 +122,8 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
       if (!e.sets.length) continue;
       ex += 1;
       sets += e.sets.length;
-      if (e.exercise.tracking_type !== 'bodyweight_reps')
+      // 어시스트 머신의 보조 중량은 몸을 덜어주는 힘이라 볼륨에 더하면 부호가 거꾸로다
+      if (countsVolume(e.exercise.tracking_type))
         kg += e.sets.reduce((a, s) => a + (s.weight_kg ?? 0) * s.reps, 0);
     }
     return { ex, sets, kg };
@@ -294,7 +295,7 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
       entryId: entry.id,
       setNo: null,
       setId: null,
-      isBody: entry.exercise.tracking_type === 'bodyweight_reps',
+      track: entry.exercise.tracking_type,
       weight: last?.weight_kg ?? prev?.weightKg ?? 20,
       reps: last?.reps ?? prev?.reps ?? 8,
     });
@@ -308,7 +309,7 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
       entryId: entry.id,
       setNo,
       setId: s.id,
-      isBody: entry.exercise.tracking_type === 'bodyweight_reps',
+      track: entry.exercise.tracking_type,
       weight: s.weight_kg ?? 0,
       reps: s.reps,
     });
@@ -316,7 +317,7 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
 
   const saveEditor = (weight: number, reps: number) => {
     if (!editor) return;
-    const w = editor.isBody ? null : weight; // 맨몸 종목은 0 이 아니라 null
+    const w = hasWeight(editor.track) ? weight : null; // 맨몸 종목은 0 이 아니라 null
     if (editor.setNo === null) day.addSet(editor.entryId, w, reps);
     else if (editor.setId) day.editSet(editor.entryId, editor.setId, w, reps);
     setEditor(null);
@@ -446,7 +447,16 @@ export function HomeScreen({ weightStep, onOpenSettings }: Props) {
         {dayStat.sets > 0 ? (
           <div className="gp-head__stat">
             <b className="gp-num">{dayStat.ex}</b>종목 <b className="gp-num">{dayStat.sets}</b>세트,
-            <br />총 <b className="gp-num">{dayStat.kg.toLocaleString()}</b>kg를 이겨냈어요!
+            {/* 맨몸·어시스트만 한 날은 볼륨이 0 이다. "총 0kg" 는 안 한 것처럼 읽힌다 */}
+            {dayStat.kg > 0 ? (
+              <>
+                <br />총 <b className="gp-num">{dayStat.kg.toLocaleString()}</b>kg를 이겨냈어요!
+              </>
+            ) : (
+              <>
+                <br />오늘도 해냈어요!
+              </>
+            )}
           </div>
         ) : null}
       </div>

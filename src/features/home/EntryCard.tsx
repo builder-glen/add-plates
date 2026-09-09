@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import type { DayEntry, DaySet } from '../../lib/types';
+import { countsVolume, hasWeight, type DayEntry, type DaySet } from '../../lib/types';
 import { EQUIP_LABEL, MUSCLE_HUE, MUSCLE_LABEL, SUB_LABEL } from '../../lib/labels';
 import { fmtWeight } from '../../data/queries';
 import { ChevronIcon, TrashIcon, XIcon } from './icons';
@@ -76,7 +76,11 @@ export function EntryCard({
   const start = useRef<{ x: number; y: number; base: number } | null>(null);
 
   const ex = entry.exercise;
-  const isBody = ex.tracking_type === 'bodyweight_reps';
+  // 무게 칸을 쓰는가(weighted)와 총 볼륨에 더하는가(volume)는 다른 질문이다.
+  // 어시스트 머신은 무게는 받지만 볼륨에는 안 들어간다.
+  const weighted = hasWeight(ex.tracking_type);
+  const volume = countsVolume(ex.tracking_type);
+  const isAssist = ex.tracking_type === 'assist_reps';
   const hue = MUSCLE_HUE[ex.muscle_group];
   const subLabel = ex.sub_region ? SUB_LABEL[ex.sub_region] : null;
 
@@ -87,10 +91,11 @@ export function EntryCard({
   ];
 
   const lastSet: DaySet | undefined = entry.sets[entry.sets.length - 1];
-  // 헤더 우측 총 볼륨. 맨몸 종목은 무게가 없으니 횟수를 더한다
+  // 헤더 우측 총 볼륨. 볼륨에 안 들어가는 종목(맨몸·어시스트)은 횟수를 더한다.
+  // 어시스트의 보조 중량을 더하면 "덜 든 만큼 숫자가 커지는" 지표가 되므로 절대 더하지 않는다.
   const total = entry.sets.length
     ? entry.sets
-        .reduce((a, s) => a + (isBody ? s.reps : (s.weight_kg ?? 0) * s.reps), 0)
+        .reduce((a, s) => a + (volume ? (s.weight_kg ?? 0) * s.reps : s.reps), 0)
         .toLocaleString()
     : '';
 
@@ -218,7 +223,7 @@ export function EntryCard({
                 <span className="gp-entry__vol">
                   <span>총</span>
                   <span className="gp-entry__volNum gp-num">{total}</span>
-                  <span className="gp-entry__volUnit">{isBody ? '회' : 'kg'}</span>
+                  <span className="gp-entry__volUnit">{volume ? 'kg' : '회'}</span>
                 </span>
               </>
             ) : (
@@ -260,14 +265,15 @@ export function EntryCard({
                 >
                   <span className="gp-set__no gp-num">{s.set_no}</span>
                   <span className="gp-set__val gp-num">
-                    {isBody || s.weight_kg == null ? (
+                    {!weighted || s.weight_kg == null ? (
                       '맨몸'
                     ) : lock ? (
                       <>
+                        {isAssist ? '보조 ' : null}
                         <Reel id={`${s.id}w`} value={s.weight_kg} step={2.5} /> kg
                       </>
                     ) : (
-                      `${fmtWeight(s.weight_kg)} kg`
+                      `${isAssist ? '보조 ' : ''}${fmtWeight(s.weight_kg)} kg`
                     )}
                   </span>
                   <span className="gp-set__val gp-num">
@@ -316,9 +322,9 @@ export function EntryCard({
               <div className="gp-entry__actions">
                 <button type="button" className="gp-btn-primary" onClick={onRepeat}>
                   {lastSet
-                    ? isBody
-                      ? `직전 세트 담기 · ${lastSet.reps}회`
-                      : `직전 세트 담기 · ${fmtWeight(lastSet.weight_kg ?? 0)}kg × ${lastSet.reps}`
+                    ? weighted
+                      ? `직전 세트 담기 · ${isAssist ? '보조 ' : ''}${fmtWeight(lastSet.weight_kg ?? 0)}kg × ${lastSet.reps}`
+                      : `직전 세트 담기 · ${lastSet.reps}회`
                     : '첫 세트 입력'}
                 </button>
                 <button type="button" className="gp-btn-ghost" onClick={() => onOpenEditor(null)}>

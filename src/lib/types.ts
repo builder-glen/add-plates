@@ -30,7 +30,21 @@ export type Equipment =
   | 'band'
   | 'other';
 
-export type TrackingType = 'weight_reps' | 'bodyweight_reps';
+export type TrackingType = 'weight_reps' | 'bodyweight_reps' | 'assist_reps';
+
+/**
+ * 무게 칸을 보여줄지. 어시스트 머신도 숫자를 받는다 — 단위가 '보조 kg' 일 뿐이다.
+ *
+ * 볼륨 포함 여부(countsVolume)와 반드시 분리해서 써야 한다.
+ * 어시스트는 무게는 받지만 볼륨에는 안 들어간다. 예전 isBody 불리언 하나로는 이게 표현이 안 됐다.
+ */
+export const hasWeight = (t: TrackingType) => t !== 'bodyweight_reps';
+
+/**
+ * 일일 총 볼륨(kg)에 더할지.
+ * 어시스트 머신의 무게추는 몸을 "덜어주는" 힘이라 더하면 부호가 거꾸로 된다.
+ */
+export const countsVolume = (t: TrackingType) => t === 'weight_reps';
 
 export interface Exercise {
   id: string;

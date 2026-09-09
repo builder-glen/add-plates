@@ -37,7 +37,10 @@ SUB = {"전반":"general","윗가슴":"upper_chest","광배":"lats","승모":"tr
 EQUIP = {"바벨":"barbell","덤벨":"dumbbell","머신":"machine","케이블":"cable",
          "맨몸":"bodyweight","케틀벨":"kettlebell","밴드":"band","기타":"other"}
 
-TRACK = {"무게+횟수":"weight_reps","횟수만":"bodyweight_reps"}
+TRACK = {"무게+횟수":"weight_reps","횟수만":"bodyweight_reps",
+         # 어시스트 머신 — 무게추가 체중을 덜어준다. 값이 줄어드는 게 성장이라
+         # 일일 총 볼륨에서 제외하고 비교 시 부호를 뒤집는다.
+         "보조중량":"assist_reps"}
 
 # 파싱 ------------------------------------------------------------
 def parse():

@@ -26,7 +26,7 @@ export interface ShareExercise {
   q: string;
   /** asset_slug — 썸네일용. 없으면 생략한다 */
   a?: string;
-  /** tracking_type — 맨몸이면 총합을 '회' 로 표시해야 한다 */
+  /** tracking_type — 볼륨에 안 들어가는 종목(맨몸·어시스트)은 총합을 '회' 로 표시한다 */
   t: TrackingType;
   s: ShareSet[];
 }
@@ -148,8 +148,12 @@ function parsePayload(raw: unknown): SharePayload | null {
       m: typeof m === 'string' ? m : '',
       q: typeof q === 'string' ? q : '',
       ...(typeof a === 'string' && a ? { a } : {}),
-      // 옛 링크에 t 가 없더라도 기본값으로 열어 준다
-      t: t === 'bodyweight_reps' ? 'bodyweight_reps' : 'weight_reps',
+      // 옛 링크에 t 가 없거나 모르는 값이면 기본값으로 열어 준다.
+      // 값을 늘릴 때 여기를 빼먹으면 새 종목이 조용히 weight_reps 로 떨어진다.
+      t:
+        t === 'bodyweight_reps' || t === 'assist_reps'
+          ? (t as TrackingType)
+          : 'weight_reps',
       s: sets,
     });
   }

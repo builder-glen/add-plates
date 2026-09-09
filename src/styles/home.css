@@ -823,6 +823,18 @@
   color: var(--ink3);
 }
 
+/* 어시스트 종목의 무게 칸 설명. 'kg' 만으로는 보조 중량인 걸 알 수 없다 */
+.gp-editor__assist {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--ink1);
+}
+.gp-editor__assist span {
+  font-weight: 400;
+  color: var(--ink3);
+}
+
 .gp-step {
   display: flex;
   align-items: center;

@@ -9,13 +9,11 @@ import {
   updateExercise,
   type ExercisePatch,
 } from '../../data/queries';
-import { EQUIP_LABEL, MUSCLE_LABEL } from '../../lib/labels';
+import { EQUIP_LABEL, MUSCLE_LABEL, TRACK_LABEL } from '../../lib/labels';
 import type { Exercise } from '../../lib/types';
 import { PencilIcon, TrashIcon } from '../home/icons';
 import { CustomExerciseSheet } from '../picker/CustomExerciseSheet';
 import '../../styles/settings.css';
-
-const TYPE_LABEL = { weight_reps: '무게+횟수', bodyweight_reps: '횟수만' } as const;
 
 interface Props {
   /** 직접 추가한 종목(숨김 제외). 개수 표시와 같은 목록을 쓴다 */
@@ -114,7 +112,7 @@ export function MyExercisesScreen({ mine, onBack }: Props) {
                   {[
                     MUSCLE_LABEL[ex.muscle_group],
                     EQUIP_LABEL[ex.equipment],
-                    TYPE_LABEL[ex.tracking_type],
+                    TRACK_LABEL[ex.tracking_type],
                   ].join(' · ')}
                 </span>
               </span>

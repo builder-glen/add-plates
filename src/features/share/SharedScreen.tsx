@@ -7,7 +7,7 @@ import { ChevronIcon } from '../home/icons';
 import { fmtDateTitle } from '../../lib/date';
 import { MUSCLE_HUE, MUSCLE_LABEL } from '../../lib/labels';
 import { decodeShare, shareCodeFromLocation, type ShareExercise } from '../../lib/shareLink';
-import type { MuscleGroup } from '../../lib/types';
+import { countsVolume, hasWeight, type MuscleGroup } from '../../lib/types';
 import '../../styles/home.css';
 import '../../styles/share.css';
 
@@ -29,15 +29,17 @@ const FALLBACK_HUE = 156;
 /** queries.ts 의 것과 같은 규칙. 그쪽은 supabase 를 끌고 와서 여기서 못 쓴다 */
 const fmtWeight = (w: number) => (Number.isInteger(w) ? String(w) : String(Number(w.toFixed(1))));
 
-/** 종목 총합. 맨몸은 무게가 없으니 횟수를 더한다 */
+/** 종목 총합. 볼륨에 안 들어가는 종목(맨몸·어시스트)은 횟수를 더한다 */
 function totalOf(ex: ShareExercise): number {
-  const body = ex.t === 'bodyweight_reps';
-  return ex.s.reduce((a, [w, r]) => a + (body ? r : (w ?? 0) * r), 0);
+  const vol = countsVolume(ex.t);
+  return ex.s.reduce((a, [w, r]) => a + (vol ? (w ?? 0) * r : r), 0);
 }
 
 function Card({ ex }: { ex: ShareExercise }) {
   const [open, setOpen] = useState(false);
-  const body = ex.t === 'bodyweight_reps';
+  const weighted = hasWeight(ex.t);
+  const volume = countsVolume(ex.t);
+  const isAssist = ex.t === 'assist_reps';
   const hue = HUE_BY_MUSCLE_LABEL[ex.m] ?? FALLBACK_HUE;
   const chips = [
     { text: ex.m, strong: true },
@@ -95,7 +97,7 @@ function Card({ ex }: { ex: ShareExercise }) {
             <span className="gp-entry__vol">
               <span>총</span>
               <span className="gp-entry__volNum gp-num">{totalOf(ex).toLocaleString()}</span>
-              <span className="gp-entry__volUnit">{body ? '회' : 'kg'}</span>
+              <span className="gp-entry__volUnit">{volume ? 'kg' : '회'}</span>
             </span>
           </span>
         </button>
@@ -106,7 +108,7 @@ function Card({ ex }: { ex: ShareExercise }) {
               <div className="gp-set" key={i}>
                 <span className="gp-set__no gp-num">{i + 1}</span>
                 <span className="gp-set__val gp-num">
-                  {body || w == null ? '맨몸' : `${fmtWeight(w)} kg`}
+                  {!weighted || w == null ? '맨몸' : `${isAssist ? '보조 ' : ''}${fmtWeight(w)} kg`}
                 </span>
                 <span className="gp-set__val gp-num">{r} 회</span>
               </div>
@@ -158,7 +160,7 @@ export function SharedScreen() {
   let kg = 0;
   for (const ex of view.entries) {
     sets += ex.s.length;
-    if (ex.t !== 'bodyweight_reps') kg += totalOf(ex);
+    if (countsVolume(ex.t)) kg += totalOf(ex);
   }
 
   return (
@@ -177,7 +179,14 @@ export function SharedScreen() {
         <span className="gp-shared__date">{fmtDateTitle(view.date)}</span>
         <span className="gp-shared__stat">
           <b className="gp-num">{view.entries.length}</b>종목 <b className="gp-num">{sets}</b>세트,
-          총 <b className="gp-num">{kg.toLocaleString()}</b>kg를 이겨냈어요!
+          {/* 맨몸·어시스트만 담긴 링크는 볼륨이 0 이다 */}
+          {kg > 0 ? (
+            <>
+              총 <b className="gp-num">{kg.toLocaleString()}</b>kg를 이겨냈어요!
+            </>
+          ) : (
+            '오늘도 해냈어요!'
+          )}
         </span>
       </div>
 

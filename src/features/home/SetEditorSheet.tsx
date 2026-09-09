@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { hasWeight, type TrackingType } from '../../lib/types';
+import { WEIGHT_LABEL } from '../../lib/labels';
 import { useSheetDrag } from '../../lib/useSheetDrag';
 import { StepField } from './StepField';
 
@@ -10,7 +12,8 @@ export interface EditorTarget {
   /** null 이면 새 세트 */
   setNo: number | null;
   setId: string | null;
-  isBody: boolean;
+  /** 무게 칸을 그릴지, 그 칸을 뭐라 부를지 둘 다 여기서 결정된다 */
+  track: TrackingType;
   weight: number;
   reps: number;
 }
@@ -47,14 +50,22 @@ export function SetEditorSheet({ target, weightStep, onSave, onDelete, onClose }
           </span>
         </div>
 
-        {!target.isBody ? (
+        {/* StepField 의 label 은 aria 전용이라 눈에 보이지 않는다.
+            어시스트는 같은 'kg' 칸에 성격이 다른 값을 받으므로 화면에도 적어 준다. */}
+        {target.track === 'assist_reps' ? (
+          <div className="gp-editor__assist">
+            보조 중량 <span>— 줄어들수록 성장이에요</span>
+          </div>
+        ) : null}
+
+        {hasWeight(target.track) ? (
           <StepField
             value={w}
             unit="kg"
             decimal
             min={0}
             max={999}
-            label="무게"
+            label={WEIGHT_LABEL[target.track]}
             onChange={setW}
             onStep={(d) =>
               setW((v) => clamp(Math.round((v + d * weightStep) * 10) / 10, 0, 999))

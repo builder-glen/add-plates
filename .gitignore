@@ -20,3 +20,6 @@ design/
 .claude/
 AGENTS.md
 CLAUDE.md
+
+# Supabase CLI 로컬 상태 (프로젝트 링크·버전 캐시). 커밋 대상이 아니다
+supabase/.temp/

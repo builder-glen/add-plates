@@ -12,6 +12,8 @@ const EQUIPS = Object.keys(EQUIP_LABEL) as Equipment[];
 const TYPES: { key: TrackingType; label: string }[] = [
   { key: 'weight_reps', label: '무게 + 횟수' },
   { key: 'bodyweight_reps', label: '횟수만' },
+  // 어시스트 머신용. 값이 줄어드는 게 성장이라 총 볼륨에는 들어가지 않는다
+  { key: 'assist_reps', label: '보조중량 + 횟수' },
 ];
 
 /** 수정으로 열 때 미리 채워 넣을 값 */

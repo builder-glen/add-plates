@@ -1,7 +1,20 @@
--- 기본 운동 종목 시드 (자동 생성 — 직접 고치지 마라)
--- 정본: docs/research/exercises.md  /  생성: seeds/build_seed.py
--- 종목 219개
+-- 종목 마스터 갱신 — 명칭 감사(docs/research/exercise-naming-audit.md) 반영
+--
+-- 1) 어시스트 3종목: 표준명에 '머신'을 붙이고 기록 방식을 assist_reps 로 바꾼다
+--    (번핏 표준명이 「어시스트 풀업 머신」·「어시스트 딥스 머신」이다)
+-- 2) 프리처 컬: 장비를 머신 → 바벨로 정정
+-- 3) 공백만 다른 죽은 별칭 24개 제거 — search.ts 가 이미 공백을 무시한다
+-- 4) 신규 15종목 추가 (전부 에셋 없음 = Tier B)
+--
+-- 정본은 docs/research/exercises.md, 이 파일은 seeds/build_seed.py 결과를 옮긴 것이다.
 
+-- ── 1. 이름이 바뀐 종목은 먼저 rename 해야 아래 upsert 가 같은 행을 찾는다 ──
+update exercises set name = '어시스트 풀업 머신' where owner_id is null and name = '어시스트 풀업';
+update exercises set name = '어시스트 친업 머신' where owner_id is null and name = '어시스트 친업';
+update exercises set name = '어시스트 딥스 머신' where owner_id is null and name = '어시스트 딥스';
+
+-- ── 2. 공용 종목 219개 전량 upsert ──
+-- 유니크 인덱스가 (coalesce(owner_id::text,'global'), name) 표현식이라 conflict 대상도 같게 쓴다.
 insert into exercises
   (name, chosung, aliases, alias_chosung, muscle_group, sub_region, equipment, tracking_type, asset_slug, owner_id)
 values
@@ -224,4 +237,12 @@ values
   ('팔로프 프레스', 'ㅍㄹㅍㅍㄹㅅ', array['케이블 팔로프 프레스','pallof press']::text[], array['ㅋㅇㅂㅍㄹㅍㅍㄹㅅ']::text[], 'core', 'obliques', 'cable', 'weight_reps', 'pallof-press', null),
   ('토르소 로테이션 머신', 'ㅌㄹㅅㄹㅌㅇㅅㅁㅅ', array['토르소 트위스트 머신','로터리 토르소','복근 트위스트 머신']::text[], array['ㅌㄹㅅㅌㅇㅅㅌㅁㅅ','ㄹㅌㄹㅌㄹㅅ','ㅂㄱㅌㅇㅅㅌㅁㅅ']::text[], 'core', 'obliques', 'machine', 'weight_reps', null, null),
   ('캡틴체어 레그 레이즈', 'ㅋㅌㅊㅇㄹㄱㄹㅇㅈ', array['캡틴스 체어 레그 레이즈','버티컬 레그 레이즈']::text[], array['ㅋㅌㅅㅊㅇㄹㄱㄹㅇㅈ','ㅂㅌㅋㄹㄱㄹㅇㅈ']::text[], 'core', 'rectus_abdominis', 'machine', 'bodyweight_reps', null, null)
-on conflict do nothing;
+on conflict (coalesce(owner_id::text,'global'), name) do update set
+  chosung       = excluded.chosung,
+  aliases       = excluded.aliases,
+  alias_chosung = excluded.alias_chosung,
+  muscle_group  = excluded.muscle_group,
+  sub_region    = excluded.sub_region,
+  equipment     = excluded.equipment,
+  tracking_type = excluded.tracking_type,
+  asset_slug    = excluded.asset_slug;
