@@ -1,7 +1,22 @@
--- 기본 운동 종목 시드 (자동 생성 — 직접 고치지 마라)
--- 정본: docs/research/exercises.md  /  생성: seeds/build_seed.py
--- 종목 199개
+-- 종목 정리 — 한국 유튜브 관심도 측정 결과 반영 (2026-09 조사)
+--
+-- 219 → 199 종목.
+-- 1) 표준명도 별칭도 검색 결과가 0인 20종목 삭제.
+--    지우는 대신 그 이름을 살아남는 종목의 별칭에 넣어, 검색은 계속 되게 했다
+--    (예: '로프 푸시다운' 으로 검색하면 '케이블 푸시다운' 이 나온다).
+-- 2) 표준명이 실제로 안 쓰이는 2종목 개명.
+--    리어 델트 플라이 → 리버스 펙덱 (381,309 vs 0)
+--    커시 런지       → 크로스 런지 (16,376 vs 0)
+-- 3) 중량 계열에 '○○ 무게' / '○○ 중량' 별칭 추가.
+--    사용자가 '딥스 무게' 를 못 찾아 커스텀 종목을 만든 실사용 기록이 근거다.
+--
+-- 삭제는 기록이 걸린 종목을 건너뛴다. 쓰인 종목이 사라지면 기록이 깨지기 때문이다.
 
+-- ── 1. 개명 먼저. 아래 upsert 가 같은 행을 찾아야 한다 ──
+update exercises set name = '리버스 펙덱' where owner_id is null and name = '리어 델트 플라이';
+update exercises set name = '크로스 런지'  where owner_id is null and name = '커시 런지';
+
+-- ── 2. 공용 종목 199개 upsert (별칭 흡수분 포함) ──
 insert into exercises
   (name, chosung, aliases, alias_chosung, muscle_group, sub_region, equipment, tracking_type, asset_slug, owner_id)
 values
@@ -204,4 +219,26 @@ values
   ('힐 터치', 'ㅎㅌㅊ', array['힐 터치 크런치','힐 탭','사이드 크런치','heel tap']::text[], array['ㅎㅌㅊㅋㄹㅊ','ㅎㅌ','ㅅㅇㄷㅋㄹㅊ']::text[], 'core', 'obliques', 'bodyweight', 'bodyweight_reps', 'heel-tap', null),
   ('팔로프 프레스', 'ㅍㄹㅍㅍㄹㅅ', array['케이블 팔로프 프레스','pallof press']::text[], array['ㅋㅇㅂㅍㄹㅍㅍㄹㅅ']::text[], 'core', 'obliques', 'cable', 'weight_reps', 'pallof-press', null),
   ('캡틴체어 레그 레이즈', 'ㅋㅌㅊㅇㄹㄱㄹㅇㅈ', array['캡틴체어 니 레이즈','캡틴스 체어 레그 레이즈','버티컬 레그 레이즈']::text[], array['ㅋㅌㅊㅇㄴㄹㅇㅈ','ㅋㅌㅅㅊㅇㄹㄱㄹㅇㅈ','ㅂㅌㅋㄹㄱㄹㅇㅈ']::text[], 'core', 'rectus_abdominis', 'machine', 'bodyweight_reps', null, null)
-on conflict do nothing;
+on conflict (coalesce(owner_id::text,'global'), name) do update set
+  chosung       = excluded.chosung,
+  aliases       = excluded.aliases,
+  alias_chosung = excluded.alias_chosung,
+  muscle_group  = excluded.muscle_group,
+  sub_region    = excluded.sub_region,
+  equipment     = excluded.equipment,
+  tracking_type = excluded.tracking_type,
+  asset_slug    = excluded.asset_slug;
+
+-- ── 3. 안 쓰이는 공용 종목 20개 삭제 ──
+-- not exists 로 기록이 걸린 것은 남긴다. 남는 게 있으면 아래 확인 쿼리에 잡힌다.
+delete from exercises e
+where e.owner_id is null
+  and e.name in ('클랩 푸시업', '메도우즈 로우', '클로즈그립 랫풀다운', '언더그립 랫풀다운', '랜드마인 루마니안 데드리프트', '바벨 글루트 브릿지', '힐 엘리베이티드 고블릿 스쿼트', '데피싯 리버스 런지', '덤벨 글루트 브릿지', '스미스 머신 불가리안 스플릿 스쿼트', '스미스 머신 리버스 런지', '덤벨 스컬크러셔', '원암 덤벨 스컬크러셔', '로프 푸시다운', '원암 케이블 푸시다운', '캡틴체어 니 레이즈', '웨이티드 러시안 트위스트', '덤벨 사이드 벤드', '케이블 우드찹', '토르소 로테이션 머신')
+  and not exists (select 1 from workout_entries w where w.exercise_id = e.id);
+
+-- ── 4. 사용자가 실수로 만든 커스텀 종목 정리 ──
+-- 'ㄱㅇㅂ' 는 오타다. 기록에 쓰였으면 지우지 않는다.
+delete from exercises e
+where e.owner_id is not null
+  and e.name = 'ㄱㅇㅂ'
+  and not exists (select 1 from workout_entries w where w.exercise_id = e.id);
